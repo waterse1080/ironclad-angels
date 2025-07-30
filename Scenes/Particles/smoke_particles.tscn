@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbvl81lhl26j6"]
+
+[ext_resource type="Texture2D" uid="uid://rdkch1jrleo1" path="res://Assets/Images/SpriteSheets/Animations/Smoke-1.png" id="1_lohw7"]
+[ext_resource type="Script" uid="uid://dccbeej57oont" path="res://Scripts/Particles/smoke_particles.gd" id="2_mjtiq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8v8h7"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_wf1jm"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.0680938), 0.0, 14.2176, 0, 0, Vector2(0.997382, 4.86895), 2.78114, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_rouqw"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.12549)
+metadata/_snap_enabled = true
+
+[node name="SmokeParticles" type="CPUParticles2D"]
+z_index = 99
+material = SubResource("CanvasItemMaterial_8v8h7")
+amount = 16
+texture = ExtResource("1_lohw7")
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+scale_amount_curve = SubResource("Curve_wf1jm")
+color_ramp = SubResource("Gradient_rouqw")
+anim_speed_min = 0.75
+anim_speed_max = 1.25
+script = ExtResource("2_mjtiq")

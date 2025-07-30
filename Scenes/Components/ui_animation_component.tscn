@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://eejq2rjbatfu"]
+
+[ext_resource type="Script" uid="uid://i2ufgynjjwkd" path="res://Scripts/ComponentScripts/ui_animation_component.gd" id="1_f133x"]
+[ext_resource type="Resource" uid="uid://n6jo0wdpy45r" path="res://Scripts/UI/ui_anim_param_presets/default.tres" id="2_i81mq"]
+
+[node name="UiAnimationComponent" type="Node"]
+script = ExtResource("1_f133x")
+anim_param = ExtResource("2_i81mq")

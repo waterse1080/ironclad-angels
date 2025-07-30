@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Unlock" load_steps=2 format=3 uid="uid://d2xegcx3ocppa"]
+
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="1_cgewe"]
+
+[resource]
+script = ExtResource("1_cgewe")
+display_name = "G.1 Paladin Legs"
+description = "Robotic humanoid legs. Show those bugs 2 is better than 6.
+"
+unlock_type = 1
+unlock_price = 7500.0
+unlock_node_path = "res://Scenes/Player/Bodies/defender_mech_body.tscn"

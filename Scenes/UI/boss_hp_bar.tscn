@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://qwgh2crtjwm3"]
+
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_cewd6"]
+[ext_resource type="Script" uid="uid://ctvdyd1khvsoa" path="res://Scripts/UI/boss_hp_bar.gd" id="2_hvotu"]
+[ext_resource type="Script" uid="uid://culxwba15xqnm" path="res://addons/shaker/src/shaker_component.gd" id="3_yqnir"]
+[ext_resource type="Script" uid="uid://bwxy0k05ij2tw" path="res://addons/shaker/data/ShakerProperty.gd" id="4_temhx"]
+[ext_resource type="Script" uid="uid://uybjltytethb" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="5_r3mg5"]
+[ext_resource type="Script" uid="uid://f2edih5u3f56" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="6_furt6"]
+[ext_resource type="Script" uid="uid://b2px1hseyoypg" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="7_72fqu"]
+
+[sub_resource type="Resource" id="Resource_0wq4g"]
+script = ExtResource("5_r3mg5")
+frequency = Vector2(5, 5)
+phase = Vector2(1, 1)
+amplitude = Vector2(1, 1)
+offset = Vector2(0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_eoua0"]
+script = ExtResource("4_temhx")
+property_name = "position"
+shake_type = SubResource("Resource_0wq4g")
+
+[sub_resource type="Resource" id="Resource_4snku"]
+script = ExtResource("6_furt6")
+seed = 0
+amplitude = Vector2(1, 1)
+offset = Vector2(0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_y1kye"]
+script = ExtResource("4_temhx")
+property_name = "position"
+shake_type = SubResource("Resource_4snku")
+
+[node name="BossHpBar" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+offset_right = 176.0
+offset_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_cewd6")
+script = ExtResource("2_hvotu")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 2
+value = 100.0
+
+[node name="ShakerComponent" type="Node" parent="ProgressBar"]
+script = ExtResource("3_yqnir")
+AutoPlay = true
+duration = 0.5
+fade_in = 0.0853776
+fade_out = 0.732043
+shakerProperty = Array[ExtResource("4_temhx")]([SubResource("Resource_eoua0"), SubResource("Resource_y1kye")])
+
+[node name="LabelAutoSizer" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Boss Name"
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("7_72fqu")
+_max_steps = 40
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 24
+_current_font_size = 24
+_last_size_state = 1

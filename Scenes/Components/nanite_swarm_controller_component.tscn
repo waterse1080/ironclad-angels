@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtwbrvakmsin1"]
+
+[ext_resource type="Script" uid="uid://cpuev34ia6vgx" path="res://Scripts/ComponentScripts/nanite_swarm_controller_component.gd" id="1_60nhc"]
+
+[node name="NaniteSwarmControllerComponent" type="Node"]
+script = ExtResource("1_60nhc")
+metadata/_custom_type_script = "uid://cpuev34ia6vgx"
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CritChanceOnHit" load_steps=2 format=3 uid="uid://crcl1u6v5bw65"]
+
+[ext_resource type="Script" uid="uid://c3tks1yjwh67" path="res://Scripts/Upgrades/UpgradeScripts/crit_chance_on_hit_upgrade.gd" id="1_6ka74"]
+
+[resource]
+script = ExtResource("1_6ka74")
+extra_crit_chance = 0.2
+name = "Redirected Luck"
+description = "[color=green]+$%[/color] crit chance for every enemy a projectile hits.
+[i]Critical hits continue to gain additional effectiveness past 100%.[/i]"
+icon_row_column = Vector2i(2, 4)
+upgrade_tags = Array[int]([1])
+required_tags = Array[int]([1, 4])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://c3tks1yjwh67"

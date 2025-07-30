@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FuelReservesUpgrade" load_steps=2 format=3 uid="uid://g64jlt6s2svm"]
+
+[ext_resource type="Script" uid="uid://csvsfhcqvn3gg" path="res://Scripts/Upgrades/UpgradeScripts/fuel_reserves_upgrade.gd" id="1_wh6gq"]
+
+[resource]
+script = ExtResource("1_wh6gq")
+boost_duration_increase = 1.0
+name = "Fuel Reserves"
+description = "[color=green]+$[/color] second of boost duration."
+icon_row_column = Vector2i(0, 4)
+upgrade_tags = Array[int]([11])
+required_tags = Array[int]([])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://csvsfhcqvn3gg"

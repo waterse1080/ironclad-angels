@@ -1,0 +1,120 @@
+[gd_scene load_steps=18 format=3 uid="uid://bq5fbiqk1m2ww"]
+
+[ext_resource type="Script" uid="uid://blvbh2y8idjli" path="res://Scripts/DebuffScripts/ice_debuff.gd" id="1_rt8f1"]
+[ext_resource type="Texture2D" uid="uid://bki3qtoj3ix63" path="res://Assets/Images/SpriteSheets/Animations/ice.png" id="2_rt8f1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwk6x"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(0, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vsbm"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(20, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swoxc"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(40, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hod4r"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(60, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq3is"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(80, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65ivo"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(100, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owa7h"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(120, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ndjv"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(140, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alo8e"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(160, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaixk"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(180, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yknef"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(200, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh7t4"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(220, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7teaw"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(240, 0, 20, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwxb6"]
+atlas = ExtResource("2_rt8f1")
+region = Rect2(260, 0, 20, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mewgm"]
+animations = [{
+"frames": [{
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_cwk6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vsbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swoxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hod4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xq3is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65ivo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owa7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ndjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alo8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaixk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yknef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh7t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7teaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwxb6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="IceDebuff" type="Node2D"]
+script = ExtResource("1_rt8f1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_mewgm")
+autoplay = "default"
+frame_progress = 0.584249

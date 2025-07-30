@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8poxsd8fxpam"]
+
+[ext_resource type="Script" uid="uid://bcnd0imbxvl67" path="res://Scripts/Player/PlayerCopilot.gd" id="1_rrhkw"]
+[ext_resource type="Script" uid="uid://dhsio4knhabmy" path="res://Scripts/Upgrades/BaseUpgradeResource.gd" id="2_emlyf"]
+[ext_resource type="Resource" uid="uid://bou452ysewfng" path="res://Scripts/Upgrades/UpgradeList/copilot_upgrades/fubar_u_1.tres" id="3_sle76"]
+
+[node name="FubarCopilot" type="Node"]
+script = ExtResource("1_rrhkw")
+upgrade_list = Array[ExtResource("2_emlyf")]([ExtResource("3_sle76")])
+selection_asset_path = "res://Scenes/Player/copilots/patches/fubar_patch.tscn"

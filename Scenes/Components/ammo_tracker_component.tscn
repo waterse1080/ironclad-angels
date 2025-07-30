@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtl5je76e54xq"]
+
+[ext_resource type="Script" uid="uid://c5pl5mtpmafi4" path="res://Scripts/ComponentScripts/ammo_tracker_component.gd" id="1_yq8e4"]
+
+[node name="AmmoTrackerComponent" type="Node"]
+script = ExtResource("1_yq8e4")

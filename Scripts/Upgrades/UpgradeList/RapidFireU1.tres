@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RapidFireUpgrade" load_steps=2 format=3 uid="uid://ss3rjyt34oob"]
+
+[ext_resource type="Script" uid="uid://du6vhyyfas7dp" path="res://Scripts/Upgrades/UpgradeScripts/RapidFireUpgrade.gd" id="1_4qmr1"]
+
+[resource]
+script = ExtResource("1_4qmr1")
+FIRERATE_INCREASE = 0.75
+name = "Rapid Fire"
+description = "[color=green]+$1%[/color] projectile rate of fire.
+[color=green]+$2%[/color] charge rate."
+icon_row_column = Vector2i(1, 2)
+upgrade_tags = Array[int]([8])
+required_tags = Array[int]([])
+max_upgrade_count = -1

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WarpathUpgrade" load_steps=2 format=3 uid="uid://beuyljlrdk0sq"]
+
+[ext_resource type="Script" uid="uid://ddb8j7h8uo022" path="res://Scripts/Upgrades/UpgradeScripts/copilot_upgrades/warpath_upgrade.gd" id="1_rqc23"]
+
+[resource]
+script = ExtResource("1_rqc23")
+xp_mult = 0.5
+choice_mod = 2
+name = ""
+description = ""
+icon_row_column = Vector2i(-1, -1)

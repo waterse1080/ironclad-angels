@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PickupRangeUpgrade" load_steps=2 format=3 uid="uid://ba662vg3bhkj3"]
+
+[ext_resource type="Script" uid="uid://bl18vo78akp60" path="res://Scripts/Upgrades/UpgradeScripts/PickupRangeUpgrade.gd" id="1_vol1o"]
+
+[resource]
+script = ExtResource("1_vol1o")
+SIZE_INCREASE = 0.75
+name = "Scavenger"
+description = "[color=green]+$%[/color] pickup radius per copy."
+icon_row_column = Vector2i(4, 2)
+upgrade_tags = Array[int]([14, 15])
+required_tags = Array[int]([])
+max_upgrade_count = -1

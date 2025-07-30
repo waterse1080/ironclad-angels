@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://r8omaem8qgr1"]
+
+[ext_resource type="Script" uid="uid://cqixm4telunj5" path="res://Scripts/main_camera.gd" id="1_kridq"]
+[ext_resource type="Script" uid="uid://bjl6fmapx4tx2" path="res://Scripts/Player/player.gd" id="1_njcid"]
+[ext_resource type="Material" uid="uid://b5lpeyc078ygd" path="res://Assets/Materials/HIT_MAT_1.tres" id="1_qolwb"]
+[ext_resource type="PackedScene" uid="uid://c6wcymgq684vu" path="res://Scenes/Components/level_tracker_component.tscn" id="2_ghd4y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wf8d3"]
+radius = 45.0
+
+[sub_resource type="Animation" id="Animation_hma6v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_6nkqg"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/current_frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_qolwb"), null]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_hurtbox"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rm6s"]
+_data = {
+&"RESET": SubResource("Animation_hma6v"),
+&"hit": SubResource("Animation_6nkqg")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 272
+script = ExtResource("1_njcid")
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
+process_mode = 3
+zoom = Vector2(0.75, 0.75)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("1_kridq")
+randomStrength = 15.0
+shakeFade = 2.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wf8d3")
+debug_color = Color(0.94415, 0.147774, 0.468558, 0.42)
+
+[node name="LevelTrackerComponent" parent="." instance=ExtResource("2_ghd4y")]
+process_mode = 3
+level_up_sfx = "LevelUpSFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7rm6s")
+}

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BurnBulletUpgrade" load_steps=2 format=3 uid="uid://w7l3hsqyxym0"]
+
+[ext_resource type="Script" uid="uid://dr4x2jog265sa" path="res://Scripts/Upgrades/UpgradeScripts/BurnBulletUpgrade.gd" id="1_bgqgu"]
+
+[resource]
+script = ExtResource("1_bgqgu")
+DMG_PER_TICK = 0.2
+TICK_TIME = 0.5
+DURATION = 5.0
+name = "Hot Lead"
+description = "Projectiles deal damage over time equal to $1% of base projectile damage. Damage is increased per copy.
+Burn lasts for $2 seconds."
+icon_row_column = Vector2i(3, 0)
+upgrade_tags = Array[int]([16, 23])
+required_tags = Array[int]([])
+max_upgrade_count = -1

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj7s2qsbvdkmv"]
+
+[ext_resource type="Script" uid="uid://jlmfrkwtwe1o" path="res://Scripts/UI/boss_tracker_element.gd" id="1_0b8nm"]
+
+[node name="BossTrackerElement" type="HBoxContainer"]
+custom_minimum_size = Vector2(700, 200)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_right = 350.0
+offset_bottom = 200.0
+grow_horizontal = 2
+script = ExtResource("1_0b8nm")

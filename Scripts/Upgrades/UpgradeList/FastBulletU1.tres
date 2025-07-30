@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FastBulletUpgrade" load_steps=2 format=3 uid="uid://c13qlt365hury"]
+
+[ext_resource type="Script" uid="uid://bw6wwcv6e377w" path="res://Scripts/Upgrades/UpgradeScripts/FastBulletUpgrade.gd" id="1_xxgg8"]
+
+[resource]
+script = ExtResource("1_xxgg8")
+speed_mult = 1.35
+pierce_increase = 1
+name = "Advanced Propellant"
+description = "[color=green]+$1%[/color] projectile speed.
+[color=green]+$2[/color] projectile pierce count."
+icon_row_column = Vector2i(2, 1)
+upgrade_tags = Array[int]([5, 3])
+required_tags = Array[int]([])
+max_upgrade_count = -1

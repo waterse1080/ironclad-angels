@@ -1,0 +1,167 @@
+[gd_scene load_steps=6 format=3 uid="uid://duhwkjg6i53g7"]
+
+[ext_resource type="Script" uid="uid://d2yrkx1exp4dm" path="res://Scripts/bomber_run.gd" id="1_isic8"]
+[ext_resource type="Texture2D" uid="uid://bsog6rr8ed8j1" path="res://Assets/Images/sprites/bomber_shadow.png" id="2_4etmv"]
+
+[sub_resource type="Animation" id="Animation_ef00a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.509804)]
+}
+
+[sub_resource type="Animation" id="Animation_rdapu"]
+resource_name = "spawn"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1000), Vector2(0, -1400)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.00232565, 0.1, 0.202326, 0.3, 0.402326, 0.5, 0.602326, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"spawn_bombs"
+}, {
+"args": [],
+"method": &"anim_end"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.509804), Color(1, 1, 1, 0.509804), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vxwc6"]
+_data = {
+&"RESET": SubResource("Animation_ef00a"),
+&"spawn": SubResource("Animation_rdapu")
+}
+
+[node name="BomberRun" type="Node2D"]
+script = ExtResource("1_isic8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vxwc6")
+}
+autoplay = "spawn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.509804)
+scale = Vector2(15, 15)
+texture = ExtResource("2_4etmv")
+
+[node name="ExplosivePointsParent" type="Node2D" parent="Sprite2D"]
+position = Vector2(0, 20)
+
+[node name="ExplosiveSpawnPoint1" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+
+[node name="ExplosiveSpawnPoint2" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(10, 2)
+
+[node name="ExplosiveSpawnPoint3" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(20, 4)
+
+[node name="ExplosiveSpawnPoint4" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(30, 6)
+
+[node name="ExplosiveSpawnPoint5" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(40, 8)
+
+[node name="ExplosiveSpawnPoint10" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(50, 10)
+
+[node name="ExplosiveSpawnPoint6" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(-10, 2)
+
+[node name="ExplosiveSpawnPoint7" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(-20, 4)
+
+[node name="ExplosiveSpawnPoint8" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(-30, 6)
+
+[node name="ExplosiveSpawnPoint9" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(-40, 8)
+
+[node name="ExplosiveSpawnPoint11" type="Node2D" parent="Sprite2D/ExplosivePointsParent" groups=["explosive_spawn_point"]]
+position = Vector2(-50, 10)

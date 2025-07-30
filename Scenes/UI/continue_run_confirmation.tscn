@@ -1,0 +1,117 @@
+[gd_scene load_steps=5 format=3 uid="uid://fixq310dy48d"]
+
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_n4gi2"]
+[ext_resource type="Script" uid="uid://cau4nykf4omv3" path="res://Scripts/UI/continue_run_confirmation.gd" id="2_wb2wr"]
+[ext_resource type="Script" uid="uid://b2px1hseyoypg" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="3_66lty"]
+[ext_resource type="PackedScene" uid="uid://eejq2rjbatfu" path="res://Scenes/Components/ui_animation_component.tscn" id="3_wb2wr"]
+
+[node name="ContinueRunConfirmation" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_n4gi2")
+script = ExtResource("2_wb2wr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2, 0.2, 0.2, 0.643137)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.5
+offset_top = 50.0
+offset_right = 199.5
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(200, 20)
+
+[node name="Continue" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CONTINUE"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/Continue" instance=ExtResource("3_wb2wr")]
+
+[node name="EndRun" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "END MISSION"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/EndRun" instance=ExtResource("3_wb2wr")]
+
+[node name="MainText" type="Label" parent="."]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = -170.0
+offset_right = 398.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_n4gi2")
+theme_override_font_sizes/font_size = 60
+text = "OBJECTIVE COMPLETE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_66lty")
+_max_steps = 30
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 60
+_current_font_size = 60
+_last_size_state = 1
+
+[node name="LoopText" type="Label" parent="."]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 80.0
+offset_right = 400.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_n4gi2")
+theme_override_font_sizes/font_size = 40
+text = "AREAS CLEARED: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_66lty")
+_max_steps = 30
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 40
+_current_font_size = 40
+_last_size_state = 1

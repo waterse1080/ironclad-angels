@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeightedChamberUpgrade" load_steps=2 format=3 uid="uid://dpqbm3fcpa4pa"]
+
+[ext_resource type="Script" uid="uid://djaxaxks8h1s6" path="res://Scripts/Upgrades/UpgradeScripts/weighted_chamber_upgrade.gd" id="1_kosi7"]
+
+[resource]
+script = ExtResource("1_kosi7")
+bonus_crit_chance = 0.1
+name = "Weighted Chamber"
+description = "[color=green]+$%[/color] crit chance stack on xp pickup per copy.
+Chance resets after every shot.
+[i]Critical hits continue to gain additional effectiveness past 100%.[/i]"
+icon_row_column = Vector2i(6, 2)
+upgrade_tags = Array[int]([1])
+required_tags = Array[int]([1, 15])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://djaxaxks8h1s6"

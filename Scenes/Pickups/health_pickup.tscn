@@ -1,0 +1,154 @@
+[gd_scene load_steps=17 format=3 uid="uid://bpbvft5fape82"]
+
+[ext_resource type="Texture2D" uid="uid://byr58q6rctg6e" path="res://Assets/Images/SpriteSheets/Animations/Health_Anim.png" id="1_o47cn"]
+[ext_resource type="Script" uid="uid://dcpvnfg2xlvip" path="res://Scripts/PickupScripts/health_pickup.gd" id="1_v1ohg"]
+[ext_resource type="PackedScene" uid="uid://btqfnw27s6b2n" path="res://Scenes/Components/tween_component.tscn" id="3_seoai"]
+[ext_resource type="PackedScene" uid="uid://didru1nvdi4jf" path="res://Scenes/Components/trail_component.tscn" id="4_ftk22"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dl1q"]
+atlas = ExtResource("1_o47cn")
+region = Rect2(1, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fluk3"]
+atlas = ExtResource("1_o47cn")
+region = Rect2(9, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia8d8"]
+atlas = ExtResource("1_o47cn")
+region = Rect2(17, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvruc"]
+atlas = ExtResource("1_o47cn")
+region = Rect2(25, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx6pg"]
+atlas = ExtResource("1_o47cn")
+region = Rect2(33, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10y7j"]
+atlas = ExtResource("1_o47cn")
+region = Rect2(41, 0, 8, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eaa3h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dl1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fluk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia8d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvruc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx6pg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10y7j")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ts1k4"]
+radius = 18.0
+
+[sub_resource type="Animation" id="Animation_3acgn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ctaot"]
+resource_name = "Spawn"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.25, 0.35, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 0), Vector2(0, -25), Vector2(0, 0), Vector2(0, -8), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [999, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qkgy5"]
+_data = {
+&"RESET": SubResource("Animation_3acgn"),
+&"Spawn": SubResource("Animation_ctaot")
+}
+
+[sub_resource type="Gradient" id="Gradient_33xs1"]
+colors = PackedColorArray(1, 0.933333, 0.513726, 1, 0.388235, 0.670588, 0.247059, 1)
+
+[node name="HealthPickup" type="Area2D" groups=["pickup"]]
+z_index = 1
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_v1ohg")
+HEAL = 250
+PICKUP_SFX = "HealthPickupSFX"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_eaa3h")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 4
+frame_progress = 0.985425
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ts1k4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qkgy5")
+}
+autoplay = "Spawn"
+
+[node name="TweenComponent" parent="." instance=ExtResource("3_seoai")]
+
+[node name="TrailComponent" parent="." instance=ExtResource("4_ftk22")]
+gradient = SubResource("Gradient_33xs1")

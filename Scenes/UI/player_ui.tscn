@@ -1,0 +1,367 @@
+[gd_scene load_steps=27 format=3 uid="uid://dm88bojsxbxnc"]
+
+[ext_resource type="Theme" uid="uid://gm1gvvdnp3yl" path="res://Assets/Styles/metal-theme-1.tres" id="1_0d4s0"]
+[ext_resource type="Script" uid="uid://1deagbnb84yq" path="res://Scripts/UI/player_ui.gd" id="1_t0e81"]
+[ext_resource type="PackedScene" uid="uid://s2arb4j7wfnn" path="res://Scenes/UI/objective_marker_manager.tscn" id="2_0hjyg"]
+[ext_resource type="Theme" uid="uid://1mvf4tpmvdp6" path="res://Assets/Styles/metal-theme-2.tres" id="2_q84jf"]
+[ext_resource type="Theme" uid="uid://8mw0j7yoayed" path="res://Assets/Styles/metal-theme-4.tres" id="2_wrod1"]
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="3_vjlob"]
+[ext_resource type="Theme" uid="uid://dounr2lkmo5nv" path="res://Assets/Styles/metal-theme-3.tres" id="5_3xm26"]
+[ext_resource type="Script" uid="uid://culxwba15xqnm" path="res://addons/shaker/src/shaker_component.gd" id="5_sac65"]
+[ext_resource type="Script" uid="uid://bwxy0k05ij2tw" path="res://addons/shaker/data/ShakerProperty.gd" id="6_35lv5"]
+[ext_resource type="Script" uid="uid://uybjltytethb" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="7_gj1y2"]
+[ext_resource type="Script" uid="uid://f2edih5u3f56" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="8_2q6bf"]
+[ext_resource type="Script" uid="uid://b2px1hseyoypg" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="9_ahxq1"]
+[ext_resource type="Script" uid="uid://dpalcbohxwdk" path="res://Scripts/UI/ammo_widget.gd" id="9_cm28r"]
+[ext_resource type="PackedScene" uid="uid://bj7s2qsbvdkmv" path="res://Scenes/UI/boss_tracker_element.tscn" id="13_t1dak"]
+
+[sub_resource type="Animation" id="Animation_3tjkm"]
+resource_name = "Heal"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.267944),
+"update": 0,
+"values": [Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x77ld"]
+resource_name = "Hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.31864),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_beocc"]
+_data = {
+&"Heal": SubResource("Animation_3tjkm"),
+&"Hurt": SubResource("Animation_x77ld")
+}
+
+[sub_resource type="Resource" id="Resource_0wq4g"]
+script = ExtResource("7_gj1y2")
+frequency = Vector2(5, 5)
+phase = Vector2(1, 1)
+amplitude = Vector2(1, 1)
+offset = Vector2(0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_eoua0"]
+script = ExtResource("6_35lv5")
+property_name = "position"
+shake_type = SubResource("Resource_0wq4g")
+
+[sub_resource type="Resource" id="Resource_4snku"]
+script = ExtResource("8_2q6bf")
+seed = 0
+amplitude = Vector2(1, 1)
+offset = Vector2(0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_y1kye"]
+script = ExtResource("6_35lv5")
+property_name = "position"
+shake_type = SubResource("Resource_4snku")
+
+[sub_resource type="Animation" id="Animation_mws8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cvtja"]
+resource_name = "cooldown"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.267944),
+"update": 0,
+"values": [Color(0, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lp5dm"]
+_data = {
+&"RESET": SubResource("Animation_mws8y"),
+&"cooldown": SubResource("Animation_cvtja")
+}
+
+[sub_resource type="Animation" id="Animation_q3j0g"]
+resource_name = "Collect"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.225313),
+"update": 0,
+"values": [Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtjnc"]
+_data = {
+&"Collect": SubResource("Animation_q3j0g")
+}
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t0e81")
+
+[node name="ObjectiveMarkerManager" parent="." instance=ExtResource("2_0hjyg")]
+layout_mode = 1
+
+[node name="LowerLeft" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = -260.0
+offset_right = 156.0
+offset_bottom = -177.0
+grow_vertical = 0
+scale = Vector2(2.5, 2.5)
+theme_override_constants/separation = 7
+vertical = true
+
+[node name="HP" type="ProgressBar" parent="LowerLeft"]
+layout_mode = 2
+theme = ExtResource("2_q84jf")
+value = 50.0
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LowerLeft/HP"]
+libraries = {
+&"": SubResource("AnimationLibrary_beocc")
+}
+
+[node name="ShakerComponent" type="Node" parent="LowerLeft/HP"]
+script = ExtResource("5_sac65")
+AutoPlay = true
+duration = 0.5
+fade_in = 0.0853776
+fade_out = 0.732043
+shakerProperty = Array[ExtResource("6_35lv5")]([SubResource("Resource_eoua0"), SubResource("Resource_y1kye")])
+
+[node name="Boost" type="ProgressBar" parent="LowerLeft"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_wrod1")
+value = 50.0
+show_percentage = false
+
+[node name="ShakerComponent" type="Node" parent="LowerLeft/Boost"]
+script = ExtResource("5_sac65")
+AutoPlay = true
+intensity = 0.5
+duration = 0.1
+fade_in = 1.11702e-05
+fade_out = 0.000113896
+shakerProperty = Array[ExtResource("6_35lv5")]([SubResource("Resource_eoua0"), SubResource("Resource_y1kye")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LowerLeft/Boost"]
+libraries = {
+&"": SubResource("AnimationLibrary_lp5dm")
+}
+
+[node name="Level" type="Label" parent="LowerLeft"]
+layout_mode = 2
+theme = ExtResource("3_vjlob")
+theme_override_font_sizes/font_size = 16
+text = "LeveL: 20"
+vertical_alignment = 1
+uppercase = true
+
+[node name="XP" type="ProgressBar" parent="LowerLeft"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_0d4s0")
+value = 50.0
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LowerLeft/XP"]
+libraries = {
+&"": SubResource("AnimationLibrary_rtjnc")
+}
+
+[node name="UpperLeft" type="BoxContainer" parent="."]
+layout_mode = 1
+offset_left = 46.0
+offset_top = 20.0
+offset_right = 277.0
+offset_bottom = 97.0
+scale = Vector2(2.5, 2.5)
+theme = ExtResource("3_vjlob")
+theme_override_constants/separation = -10
+vertical = true
+
+[node name="ScoreLabel" type="Label" parent="UpperLeft"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+theme = ExtResource("3_vjlob")
+theme_override_font_sizes/font_size = 16
+text = "00000000
+"
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("9_ahxq1")
+_max_steps = 20
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 16
+_current_font_size = 16
+_last_size_state = 1
+
+[node name="TimeLabel" type="Label" parent="UpperLeft"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "00:00.00"
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("9_ahxq1")
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 16
+_current_font_size = 16
+_last_size_state = 1
+
+[node name="LowerRight" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -313.0
+offset_top = -308.0
+offset_right = -209.0
+offset_bottom = -206.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2.5, 2.5)
+theme_override_constants/separation = 7
+alignment = 2
+vertical = true
+
+[node name="AmmoWidget" type="BoxContainer" parent="LowerRight"]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+vertical = true
+script = ExtResource("9_cm28r")
+
+[node name="Label" type="Label" parent="LowerRight/AmmoWidget"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("3_vjlob")
+theme_override_font_sizes/font_size = 16
+text = "4/4"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 161
+clip_text = true
+uppercase = true
+script = ExtResource("9_ahxq1")
+_max_steps = 40
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 16
+_current_font_size = 16
+_last_size_state = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="LowerRight/AmmoWidget"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme = ExtResource("1_0d4s0")
+value = 50.0
+show_percentage = false
+
+[node name="Danger" type="Label" parent="LowerRight"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("3_vjlob")
+theme_override_font_sizes/font_size = 16
+text = "Danger"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 161
+clip_text = true
+uppercase = true
+script = ExtResource("9_ahxq1")
+_max_steps = 20
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 16
+_current_font_size = 16
+_last_size_state = 1
+
+[node name="DangerLevel" type="ProgressBar" parent="LowerRight"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("5_3xm26")
+value = 50.0
+show_percentage = false
+
+[node name="BossTrackerElement" parent="." instance=ExtResource("13_t1dak")]
+layout_mode = 1
+offset_top = 46.0
+offset_bottom = 246.0

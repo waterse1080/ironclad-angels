@@ -1,0 +1,504 @@
+[gd_scene load_steps=39 format=3 uid="uid://cpjpf6t30q58k"]
+
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_bxktw"]
+[ext_resource type="Script" uid="uid://c48hs8sljojv" path="res://Scripts/UI/upgrade_menu.gd" id="2_8ybtv"]
+[ext_resource type="Resource" uid="uid://bk3ttp3e0rj12" path="res://Scripts/Upgrades/UpgradeList/BigBulletU1.tres" id="3_8apga"]
+[ext_resource type="Script" uid="uid://dhsio4knhabmy" path="res://Scripts/Upgrades/BaseUpgradeResource.gd" id="3_d3a7w"]
+[ext_resource type="PackedScene" uid="uid://dcp37qbfnll38" path="res://Scenes/UI/upgrade_widget.tscn" id="3_t1gd8"]
+[ext_resource type="Resource" uid="uid://cr2pp5xyrjgg7" path="res://Scripts/Upgrades/UpgradeList/CritBulletU1.tres" id="4_jqkxr"]
+[ext_resource type="Resource" uid="uid://c13qlt365hury" path="res://Scripts/Upgrades/UpgradeList/FastBulletU1.tres" id="5_7qfjy"]
+[ext_resource type="Resource" uid="uid://ba662vg3bhkj3" path="res://Scripts/Upgrades/UpgradeList/PickupRangeU1.tres" id="6_ntjac"]
+[ext_resource type="Resource" uid="uid://ya80k48v5rjh" path="res://Scripts/Upgrades/UpgradeList/ShotSpreadU1.tres" id="7_6yh7v"]
+[ext_resource type="Resource" uid="uid://ss3rjyt34oob" path="res://Scripts/Upgrades/UpgradeList/RapidFireU1.tres" id="8_3jao3"]
+[ext_resource type="Resource" uid="uid://w7l3hsqyxym0" path="res://Scripts/Upgrades/UpgradeList/BurnBulletU1.tres" id="9_xv2iv"]
+[ext_resource type="Resource" uid="uid://yyvdqax6o3mo" path="res://Scripts/Upgrades/UpgradeList/MissileLauncherU1.tres" id="10_crsj3"]
+[ext_resource type="Resource" uid="uid://datqhp7b1y78y" path="res://Scripts/Upgrades/UpgradeList/ExplodingEnemiesU1.tres" id="11_vspel"]
+[ext_resource type="Resource" uid="uid://c27c8yqpa1q54" path="res://Scripts/Upgrades/UpgradeList/BounceBulletU1.tres" id="12_uql3l"]
+[ext_resource type="Resource" uid="uid://c3iv6ax8qh5nv" path="res://Scripts/Upgrades/UpgradeList/BuzzsawDronesU1.tres" id="14_amrd4"]
+[ext_resource type="Resource" uid="uid://d4m1sf8d5jea0" path="res://Scripts/Upgrades/UpgradeList/MuleKickU1.tres" id="15_w2p71"]
+[ext_resource type="Resource" uid="uid://d2jtfy24mdw42" path="res://Scripts/Upgrades/UpgradeList/HealthU1.tres" id="16_dtrro"]
+[ext_resource type="Resource" uid="uid://ckt7yvnvdk5up" path="res://Scripts/Upgrades/UpgradeList/MoveSpeedU1.tres" id="17_7mk32"]
+[ext_resource type="Resource" uid="uid://clpqepwf7xlns" path="res://Scripts/Upgrades/UpgradeList/extended_mag_u_1.tres" id="18_5co6e"]
+[ext_resource type="Resource" uid="uid://3ktqef62lhci" path="res://Scripts/Upgrades/UpgradeList/rapid_reload_u_1.tres" id="19_2pctf"]
+[ext_resource type="Resource" uid="uid://cxd3wkryoil1q" path="res://Scripts/Upgrades/UpgradeList/analysis_u_1.tres" id="20_e5b1l"]
+[ext_resource type="Resource" uid="uid://dj13bcs5td7lo" path="res://Scripts/Upgrades/UpgradeList/chain_lightning_u_1.tres" id="21_gbsgw"]
+[ext_resource type="PackedScene" uid="uid://eejq2rjbatfu" path="res://Scenes/Components/ui_animation_component.tscn" id="21_qa4m0"]
+[ext_resource type="Resource" uid="uid://dpqbm3fcpa4pa" path="res://Scripts/Upgrades/UpgradeList/loaded_chamber_u_1.tres" id="22_3wwoq"]
+[ext_resource type="Resource" uid="uid://col6v0txmrwmg" path="res://Scripts/Upgrades/UpgradeList/nitro_boost_u_1.tres" id="23_lhylu"]
+[ext_resource type="Resource" uid="uid://g64jlt6s2svm" path="res://Scripts/Upgrades/UpgradeList/fuel_reserves_u_1.tres" id="24_qds30"]
+[ext_resource type="Resource" uid="uid://dpb1240y3osti" path="res://Scripts/Upgrades/UpgradeList/passive_repair_u_1.tres" id="25_qds30"]
+[ext_resource type="Resource" uid="uid://t40hkbgjhin6" path="res://Scripts/Upgrades/UpgradeList/reactive_armor_u_1.tres" id="26_dl42y"]
+[ext_resource type="Resource" uid="uid://dmodpb1a7c7il" path="res://Scripts/Upgrades/UpgradeList/nanite_swarm_u_1.tres" id="27_mfs1y"]
+[ext_resource type="Resource" uid="uid://b4htvu4k7jlhu" path="res://Scripts/Upgrades/UpgradeList/troop_transport_u_1.tres" id="28_vwlh6"]
+[ext_resource type="Resource" uid="uid://crcl1u6v5bw65" path="res://Scripts/Upgrades/UpgradeList/crit_chance_on_hit_u_1.tres" id="29_ksui4"]
+[ext_resource type="Resource" uid="uid://drdrsjjrw2qks" path="res://Scripts/Upgrades/UpgradeList/helljump_u_1.tres" id="30_1uu4h"]
+[ext_resource type="Resource" uid="uid://gh1lc4mw7f10" path="res://Scripts/Upgrades/UpgradeList/landmine_boost_u_1.tres" id="31_qcl6i"]
+[ext_resource type="Resource" uid="uid://dbqcujyffj1ws" path="res://Scripts/Upgrades/UpgradeList/ice_debuff_u_1.tres" id="32_5q7vn"]
+
+[sub_resource type="Animation" id="Animation_rarsg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2, 0.2, 0.2, 0.643137)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("UpgradeContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, 125)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("ButtonContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(678, 760)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UpgradeContainer:pivot_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(266, 100)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ButtonContainer:pivot_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(122, 20)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/path = NodePath("HBoxContainer:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(311, 668)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HBoxContainer:pivot_offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -800)]
+}
+
+[sub_resource type="Animation" id="Animation_v7p6h"]
+resource_name = "tween_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.366022, 1),
+"update": 0,
+"values": [Color(0.141176, 0.141176, 0.141176, 0), Color(0.2, 0.2, 0.2, 0.643137)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("UpgradeContainer:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(160, -1000), Vector2(160, 125)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("ButtonContainer:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(678, 1760), Vector2(678, 760)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.666667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [false],
+"method": &"toggle_buttons"
+}, {
+"args": [true],
+"method": &"toggle_buttons"
+}, {
+"args": [],
+"method": &"first_vis_grab_focus"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UpgradeContainer:pivot_offset")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(266, 2000), Vector2(266, 100)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ButtonContainer:pivot_offset")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(122, -800), Vector2(122, 20)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath("HBoxContainer:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(311, 1400), Vector2(311, 668)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HBoxContainer:pivot_offset")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(489, -700), Vector2(489, 35)]
+}
+
+[sub_resource type="Animation" id="Animation_k0gqd"]
+resource_name = "tween_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(0.141176, 0.141176, 0.141176, 0.643137), Color(0.2, 0.2, 0.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("UpgradeContainer:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(160, 125), Vector2(160, -1000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("ButtonContainer:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(678, 760), Vector2(678, 1760)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"toggle_menu"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"toggle_buttons"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UpgradeContainer:pivot_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(266, 100), Vector2(266, 2000)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ButtonContainer:pivot_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(122, 20), Vector2(122, -800)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = false
+tracks/7/path = NodePath("HBoxContainer:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(311, 668.002), Vector2(311, 1500)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HBoxContainer:pivot_offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(489, 35), Vector2(489, -700)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vxxt7"]
+_data = {
+&"RESET": SubResource("Animation_rarsg"),
+&"tween_in": SubResource("Animation_v7p6h"),
+&"tween_out": SubResource("Animation_k0gqd")
+}
+
+[node name="UpgradeMenu" type="Control" node_paths=PackedStringArray("upgrade_widgets")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bxktw")
+script = ExtResource("2_8ybtv")
+upgrade_widgets = [NodePath("UpgradeContainer/Upgrade1"), NodePath("UpgradeContainer/Upgrade2"), NodePath("UpgradeContainer/Upgrade3")]
+upgrade_list = Array[ExtResource("3_d3a7w")]([ExtResource("3_8apga"), ExtResource("4_jqkxr"), ExtResource("5_7qfjy"), ExtResource("6_ntjac"), ExtResource("7_6yh7v"), ExtResource("8_3jao3"), ExtResource("9_xv2iv"), ExtResource("10_crsj3"), ExtResource("11_vspel"), ExtResource("12_uql3l"), ExtResource("14_amrd4"), ExtResource("15_w2p71"), ExtResource("16_dtrro"), ExtResource("17_7mk32"), ExtResource("18_5co6e"), ExtResource("19_2pctf"), ExtResource("20_e5b1l"), ExtResource("21_gbsgw"), ExtResource("22_3wwoq"), ExtResource("23_lhylu"), ExtResource("24_qds30"), ExtResource("25_qds30"), ExtResource("26_dl42y"), ExtResource("27_mfs1y"), ExtResource("28_vwlh6"), ExtResource("29_ksui4"), ExtResource("30_1uu4h"), ExtResource("31_qcl6i"), ExtResource("32_5q7vn")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2, 0.2, 0.2, 0.643137)
+
+[node name="UpgradeContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 390.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(266, 100)
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Upgrade1" parent="UpgradeContainer" instance=ExtResource("3_t1gd8")]
+layout_mode = 2
+
+[node name="Upgrade2" parent="UpgradeContainer" instance=ExtResource("3_t1gd8")]
+layout_mode = 2
+
+[node name="Upgrade3" parent="UpgradeContainer" instance=ExtResource("3_t1gd8")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -489.0
+offset_top = 218.002
+offset_right = 490.0
+offset_bottom = 288.002
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(0, -800)
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "UPGRADES TO SELECT:"
+
+[node name="UpgradeSelectCount" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = 329.0
+offset_right = 122.0
+offset_bottom = 371.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(122, 20)
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="SkipButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+tooltip_text = "Skip this upgrade"
+text = "SKIP
+"
+
+[node name="UiAnimationComponent" parent="ButtonContainer/SkipButton" instance=ExtResource("21_qa4m0")]
+hover_scale = Vector2(1.1, 1.1)
+time = 0.25
+transition_type = 10
+
+[node name="RerollButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+tooltip_text = "Reroll upgrades"
+text = "REROLL
+"
+
+[node name="UiAnimationComponent" parent="ButtonContainer/RerollButton" instance=ExtResource("21_qa4m0")]
+hover_scale = Vector2(1.1, 1.1)
+time = 0.25
+transition_type = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vxxt7")
+}
+
+[connection signal="pressed" from="ButtonContainer/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/RerollButton" to="." method="_on_reroll_button_pressed"]

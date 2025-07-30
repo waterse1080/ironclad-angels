@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Wave" load_steps=2 format=3 uid="uid://bqsr7n0jmbw75"]
+
+[ext_resource type="Script" uid="uid://bh0vreivbo2d0" path="res://Scripts/Waves/wave.gd" id="1_renqp"]
+
+[resource]
+script = ExtResource("1_renqp")
+STANDARD = Array[int]([4])
+RARE = Array[int]([4])
+INITIAL = Array[int]([4])
+STANDARD_SPAWN_TIMER = 1.75
+RARE_SPAWN_TIMER = 5.0
+INITIAL_SPAWN_TIMER_DELAY = 0.0
+TOTAL_WAVE_TIME = 90.0
+STANDARD_SPAWN_COUNT = 1
+RARE_SPAWN_COUNT = 1
+INITIAL_SPAWN_COUNT = 1
+STANDARD_HEALTH_MULT = 1.0
+RARE_HEALTH_MULT = 1.0
+INITIAL_HEALTH_MULT = 1.0
+STANDARD_DAMAGE_MULT = 1.0
+RARE_DAMAGE_MULT = 1.0
+INITIAL_DAMAGE_MULT = 1.0
+STANDARD_SPEED_MULT = 1.0
+RARE_SPEED_MULT = 1.0
+INITIAL_SPEED_MULT = 1.0
+STANDARD_SCALE_MULT = 1.0
+RARE_SCALE_MULT = 1.0
+INITIAL_SCALE_MULT = 1.0
+metadata/_custom_type_script = "uid://bh0vreivbo2d0"

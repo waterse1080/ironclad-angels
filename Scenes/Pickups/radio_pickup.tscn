@@ -1,0 +1,150 @@
+[gd_scene load_steps=17 format=3 uid="uid://dmmt4vfixvrj0"]
+
+[ext_resource type="Script" uid="uid://yieey5bf7yux" path="res://Scripts/PickupScripts/radio_pickup.gd" id="1_vpdwd"]
+[ext_resource type="Texture2D" uid="uid://22jju8pjqd3l" path="res://Assets/Images/SpriteSheets/Animations/radio_pickup.png" id="2_sbjkk"]
+[ext_resource type="PackedScene" uid="uid://btqfnw27s6b2n" path="res://Scenes/Components/tween_component.tscn" id="3_88m2r"]
+[ext_resource type="PackedScene" uid="uid://didru1nvdi4jf" path="res://Scenes/Components/trail_component.tscn" id="4_sxiko"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4p4a"]
+atlas = ExtResource("2_sbjkk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0kvl"]
+atlas = ExtResource("2_sbjkk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpenv"]
+atlas = ExtResource("2_sbjkk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evx6x"]
+atlas = ExtResource("2_sbjkk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyp0r"]
+atlas = ExtResource("2_sbjkk")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssgyj"]
+atlas = ExtResource("2_sbjkk")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5303a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4p4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0kvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpenv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evx6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyp0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssgyj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kwe21"]
+radius = 27.0
+height = 88.0
+
+[sub_resource type="Animation" id="Animation_3acgn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_ctaot"]
+resource_name = "Spawn"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.25, 0.35, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 0), Vector2(0, -25), Vector2(0, 0), Vector2(0, -8), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [999, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qkgy5"]
+_data = {
+&"RESET": SubResource("Animation_3acgn"),
+&"Spawn": SubResource("Animation_ctaot")
+}
+
+[sub_resource type="Gradient" id="Gradient_yn6tq"]
+colors = PackedColorArray(0.184314, 0.341176, 0.32549, 1, 0.156863, 0.207843, 0.25098, 1)
+
+[node name="RadioPickup" type="Area2D" groups=["pickup"]]
+z_index = 1
+script = ExtResource("1_vpdwd")
+PICKUP_SFX = "OtherPickupSFX"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_5303a")
+autoplay = "default"
+frame_progress = 0.167573
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kwe21")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qkgy5")
+}
+autoplay = "Spawn"
+
+[node name="TweenComponent" parent="." instance=ExtResource("3_88m2r")]
+
+[node name="TrailComponent" parent="." instance=ExtResource("4_sxiko")]
+gradient = SubResource("Gradient_yn6tq")

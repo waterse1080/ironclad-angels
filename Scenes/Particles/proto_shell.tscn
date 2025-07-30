@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://utl30nsfarv6"]
+
+[ext_resource type="Texture2D" uid="uid://cp5e677h024k7" path="res://Assets/Images/SpriteSheets/Animations/Tank-1-shell-anim.png" id="1_fmny1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t6lrn"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_77wc7"]
+_limits = [0.0, 7.5, 0.0, 1.0]
+_data = [Vector2(0.0026178, 5), 0.0, 0.0, 0, 0, Vector2(0.489529, 7.45086), -0.872265, -0.872265, 0, 0, Vector2(1, 0.0257056), -8.96917, 0.0, 0, 0]
+point_count = 3
+
+[node name="ProtoShell" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_t6lrn")
+emitting = false
+amount = 1
+texture = ExtResource("1_fmny1")
+lifetime = 0.99
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+angular_velocity_min = 110.81
+angular_velocity_max = 378.18
+angle_min = 90.0
+angle_max = 90.0
+scale_amount_curve = SubResource("Curve_77wc7")
+anim_speed_min = 1.0
+anim_speed_max = 2.0

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ReactiveArmorUpgrade" load_steps=2 format=3 uid="uid://t40hkbgjhin6"]
+
+[ext_resource type="Script" uid="uid://biw2cpe6m842a" path="res://Scripts/Upgrades/UpgradeScripts/reactive_armor_upgrade.gd" id="1_amwxq"]
+
+[resource]
+script = ExtResource("1_amwxq")
+explosion_damage = 100.0
+explosion_size = 1.0
+additional_size = 0.5
+name = "Reactive Armor"
+description = "Spawn an explosion on taking damage.
+Extra copies increase explosion damage and size."
+icon_row_column = Vector2i(5, 2)
+upgrade_tags = Array[int]([21])
+required_tags = Array[int]([21, 12])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://biw2cpe6m842a"

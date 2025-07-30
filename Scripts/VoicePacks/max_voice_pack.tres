@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="VoicePack" load_steps=2 format=3 uid="uid://c1r7bcidjxv6p"]
+
+[ext_resource type="Script" uid="uid://e3cm7ajk3x86" path="res://Scripts/VoicePacks/voice_pack.gd" id="1_eqcmi"]
+
+[resource]
+script = ExtResource("1_eqcmi")
+spawn_voices = Array[String](["MaxSpawnVO1", "MaxSpawnVO2", "MaxSpawnVO3"])
+death_voices = Array[String](["MaxGruntVO1", "MaxGruntVO2", "MaxGruntVO3", "MaxGruntVO4"])
+metadata/_custom_type_script = "uid://e3cm7ajk3x86"

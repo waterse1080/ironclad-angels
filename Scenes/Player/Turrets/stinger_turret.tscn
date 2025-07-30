@@ -1,0 +1,172 @@
+[gd_scene load_steps=14 format=3 uid="uid://bdlfo73b2lp10"]
+
+[ext_resource type="Script" uid="uid://cfhpf5owvdkmx" path="res://Scripts/Player/Turrets/stinger_turret.gd" id="1_n3j15"]
+[ext_resource type="Texture2D" uid="uid://br6ss4r6f7hjm" path="res://Assets/Images/sprites/Player/stinger_tank/alien-tank-1-turret.png" id="2_wiq58"]
+[ext_resource type="Texture2D" uid="uid://x7lw5src1g6d" path="res://Assets/Images/SpriteSheets/UI/Spritesheet_Animation_UI_Hologram_Select_01a_.png" id="3_y6w7x"]
+[ext_resource type="Script" uid="uid://c5pl5mtpmafi4" path="res://Scripts/ComponentScripts/ammo_tracker_component.gd" id="4_tr18v"]
+
+[sub_resource type="Animation" id="Animation_xehou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5l3gs"]
+resource_name = "fire"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 5), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_projectiles"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dn6pw"]
+resource_name = "reload"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.766667, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn8hd"]
+_data = {
+&"RESET": SubResource("Animation_xehou"),
+&"fire": SubResource("Animation_5l3gs"),
+&"reload": SubResource("Animation_dn6pw")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4tx0"]
+atlas = ExtResource("3_y6w7x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jggcv"]
+atlas = ExtResource("3_y6w7x")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bj12"]
+atlas = ExtResource("3_y6w7x")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndaed"]
+atlas = ExtResource("3_y6w7x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ruubf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4tx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jggcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bj12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndaed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndaed")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 10.0
+}]
+
+[node name="StingerTurret" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_n3j15")
+base_load_time = 0.2
+base_damage = 10.0
+bullet_sfx = "StingerFireSFX"
+missle_scale = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(5, 5)
+texture = ExtResource("2_wiq58")
+hframes = 19
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tn8hd")
+}
+
+[node name="Aim" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.435294)
+z_index = 999
+position = Vector2(0, -300)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_ruubf")
+animation = &"fire"
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(0, -25)
+
+[node name="AmmoTrackerComponent" type="Node" parent="."]
+script = ExtResource("4_tr18v")
+starting_max_ammo = 18.0
+reload_start_sfx = "StingerReloadStartSFX"
+reload_end_sfx = "StingerReloadEndSFX"

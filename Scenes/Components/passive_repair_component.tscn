@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtfnv4cxi756g"]
+
+[ext_resource type="Script" uid="uid://cqbs8qmtg1bo0" path="res://Scripts/ComponentScripts/passive_repair_component.gd" id="1_j2rx3"]
+
+[node name="PassiveRepairComponent" type="Node"]
+script = ExtResource("1_j2rx3")
+metadata/_custom_type_script = "uid://cqbs8qmtg1bo0"
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TroopTransportUpgrade" load_steps=2 format=3 uid="uid://b4htvu4k7jlhu"]
+
+[ext_resource type="Script" uid="uid://cjx0pfaw62oxj" path="res://Scripts/Upgrades/UpgradeScripts/troop_transport_upgrade.gd" id="1_8vul4"]
+
+[resource]
+script = ExtResource("1_8vul4")
+spawn_time = 5.0
+troop_count_max = 1
+name = "Troop Transport"
+description = "Gain a soldier follower.
+Soldiers respawn every $1 seconds.
+Every copy increases max soldier count by $2."
+icon_row_column = Vector2i(5, 1)
+upgrade_tags = Array[int]([17, 22])
+required_tags = Array[int]([])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://cjx0pfaw62oxj"

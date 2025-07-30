@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://1vk1qd2y7j80"]
+
+[ext_resource type="Texture2D" uid="uid://jmiwi0hqinx7" path="res://Assets/Images/sprites/Tank-1-bullet.png" id="1_8vhcc"]
+[ext_resource type="Script" uid="uid://w3yxgecbvfvp" path="res://Scripts/Player/Projectiles/proto_bullet.gd" id="1_cyllk"]
+[ext_resource type="PackedScene" uid="uid://daypi6b0l1qgi" path="res://Scenes/Components/hit_box.tscn" id="4_6s171"]
+[ext_resource type="Texture2D" uid="uid://cmyo3a27mkb25" path="res://Assets/Images/sprites/light.png" id="4_kx6ew"]
+[ext_resource type="PackedScene" uid="uid://didru1nvdi4jf" path="res://Scenes/Components/trail_component.tscn" id="5_op0bq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sfmat"]
+
+[sub_resource type="Gradient" id="Gradient_shqor"]
+offsets = PackedFloat32Array(0.0019084, 1)
+colors = PackedColorArray(1, 0.933333, 0.513726, 1, 1, 0.537255, 0.2, 1)
+
+[node name="ProtoBullet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_cyllk")
+SPEED = 1000.0
+IMPACT_SFX = "BulletImpactSFX"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+texture = ExtResource("1_8vhcc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_sfmat")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(0, -15)
+shadow_enabled = true
+texture = ExtResource("4_kx6ew")
+
+[node name="HitBox" parent="." instance=ExtResource("4_6s171")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_sfmat")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TrailComponent" parent="." instance=ExtResource("5_op0bq")]
+gradient = SubResource("Gradient_shqor")
+
+[connection signal="hitbox_triggered" from="HitBox" to="." method="_on_hit_box_hitbox_triggered"]

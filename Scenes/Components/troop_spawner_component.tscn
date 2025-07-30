@@ -1,0 +1,15 @@
+[gd_scene load_steps=6 format=3 uid="uid://c67uh7s5dldb6"]
+
+[ext_resource type="Script" uid="uid://bwrmmjqp37l4v" path="res://Scripts/ComponentScripts/troop_spawner_component.gd" id="1_1xhrh"]
+[ext_resource type="Script" uid="uid://e3cm7ajk3x86" path="res://Scripts/VoicePacks/voice_pack.gd" id="2_cc4kt"]
+[ext_resource type="Resource" uid="uid://dakmpcedif0fq" path="res://Scripts/VoicePacks/eliot_voice_pack.tres" id="3_k4fp8"]
+[ext_resource type="Resource" uid="uid://c1r7bcidjxv6p" path="res://Scripts/VoicePacks/max_voice_pack.tres" id="4_k4fp8"]
+[ext_resource type="Resource" uid="uid://drdrsjjrw2qks" path="res://Scripts/Upgrades/UpgradeList/helljump_u_1.tres" id="5_3uywa"]
+
+[node name="TroopSpawnerComponent" type="Node"]
+script = ExtResource("1_1xhrh")
+voice_packs = Array[ExtResource("2_cc4kt")]([ExtResource("3_k4fp8"), ExtResource("4_k4fp8")])
+helljump_upgrade = ExtResource("5_3uywa")
+metadata/_custom_type_script = "uid://bwrmmjqp37l4v"
+
+[node name="Timer" type="Timer" parent="."]

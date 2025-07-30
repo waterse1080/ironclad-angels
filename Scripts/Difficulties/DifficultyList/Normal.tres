@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Difficulty" load_steps=2 format=3 uid="uid://bwpy86g61mfmf"]
+
+[ext_resource type="Script" uid="uid://ds076fy8y3ldt" path="res://Scripts/Difficulties/ProtoDifficulty.gd" id="1_cdwvs"]
+
+[resource]
+script = ExtResource("1_cdwvs")
+NAME = "Average"
+DESCRIPTION = "Standard gameplay experience, no major modifiers."
+HP_MOD = 1.0
+WAVE_TIME = 100
+rp_mult = 1.0

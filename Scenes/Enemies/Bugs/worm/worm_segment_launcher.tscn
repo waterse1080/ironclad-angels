@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://dlqeju07y1hly"]
+
+[ext_resource type="Script" uid="uid://daw8gwgsl2rch" path="res://Scripts/Enemies/Bugs/worm/worm_segment_launcher.gd" id="1_ccx7o"]
+[ext_resource type="PackedScene" uid="uid://dxhiqt4gkxhb1" path="res://Scenes/Enemies/Bugs/worm/worm_leg.tscn" id="2_nwnmv"]
+[ext_resource type="PackedScene" uid="uid://daypi6b0l1qgi" path="res://Scenes/Components/hit_box.tscn" id="3_ujj2h"]
+[ext_resource type="PackedScene" uid="uid://ddp37pxyayuyc" path="res://Scenes/Components/hurt_box.tscn" id="4_q7fqf"]
+[ext_resource type="PackedScene" uid="uid://bsi1gw5kk2uiy" path="res://Scenes/Components/health_component.tscn" id="5_o3l4c"]
+[ext_resource type="Texture2D" uid="uid://3417ygkbblhu" path="res://Assets/Images/SpriteSheets/Animations/enemies/boss_1/alien-boss-1-body.png" id="6_ihlpl"]
+[ext_resource type="Texture2D" uid="uid://va8wkepnj7gu" path="res://Assets/Images/SpriteSheets/Animations/enemies/boss_1/alien-boss-1-hole.png" id="7_l43yp"]
+[ext_resource type="Script" uid="uid://cfdggjkh5asx8" path="res://Scripts/ComponentScripts/terrain_detection_component.gd" id="8_eg2ti"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c1ejp"]
+radius = 20.0
+height = 54.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwhe8"]
+radius = 61.0082
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivvqs"]
+radius = 61.0082
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idref"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ihlpl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r3wlr"]
+radius = 9.0
+
+[node name="WormSegmentLauncher" type="CharacterBody2D" groups=["bosses", "enemies"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ccx7o")
+DAMAGE = 100.0
+DEATH_SFX = "WormSegmentDeathSFX"
+ATTACK_HIT_SFX = "EnemyImpactSFX"
+
+[node name="WormLegL" parent="." instance=ExtResource("2_nwnmv")]
+position = Vector2(-60, 0)
+
+[node name="WormLegR" parent="." instance=ExtResource("2_nwnmv")]
+position = Vector2(60, 0)
+scale = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_c1ejp")
+
+[node name="HitBox" parent="." instance=ExtResource("3_ujj2h")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_lwhe8")
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_q7fqf")]
+collision_layer = 4
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_ivvqs")
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_o3l4c")]
+max_health = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_idref")
+autoplay = "default"
+
+[node name="DamageNumbersOrigin" type="Marker2D" parent="."]
+
+[node name="ConnectionPoint1" type="Marker2D" parent="."]
+position = Vector2(0, 50)
+
+[node name="ConnectionPoint2" type="Marker2D" parent="."]
+position = Vector2(0, -50)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("7_l43yp")
+
+[node name="TerrainDetectionComponent" type="Area2D" parent="."]
+collision_mask = 48
+script = ExtResource("8_eg2ti")
+terrain_speed_mods = Array[float]([1.0, 1.0, 1.0, 1.0])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetectionComponent"]
+shape = SubResource("CircleShape2D_r3wlr")
+
+[connection signal="hitbox_triggered" from="HitBox" to="." method="_on_hit_box_hitbox_triggered"]
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="hurt" from="HealthComponent" to="." method="_on_health_component_hurt"]

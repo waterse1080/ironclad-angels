@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=3 uid="uid://dewf8kdmgbvwg"]
+
+[ext_resource type="Script" uid="uid://bsag4t8ft2emn" path="res://Scripts/music_manager.gd" id="1_njklu"]
+[ext_resource type="AudioStream" uid="uid://cvd37xbw6jisp" path="res://Assets/Audio/Music/strap_yourselves_in.ogg" id="2_bqtoh"]
+[ext_resource type="AudioStream" uid="uid://nqvo7ditkouf" path="res://Assets/Audio/Music/Sacred Steel (Ironclad Angels Title Theme).ogg" id="2_dlja8"]
+[ext_resource type="AudioStream" uid="uid://b72ybonjcdkex" path="res://Assets/Audio/Music/shmup_music/Menu.ogg" id="2_ritbj"]
+[ext_resource type="AudioStream" uid="uid://bujpsmfjfc371" path="res://Assets/Audio/Music/shmup_music/Stage1.ogg" id="3_nwxs1"]
+[ext_resource type="AudioStream" uid="uid://d1aifvwy1205b" path="res://Assets/Audio/Music/shmup_music/Boss.ogg" id="4_8dyhm"]
+[ext_resource type="AudioStream" uid="uid://cfyemnbcwskdl" path="res://Assets/Audio/Music/Clement Panchout - Game Over Jingles Pack - 40 GameOverJingle Tuesday.ogg" id="6_cacrw"]
+[ext_resource type="AudioStream" uid="uid://dlm3a8hf58klf" path="res://Assets/Audio/Music/shmup_music/Stage2.ogg" id="8_jollc"]
+[ext_resource type="AudioStream" uid="uid://421p1brxso55" path="res://Assets/Audio/Music/shmup_music/Stage3.ogg" id="9_s6noy"]
+[ext_resource type="AudioStream" uid="uid://c0kwxpfcxsope" path="res://Assets/Audio/Music/shmup_music/Stage4.ogg" id="10_a8nsr"]
+[ext_resource type="AudioStream" uid="uid://dpw17cieo1lj6" path="res://Assets/Audio/Music/shmup_music/Stage5.ogg" id="11_o1gfp"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_1obj8"]
+clip_count = 10
+clip_0/name = &"Main Menu"
+clip_0/stream = ExtResource("2_dlja8")
+clip_0/auto_advance = 0
+clip_1/name = &"Stage 1"
+clip_1/stream = ExtResource("3_nwxs1")
+clip_1/auto_advance = 0
+clip_2/name = &"Boss"
+clip_2/stream = ExtResource("4_8dyhm")
+clip_2/auto_advance = 0
+clip_3/name = &"Mission Complete"
+clip_3/stream = ExtResource("2_ritbj")
+clip_3/auto_advance = 0
+clip_4/name = &"Game Over"
+clip_4/stream = ExtResource("6_cacrw")
+clip_4/auto_advance = 0
+clip_5/name = &"Mission Prep"
+clip_5/stream = ExtResource("2_bqtoh")
+clip_5/auto_advance = 0
+clip_6/name = &"Stage 2"
+clip_6/stream = ExtResource("8_jollc")
+clip_6/auto_advance = 0
+clip_7/name = &"Stage 3"
+clip_7/stream = ExtResource("9_s6noy")
+clip_7/auto_advance = 0
+clip_8/name = &"Stage 4"
+clip_8/stream = ExtResource("10_a8nsr")
+clip_8/auto_advance = 0
+clip_9/name = &"Stage 5"
+clip_9/stream = ExtResource("11_o1gfp")
+clip_9/auto_advance = 0
+_transitions = {
+Vector2i(-1, 0): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(0, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(1, 2): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(2, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(2, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(3, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 2
+},
+Vector2i(4, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(5, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+}
+}
+
+[node name="MusicManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_njklu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_1obj8")
+volume_db = -16.0
+bus = &"Music"

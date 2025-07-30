@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Unlock" load_steps=2 format=3 uid="uid://dan0v3lmo72cf"]
+
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="1_wdpqy"]
+
+[resource]
+script = ExtResource("1_wdpqy")
+display_name = "Wyvern R.3"
+description = "An industrial flamethrower designed for clearing terrain. Keep an eye on its heat gauge."
+unlock_type = 0
+unlock_price = 3500.0
+unlock_node_path = "res://Scenes/Player/Turrets/fire_turret.tscn"

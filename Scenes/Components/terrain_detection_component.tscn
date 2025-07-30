@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxt6w4evmrn3u"]
+
+[ext_resource type="Script" uid="uid://cfdggjkh5asx8" path="res://Scripts/ComponentScripts/terrain_detection_component.gd" id="1_p1iwl"]
+
+[node name="TerrainDetectionComponent" type="Area2D"]
+collision_mask = 32
+script = ExtResource("1_p1iwl")

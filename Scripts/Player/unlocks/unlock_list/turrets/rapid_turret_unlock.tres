@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Unlock" load_steps=2 format=3 uid="uid://6p8u21wdporj"]
+
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="1_x7trq"]
+
+[resource]
+script = ExtResource("1_x7trq")
+display_name = "Crybaby Mk.4"
+description = "An anti-aircraft emplacement adapted to function as a tank turret. Excels at weight-of-fire tactics."
+unlock_type = 0
+unlock_price = 2000.0
+unlock_node_path = "res://Scenes/Player/Turrets/rapid_fire_turret.tscn"

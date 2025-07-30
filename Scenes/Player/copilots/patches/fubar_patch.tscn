@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkgfrdjpa8vjd"]
+
+[ext_resource type="Texture2D" uid="uid://bgninlvr8bugy" path="res://Assets/Images/sprites/Player/patches/fubar_patch.png" id="1_h8kp0"]
+
+[node name="FubarPatch" type="Sprite2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_h8kp0")

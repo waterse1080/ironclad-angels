@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://2ni0kygqmfc4"]
+
+[ext_resource type="Script" uid="uid://c4qcibculpwnd" path="res://Scripts/Player/Projectiles/stinger_projectile.gd" id="1_4r05r"]
+[ext_resource type="Texture2D" uid="uid://dtjau6ukivf83" path="res://Assets/Images/sprites/Player/stinger_tank/alien-tank-1-spike.png" id="1_37c5j"]
+[ext_resource type="Script" uid="uid://d18levtavdqhi" path="res://Scripts/ComponentScripts/HitBox.gd" id="2_lh8dc"]
+[ext_resource type="PackedScene" uid="uid://didru1nvdi4jf" path="res://Scenes/Components/trail_component.tscn" id="4_dpxvh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3mve"]
+atlas = ExtResource("1_37c5j")
+region = Rect2(0, 0, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajv3d"]
+atlas = ExtResource("1_37c5j")
+region = Rect2(3, 0, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0ndg"]
+atlas = ExtResource("1_37c5j")
+region = Rect2(6, 0, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q6ua"]
+atlas = ExtResource("1_37c5j")
+region = Rect2(9, 0, 3, 3)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_api24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3mve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajv3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0ndg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q6ua")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8em8j"]
+size = Vector2(8, 22)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fb024"]
+radius = 39.0
+height = 160.0
+
+[sub_resource type="Curve" id="Curve_towyi"]
+_data = [Vector2(0, 0.5013), 0.0, -0.113505, 0, 0, Vector2(1, 0), -0.979503, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_umbf6"]
+colors = PackedColorArray(0.572549, 0.909804, 0.752941, 1, 0.309804, 0.643137, 0.721569, 1)
+
+[node name="StingerProjectile" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_4r05r")
+DAMAGE = 1.0
+SPEED = 400.0
+IMPACT_SFX = "StingerHitSFX"
+KNOCKBACK_POWER = 100.0
+hit_scale_mult = 2.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -0.785398
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_api24")
+autoplay = "default"
+frame = 2
+frame_progress = 0.833039
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8em8j")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_lh8dc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_8em8j")
+
+[node name="TargetDetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetectionArea"]
+position = Vector2(0, -80)
+shape = SubResource("CapsuleShape2D_fb024")
+
+[node name="TrailComponent" parent="." instance=ExtResource("4_dpxvh")]
+width_curve = SubResource("Curve_towyi")
+gradient = SubResource("Gradient_umbf6")
+
+[connection signal="area_entered" from="HitBox" to="HitBox" method="_on_area_entered"]
+[connection signal="hitbox_triggered" from="HitBox" to="." method="_on_hit_box_hitbox_triggered"]

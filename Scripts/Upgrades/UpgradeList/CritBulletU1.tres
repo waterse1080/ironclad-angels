@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CritBulletUpgrade" load_steps=2 format=3 uid="uid://cr2pp5xyrjgg7"]
+
+[ext_resource type="Script" uid="uid://d3gm4avhu7833" path="res://Scripts/Upgrades/UpgradeScripts/CritBulletUpgrade.gd" id="1_10p1c"]
+
+[resource]
+script = ExtResource("1_10p1c")
+CRIT_CHANCE_INCREASE = 0.1
+CRIT_MULT_INCREASE = 0.5
+name = "Lucky Shot"
+description = "[color=green]+$1%[/color] projectile critical hit chance.
+[color=green]+$2%[/color] projectile critical damage bonus.
+[i]Critical hits continue to gain additional effectiveness past 100%.[/i]"
+icon_row_column = Vector2i(4, 1)
+upgrade_tags = Array[int]([1])
+required_tags = Array[int]([])
+max_upgrade_count = -1

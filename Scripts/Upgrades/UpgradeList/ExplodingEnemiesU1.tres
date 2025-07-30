@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ExplodingEnemiesUpgrade" load_steps=2 format=3 uid="uid://datqhp7b1y78y"]
+
+[ext_resource type="Script" uid="uid://dt0h2vg3g1fmv" path="res://Scripts/Upgrades/UpgradeScripts/ExplodingEnemiesUpgrade.gd" id="1_ql0wi"]
+
+[resource]
+script = ExtResource("1_ql0wi")
+name = "Volitiale Combatants"
+description = "[color=green]+$%[/color] chance for enemies to explode on death."
+icon_row_column = Vector2i(4, 0)
+upgrade_tags = Array[int]([21, 23])
+required_tags = Array[int]([21, 23])
+max_upgrade_count = -1

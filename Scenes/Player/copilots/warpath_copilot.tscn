@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://n04jowmgawco"]
+
+[ext_resource type="Script" uid="uid://bcnd0imbxvl67" path="res://Scripts/Player/PlayerCopilot.gd" id="1_i0nvq"]
+[ext_resource type="Script" uid="uid://dhsio4knhabmy" path="res://Scripts/Upgrades/BaseUpgradeResource.gd" id="2_xchfb"]
+[ext_resource type="Resource" uid="uid://beuyljlrdk0sq" path="res://Scripts/Upgrades/UpgradeList/copilot_upgrades/warpath_u_1.tres" id="3_fgmj8"]
+
+[node name="WarpathCopilot" type="Node"]
+script = ExtResource("1_i0nvq")
+upgrade_list = Array[ExtResource("2_xchfb")]([ExtResource("3_fgmj8")])
+selection_asset_path = "res://Scenes/Player/copilots/patches/warpath_patch.tscn"

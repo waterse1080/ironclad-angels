@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Difficulty" load_steps=2 format=3 uid="uid://dahc3rjtj4tww"]
+
+[ext_resource type="Script" uid="uid://ds076fy8y3ldt" path="res://Scripts/Difficulties/ProtoDifficulty.gd" id="1_cdwvs"]
+
+[resource]
+script = ExtResource("1_cdwvs")
+NAME = "Relaxed"
+DESCRIPTION = "A more relaxed game experience. Increased player health, slower wave progression."
+HP_MOD = 1.5
+WAVE_TIME = 150
+rp_mult = 1.0

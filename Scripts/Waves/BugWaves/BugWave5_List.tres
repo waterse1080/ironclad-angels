@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WaveList" load_steps=7 format=3 uid="uid://jumc3innpoqi"]
+
+[ext_resource type="Script" uid="uid://bh0vreivbo2d0" path="res://Scripts/Waves/wave.gd" id="1_6g1xy"]
+[ext_resource type="Script" uid="uid://blf8jda7yhjtg" path="res://Scripts/Waves/wave_list.gd" id="2_e4w00"]
+[ext_resource type="Resource" uid="uid://tl77jeoqvnvg" path="res://Scripts/Waves/BugWaves/BugWave5_1.tres" id="2_jvb25"]
+[ext_resource type="Resource" uid="uid://lum32kd5gf4s" path="res://Scripts/Waves/BugWaves/BugWave5_2.tres" id="3_5c3vv"]
+[ext_resource type="Resource" uid="uid://bxgmx7vf3m4f0" path="res://Scripts/Waves/BugWaves/BugWave5_3.tres" id="4_600ex"]
+[ext_resource type="Resource" uid="uid://b0k0kpxvdxje" path="res://Scripts/Waves/BugWaves/BugWave5_4.tres" id="5_817hf"]
+
+[resource]
+script = ExtResource("2_e4w00")
+WAVES = Array[ExtResource("1_6g1xy")]([ExtResource("2_jvb25"), ExtResource("3_5c3vv"), ExtResource("4_600ex"), ExtResource("5_817hf")])
+DANGER_COLOR = Color(1, 0.141176, 0, 1)

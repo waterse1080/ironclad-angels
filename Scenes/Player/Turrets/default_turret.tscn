@@ -1,0 +1,261 @@
+[gd_scene load_steps=19 format=3 uid="uid://mlgi6owceggw"]
+
+[ext_resource type="Script" uid="uid://dp6o1ydel2gto" path="res://Scripts/Player/Turrets/default_turret.gd" id="1_w3y8e"]
+[ext_resource type="PackedScene" uid="uid://utl30nsfarv6" path="res://Scenes/Particles/proto_shell.tscn" id="2_okcxp"]
+[ext_resource type="Texture2D" uid="uid://kwf0uripl565" path="res://Assets/Images/sprites/Tank-1-Barrel-d-2.png" id="3_8mkwa"]
+[ext_resource type="Texture2D" uid="uid://21xo3e8kh26d" path="res://Assets/Images/sprites/Tank-1-Loader.png" id="5_adq4c"]
+[ext_resource type="Texture2D" uid="uid://c1g4ec30lipmd" path="res://Assets/Images/sprites/Tank-1-shell.png" id="6_mguhp"]
+[ext_resource type="Texture2D" uid="uid://dfdcl6sbkod0x" path="res://Assets/Images/sprites/Tank-1-Upper-d-4.png" id="7_8x48y"]
+[ext_resource type="Script" uid="uid://c5pl5mtpmafi4" path="res://Scripts/ComponentScripts/ammo_tracker_component.gd" id="8_3wb6s"]
+[ext_resource type="Texture2D" uid="uid://x7lw5src1g6d" path="res://Assets/Images/SpriteSheets/UI/Spritesheet_Animation_UI_Hologram_Select_01a_.png" id="9_03wkt"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q77ce"]
+diffuse_texture = ExtResource("5_adq4c")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tk2v0"]
+diffuse_texture = ExtResource("7_8x48y")
+specular_color = Color(0.32549, 1, 0.0784314, 1)
+
+[sub_resource type="Animation" id="Animation_t7dct"]
+resource_name = "Fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Barrel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.1, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, -58)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ejector:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 64), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shell:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 64), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shell:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawnShell"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r2l6m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Barrel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -58)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ejector:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shell:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shell:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xod5"]
+_data = {
+&"Fire": SubResource("Animation_t7dct"),
+&"RESET": SubResource("Animation_r2l6m")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4tx0"]
+atlas = ExtResource("9_03wkt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jggcv"]
+atlas = ExtResource("9_03wkt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bj12"]
+atlas = ExtResource("9_03wkt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndaed"]
+atlas = ExtResource("9_03wkt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ieiyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4tx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jggcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bj12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndaed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndaed")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 10.0
+}]
+
+[node name="DefaultTurret" type="Node2D"]
+z_index = 1
+use_parent_material = true
+script = ExtResource("1_w3y8e")
+base_load_time = 0.5
+base_damage = 100.0
+bullet_sfx = "BulletFireSFX"
+shell_sfx = "DefaultTurretEjectSFX"
+missle_scale = 1.0
+
+[node name="ProtoShell" parent="." instance=ExtResource("2_okcxp")]
+visible = false
+position = Vector2(0, 56)
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(0, -106)
+
+[node name="Barrel" type="Sprite2D" parent="."]
+z_as_relative = false
+use_parent_material = true
+position = Vector2(0, -58)
+texture = ExtResource("3_8mkwa")
+
+[node name="Ejector" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = SubResource("CanvasTexture_q77ce")
+
+[node name="Shell" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("6_mguhp")
+
+[node name="Top" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(5, 5)
+texture = SubResource("CanvasTexture_tk2v0")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8xod5")
+}
+
+[node name="Aim" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.435294)
+z_index = 999
+position = Vector2(0, -300)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_ieiyr")
+animation = &"fire"
+frame = 4
+frame_progress = 1.0
+
+[node name="AmmoTrackerComponent" type="Node" parent="."]
+script = ExtResource("8_3wb6s")
+starting_max_ammo = 8.0
+reload_time = 1.5
+reload_start_sfx = "DefaultTurretReloadStartSFX"
+reload_end_sfx = "DefaultTurretReloadEndSFX"

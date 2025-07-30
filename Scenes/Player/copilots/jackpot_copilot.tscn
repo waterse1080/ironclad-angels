@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnskhc8mapumi"]
+
+[ext_resource type="Script" uid="uid://bcnd0imbxvl67" path="res://Scripts/Player/PlayerCopilot.gd" id="1_p4wtm"]
+[ext_resource type="Script" uid="uid://dhsio4knhabmy" path="res://Scripts/Upgrades/BaseUpgradeResource.gd" id="2_faslf"]
+[ext_resource type="Resource" uid="uid://cslsk5pg27jvk" path="res://Scripts/Upgrades/UpgradeList/copilot_upgrades/jackpot_u_1.tres" id="3_dyo3h"]
+
+[node name="JackpotCopilot" type="Node"]
+script = ExtResource("1_p4wtm")
+upgrade_list = Array[ExtResource("2_faslf")]([ExtResource("3_dyo3h")])
+selection_asset_path = "res://Scenes/Player/copilots/patches/jackpot_patch.tscn"

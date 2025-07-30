@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AnalysisUpgrade" load_steps=2 format=3 uid="uid://cxd3wkryoil1q"]
+
+[ext_resource type="Script" uid="uid://cvwbxfvksfgsu" path="res://Scripts/Upgrades/UpgradeScripts/analysis_upgrade.gd" id="1_ciisj"]
+
+[resource]
+script = ExtResource("1_ciisj")
+xp_mult = 0.2
+name = "Improved Analysis"
+description = "[color=green]+$%[/color] XP collected."
+icon_row_column = Vector2i(2, 3)
+upgrade_tags = Array[int]([15])
+required_tags = Array[int]([])
+max_upgrade_count = -1

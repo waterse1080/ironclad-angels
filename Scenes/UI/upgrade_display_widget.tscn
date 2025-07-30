@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://icgk2iotkfjp"]
+
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_g0eo3"]
+[ext_resource type="Script" uid="uid://cmytf4y0jv7y7" path="res://Scripts/UI/upgrade_display_widget.gd" id="2_r1inp"]
+[ext_resource type="Texture2D" uid="uid://62ky71asabvh" path="res://Assets/Images/SpriteSheets/tileset_sheets/upgrade_icons.png" id="3_il2ge"]
+[ext_resource type="PackedScene" uid="uid://eejq2rjbatfu" path="res://Scenes/Components/ui_animation_component.tscn" id="4_l32ya"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrg8q"]
+atlas = ExtResource("3_il2ge")
+region = Rect2(0, 0, 16, 16)
+
+[node name="UpgradeDisplayWidget" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_g0eo3")
+script = ExtResource("2_r1inp")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = SubResource("AtlasTexture_mrg8q")
+stretch_mode = 0
+
+[node name="UiAnimationComponent" parent="TextureButton" instance=ExtResource("4_l32ya")]

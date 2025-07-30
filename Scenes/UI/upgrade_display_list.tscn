@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsbuql2xaqt3k"]
+
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_5f1nw"]
+[ext_resource type="Script" uid="uid://vulq2fjuymit" path="res://Scripts/UI/upgrade_display_list.gd" id="1_x5qnu"]
+[ext_resource type="PackedScene" uid="uid://dcp37qbfnll38" path="res://Scenes/UI/upgrade_widget.tscn" id="3_pfboj"]
+
+[node name="UpgradeDisplayList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5f1nw")
+script = ExtResource("1_x5qnu")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_right = 311.0
+offset_bottom = 451.0
+scale = Vector2(2, 2)
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/margin_top = 8
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4
+
+[node name="UpgradeWidget" parent="." instance=ExtResource("3_pfboj")]
+visible = false
+offset_top = 500.0
+offset_right = 330.0
+offset_bottom = 900.0
+
+[node name="SelectButton" parent="UpgradeWidget/Panel/MarginContainer/VBoxContainer" index="3"]
+visible = false
+
+[editable path="UpgradeWidget"]

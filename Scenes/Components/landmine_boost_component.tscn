@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd7gg0j3uqshp"]
+
+[ext_resource type="Script" uid="uid://cuma12ylyw01b" path="res://Scripts/ComponentScripts/landmine_boost_component.gd" id="1_5o6fn"]
+
+[node name="LandmineBoostComponent" type="Node"]
+script = ExtResource("1_5o6fn")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fbpgbgfvdb1l"]
+
+[ext_resource type="Texture2D" uid="uid://bgninlvr8bugy" path="res://Assets/Images/sprites/Player/patches/fubar_patch.png" id="1_xtxjs"]
+
+[node name="EmptyPatch" type="Sprite2D"]
+visible = false
+scale = Vector2(5, 5)
+texture = ExtResource("1_xtxjs")

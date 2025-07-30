@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://hy3qtrh118ks"]
+
+[ext_resource type="Script" uid="uid://bot0o5wtd22l" path="res://Scripts/ComponentScripts/orbit_controller.gd" id="1_wl5yy"]
+
+[node name="OrbitController" type="Node2D"]
+script = ExtResource("1_wl5yy")

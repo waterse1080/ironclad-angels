@@ -1,0 +1,136 @@
+[gd_scene load_steps=22 format=3 uid="uid://bd1ybm3xfwg8u"]
+
+[ext_resource type="Script" uid="uid://cfeba864tsh75" path="res://Scripts/Player/Bodies/default_body.gd" id="1_2o3n0"]
+[ext_resource type="Texture2D" uid="uid://de4hnuufme5dt" path="res://Assets/Images/sprites/tank-1-lower-2.png" id="2_cabhx"]
+[ext_resource type="PackedScene" uid="uid://dhltcbi32x2dk" path="res://Scenes/Particles/tread_marks.tscn" id="2_te5t5"]
+[ext_resource type="Script" uid="uid://bjk6rk274y4bl" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="3_8q3vg"]
+[ext_resource type="PackedScene" uid="uid://ddp37pxyayuyc" path="res://Scenes/Components/hurt_box.tscn" id="3_s6qep"]
+[ext_resource type="Script" uid="uid://dxpebj5hr171l" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="4_2es5b"]
+[ext_resource type="PackedScene" uid="uid://bsi1gw5kk2uiy" path="res://Scenes/Components/health_component.tscn" id="4_7hq65"]
+[ext_resource type="Script" uid="uid://uybjltytethb" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="4_pdxha"]
+[ext_resource type="Script" uid="uid://ue7rugrgtpet" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_uxvpu"]
+[ext_resource type="Script" uid="uid://f2edih5u3f56" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="5_c13c7"]
+[ext_resource type="Script" uid="uid://doa2bqqqcj8ba" path="res://Scripts/ComponentScripts/pickup_box_component.gd" id="5_yl8lp"]
+[ext_resource type="Script" uid="uid://caq6fktiijklv" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="7_b7aag"]
+[ext_resource type="Script" uid="uid://cfdggjkh5asx8" path="res://Scripts/ComponentScripts/terrain_detection_component.gd" id="12_1hchj"]
+[ext_resource type="PackedScene" uid="uid://dbvl81lhl26j6" path="res://Scenes/Particles/smoke_particles.tscn" id="14_d7pb2"]
+[ext_resource type="PackedScene" uid="uid://rdbqt3rbbq7e" path="res://Scenes/Particles/burn_particles.tscn" id="15_bmp8o"]
+
+[sub_resource type="Resource" id="Resource_ujchl"]
+script = ExtResource("4_pdxha")
+frequency = Vector2(5, 5)
+phase = Vector2(1, 1)
+amplitude = Vector2(1, 1)
+offset = Vector2(0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_1prpq"]
+script = ExtResource("5_c13c7")
+seed = 0
+amplitude = Vector2(1, 1)
+offset = Vector2(0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_xneqe"]
+resource_local_to_scene = true
+script = ExtResource("4_2es5b")
+PositionShake = Array[ExtResource("4_uxvpu")]([SubResource("Resource_ujchl"), SubResource("Resource_1prpq")])
+RotationShake = Array[ExtResource("7_b7aag")]([])
+ScaleShake = Array[ExtResource("4_uxvpu")]([])
+bake_internal = 64
+__follow_timeline = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21mbh"]
+size = Vector2(104, 116)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdbrt"]
+radius = 90.6697
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qrlv0"]
+radius = 9.0
+
+[node name="DefaultBody" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_2o3n0")
+move_fps = 12.0
+decceleration = 5.0
+
+[node name="TreadMarks" parent="." instance=ExtResource("2_te5t5")]
+position = Vector2(-37, 51)
+amount = 15
+
+[node name="TreadMarks2" parent="." instance=ExtResource("2_te5t5")]
+position = Vector2(38, 51)
+amount = 15
+
+[node name="TankLower" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0.396574, -1.2998)
+scale = Vector2(5, 5)
+texture = ExtResource("2_cabhx")
+hframes = 4
+
+[node name="ShakerComponent2D" type="Node2D" parent="TankLower"]
+script = ExtResource("3_8q3vg")
+shakerPreset = SubResource("Resource_xneqe")
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_s6qep")]
+collision_mask = 20
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_21mbh")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_7hq65")]
+max_health = 1000.0
+
+[node name="DamageNumbersOrigin" type="Marker2D" parent="."]
+
+[node name="PickupBox" type="Area2D" parent="."]
+script = ExtResource("5_yl8lp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBox"]
+shape = SubResource("CircleShape2D_cdbrt")
+
+[node name="TerrainDetectionComponent" type="Area2D" parent="."]
+collision_mask = 32
+script = ExtResource("12_1hchj")
+terrain_speed_mods = Array[float]([1.0, 1.15, 0.85, 1.0])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetectionComponent"]
+shape = SubResource("CircleShape2D_qrlv0")
+
+[node name="BoostCooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="BoostSmokeParticles" parent="." instance=ExtResource("14_d7pb2")]
+modulate = Color(0.412152, 0.412152, 0.412152, 1)
+position = Vector2(15, 46)
+emitting = false
+amount = 24
+
+[node name="DamageSmokeParticles" parent="." instance=ExtResource("14_d7pb2")]
+modulate = Color(0.270222, 0.270222, 0.270222, 1)
+emitting = false
+amount = 3
+emission_shape = 3
+emission_rect_extents = Vector2(30, 30)
+
+[node name="DamageBurnParticles" parent="." instance=ExtResource("15_bmp8o")]
+emitting = false
+amount = 6
+emission_shape = 3
+emission_rect_extents = Vector2(30, 30)

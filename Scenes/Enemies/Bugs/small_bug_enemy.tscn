@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxsfg63rya54s"]
+
+[ext_resource type="Script" uid="uid://bios1kvsavkrp" path="res://Scripts/Enemies/Bugs/small_bug_enemy.gd" id="1_0cme1"]
+[ext_resource type="PackedScene" uid="uid://daypi6b0l1qgi" path="res://Scenes/Components/hit_box.tscn" id="2_4n2g2"]
+[ext_resource type="PackedScene" uid="uid://ddp37pxyayuyc" path="res://Scenes/Components/hurt_box.tscn" id="3_3fddw"]
+[ext_resource type="PackedScene" uid="uid://bsi1gw5kk2uiy" path="res://Scenes/Components/health_component.tscn" id="4_10pc0"]
+[ext_resource type="Texture2D" uid="uid://b6xhugmol1cv" path="res://Assets/Images/SpriteSheets/Animations/enemies/Alien-7.png" id="5_spho7"]
+[ext_resource type="Script" uid="uid://cfdggjkh5asx8" path="res://Scripts/ComponentScripts/terrain_detection_component.gd" id="6_u575q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl8ho"]
+atlas = ExtResource("5_spho7")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03obn"]
+atlas = ExtResource("5_spho7")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sf0nk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl8ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03obn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cffgs"]
+radius = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj8un"]
+size = Vector2(40, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uydus"]
+size = Vector2(60, 71)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k4ap8"]
+radius = 9.0
+
+[node name="SmallBugEnemy" type="CharacterBody2D" groups=["enemies"]]
+z_index = 1
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_0cme1")
+DAMAGE = 100.0
+DEATH_SFX = "EnemyDeathSFX"
+ATTACK_HIT_SFX = "EnemyImpactSFX"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_sf0nk")
+autoplay = "default"
+frame = 1
+frame_progress = 0.644886
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cffgs")
+
+[node name="HitBox" parent="." instance=ExtResource("2_4n2g2")]
+position = Vector2(0, 7)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_hj8un")
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_3fddw")]
+position = Vector2(0, 7)
+collision_layer = 4
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_uydus")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_10pc0")]
+max_health = 50.0
+
+[node name="DamageNumbersOrigin" type="Marker2D" parent="."]
+
+[node name="TerrainDetectionComponent" type="Area2D" parent="."]
+collision_mask = 48
+script = ExtResource("6_u575q")
+terrain_speed_mods = Array[float]([1.0, 1.0, 0.85, 0.5])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetectionComponent"]
+shape = SubResource("CircleShape2D_k4ap8")
+
+[connection signal="hitbox_triggered" from="HitBox" to="." method="_on_hit_box_hitbox_triggered"]
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="hurt" from="HealthComponent" to="." method="_on_health_component_hurt"]

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="IceDebuffUpgrade" load_steps=2 format=3 uid="uid://dbqcujyffj1ws"]
+
+[ext_resource type="Script" uid="uid://c17cm2gvcajv4" path="res://Scripts/Upgrades/UpgradeScripts/ice_debuff_upgrade.gd" id="1_xts4r"]
+
+[resource]
+script = ExtResource("1_xts4r")
+shatter_percent = 0.15
+boss_shatter_percent = 0.05
+duration = 5.0
+freeze_chance = 0.2
+name = "Cryo Coating"
+description = "Projectiles have a [color=green]+$1%[/color] chance to freeze enemies in place for $2 seconds.
+Frozen enemies with $3% or less health are shattered.
+Frozen bosses with $4% or less health are shattered."
+icon_row_column = Vector2i(5, 0)
+upgrade_tags = Array[int]([23, 24])
+required_tags = Array[int]([])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://c17cm2gvcajv4"

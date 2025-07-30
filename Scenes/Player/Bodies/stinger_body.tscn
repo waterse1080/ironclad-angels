@@ -1,0 +1,128 @@
+[gd_scene load_steps=17 format=3 uid="uid://dcxnk5ejn0jmw"]
+
+[ext_resource type="Script" uid="uid://tr0w88srwrv2" path="res://Scripts/Player/Bodies/stinger_body.gd" id="1_7kfqu"]
+[ext_resource type="Script" uid="uid://doa2bqqqcj8ba" path="res://Scripts/ComponentScripts/pickup_box_component.gd" id="2_0sr4m"]
+[ext_resource type="Texture2D" uid="uid://cdqit0mfg2fqf" path="res://Assets/Images/sprites/Player/stinger_tank/alien-tank-1-body.png" id="2_lchvg"]
+[ext_resource type="Script" uid="uid://dgplhh06wmsnq" path="res://Scripts/ComponentScripts/HealthComponent.gd" id="3_6uhu5"]
+[ext_resource type="Script" uid="uid://clpxtcfre43xh" path="res://Scripts/ComponentScripts/HurtBox.gd" id="4_ygme7"]
+[ext_resource type="Script" uid="uid://cfdggjkh5asx8" path="res://Scripts/ComponentScripts/terrain_detection_component.gd" id="5_7rm7f"]
+[ext_resource type="PackedScene" uid="uid://dbvl81lhl26j6" path="res://Scenes/Particles/smoke_particles.tscn" id="7_j1g6o"]
+[ext_resource type="PackedScene" uid="uid://rdbqt3rbbq7e" path="res://Scenes/Particles/burn_particles.tscn" id="8_rbesa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kppnv"]
+atlas = ExtResource("2_lchvg")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydrc0"]
+atlas = ExtResource("2_lchvg")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3tog"]
+atlas = ExtResource("2_lchvg")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08ohs"]
+atlas = ExtResource("2_lchvg")
+region = Rect2(78, 0, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eaaeb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kppnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydrc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3tog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08ohs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63ogg"]
+radius = 75.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y6s8f"]
+radius = 25.0
+height = 146.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aoh5w"]
+radius = 10.0499
+
+[node name="StingerBody" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_7kfqu")
+acceleration = 2.5
+decceleration = 0.5
+can_destroy_terrain = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_eaaeb")
+autoplay = "default"
+frame_progress = 0.831187
+
+[node name="PickupBox" type="Area2D" parent="."]
+visible = false
+script = ExtResource("2_0sr4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBox"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_63ogg")
+
+[node name="DamageNumbersOrigin" type="Marker2D" parent="."]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_6uhu5")
+max_health = 750.0
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_mask = 4
+script = ExtResource("4_ygme7")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_y6s8f")
+
+[node name="TerrainDetectionComponent" type="Area2D" parent="."]
+collision_mask = 32
+script = ExtResource("5_7rm7f")
+terrain_speed_mods = Array[float]([1.0, 1.0, 1.0, 1.0])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetectionComponent"]
+shape = SubResource("CircleShape2D_aoh5w")
+
+[node name="BoostCooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="BoostSmokeParticles" parent="." instance=ExtResource("7_j1g6o")]
+position = Vector2(57, 35)
+emitting = false
+amount = 24
+
+[node name="BoostSmokeParticles2" parent="." instance=ExtResource("7_j1g6o")]
+position = Vector2(-57, 35)
+emitting = false
+amount = 24
+
+[node name="DamageSmokeParticles" parent="." instance=ExtResource("7_j1g6o")]
+modulate = Color(0.298039, 0.298039, 0.298039, 1)
+emitting = false
+amount = 4
+emission_shape = 3
+emission_rect_extents = Vector2(20, 20)
+
+[node name="DamageBurnParticles" parent="." instance=ExtResource("8_rbesa")]
+emitting = false
+amount = 6
+emission_shape = 3
+emission_rect_extents = Vector2(20, 20)

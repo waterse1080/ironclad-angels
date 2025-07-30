@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://dy6gmt1g6bcwo"]
+
+[ext_resource type="Script" uid="uid://1im6h2l056vh" path="res://Scripts/ComponentScripts/nanite_swarm_2d_component.gd" id="1_y4ntn"]
+[ext_resource type="Script" uid="uid://d18levtavdqhi" path="res://Scripts/ComponentScripts/HitBox.gd" id="2_7xbla"]
+[ext_resource type="Texture2D" uid="uid://m8pcmsfndme4" path="res://Assets/Images/SpriteSheets/Animations/nanite_swarm.png" id="3_fmbni"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8a4k"]
+radius = 164.195
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vc4k"]
+atlas = ExtResource("3_fmbni")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0p66"]
+atlas = ExtResource("3_fmbni")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr18b"]
+atlas = ExtResource("3_fmbni")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds42n"]
+atlas = ExtResource("3_fmbni")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klwdv"]
+atlas = ExtResource("3_fmbni")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik5na"]
+atlas = ExtResource("3_fmbni")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uicr"]
+atlas = ExtResource("3_fmbni")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbq35"]
+atlas = ExtResource("3_fmbni")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1mgf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vc4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0p66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr18b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds42n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klwdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik5na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uicr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbq35")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="NaniteSwarm2dComponent" type="Node2D"]
+script = ExtResource("1_y4ntn")
+metadata/_custom_type_script = "uid://1im6h2l056vh"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_7xbla")
+metadata/_custom_type_script = "uid://d18levtavdqhi"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_e8a4k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_t1mgf")
+autoplay = "default"
+frame_progress = 0.739443

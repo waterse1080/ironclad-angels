@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Unlock" load_steps=2 format=3 uid="uid://lfkdkhpat1vb"]
+
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="1_0grka"]
+
+[resource]
+script = ExtResource("1_0grka")
+display_name = "Rainmaker v0.1"
+description = "A prototype weapons platform, fires a barrage of unguided rockets.
+Explosions from rockets deal self-damage, launch with care."
+unlock_type = 0
+unlock_price = 15000.0
+unlock_node_path = "res://Scenes/Player/Turrets/rocket_mech_turret.tscn"
+metadata/_custom_type_script = "uid://dnrgjs801d2jt"

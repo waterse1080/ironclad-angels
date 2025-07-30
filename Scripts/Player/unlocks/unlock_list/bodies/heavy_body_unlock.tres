@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Unlock" load_steps=2 format=3 uid="uid://uiiokmefddcf"]
+
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="1_sgjv6"]
+
+[resource]
+script = ExtResource("1_sgjv6")
+display_name = "Stag Beetle"
+description = "As heavily armored as they come. It can drill through almost anything in your way, at the cost of a reduced turning speed."
+unlock_type = 1
+unlock_price = 4000.0
+unlock_node_path = "res://Scenes/Player/Bodies/heavy_tank_body.tscn"

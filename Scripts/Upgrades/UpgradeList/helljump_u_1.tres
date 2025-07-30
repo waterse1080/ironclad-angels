@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HelljumpUpgrade" load_steps=2 format=3 uid="uid://drdrsjjrw2qks"]
+
+[ext_resource type="Script" uid="uid://ch11lxy20i4ex" path="res://Scripts/Upgrades/UpgradeScripts/helljump_upgrade.gd" id="1_f4jp0"]
+
+[resource]
+script = ExtResource("1_f4jp0")
+name = "Meteoric Deployment"
+description = "Infantry spawn by dropping from the sky, creating an explosion at the point of impact."
+icon_row_column = Vector2i(1, 4)
+upgrade_tags = Array[int]([22, 21, 17])
+required_tags = Array[int]([22, 21])
+max_upgrade_count = 1
+metadata/_custom_type_script = "uid://ch11lxy20i4ex"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7bimofbjgm2d"]
+
+[ext_resource type="Script" uid="uid://doa2bqqqcj8ba" path="res://Scripts/ComponentScripts/pickup_box_component.gd" id="1_mijf7"]
+
+[node name="PickupBoxComponent" type="Area2D"]
+collision_mask = 8
+script = ExtResource("1_mijf7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

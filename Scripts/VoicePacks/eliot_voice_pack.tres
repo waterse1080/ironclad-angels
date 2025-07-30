@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="VoicePack" load_steps=2 format=3 uid="uid://dakmpcedif0fq"]
+
+[ext_resource type="Script" uid="uid://e3cm7ajk3x86" path="res://Scripts/VoicePacks/voice_pack.gd" id="1_gq3xk"]
+
+[resource]
+script = ExtResource("1_gq3xk")
+spawn_voices = Array[String](["EliotSpawnVO1", "EliotSpawnVO2", "EliotSpawnVO3"])
+death_voices = Array[String](["EliotGruntVO1", "EliotGruntVO2", "EliotGruntVO3"])
+metadata/_custom_type_script = "uid://e3cm7ajk3x86"

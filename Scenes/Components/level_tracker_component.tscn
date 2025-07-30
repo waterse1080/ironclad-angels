@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6wcymgq684vu"]
+
+[ext_resource type="Script" uid="uid://spbs3g0wxs00" path="res://Scripts/ComponentScripts/level_tracker_component.gd" id="1_0pgnk"]
+
+[node name="LevelTrackerComponent" type="Node"]
+script = ExtResource("1_0pgnk")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="LandmineBoostUpgrade" load_steps=2 format=3 uid="uid://gh1lc4mw7f10"]
+
+[ext_resource type="Script" uid="uid://bm8on1bojyoep" path="res://Scripts/Upgrades/UpgradeScripts/landmine_boost_upgrade.gd" id="1_rxxmg"]
+
+[resource]
+script = ExtResource("1_rxxmg")
+ready_timer = 1.0
+timer_mult = 0.75
+name = "Explosive Exit"
+description = "Place landmines when boosting.
+$1 second cooldown, additional copies decrease the cooldown by [color=green]$2%[/color]."
+icon_row_column = Vector2i(6, 4)
+upgrade_tags = Array[int]([21, 11])
+required_tags = Array[int]([21, 11])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://bm8on1bojyoep"

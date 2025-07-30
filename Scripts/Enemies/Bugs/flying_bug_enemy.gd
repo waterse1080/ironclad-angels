@@ -1,0 +1,2 @@
+extends ProtoEnemy
+class_name FlyingBugEnemy

@@ -1,0 +1,711 @@
+[gd_scene load_steps=39 format=3 uid="uid://cl74yowsyq8do"]
+
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_awamk"]
+[ext_resource type="Script" uid="uid://dqbw614oh8ktw" path="res://Scripts/UI/player_setup_menu.gd" id="1_pljbu"]
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="2_0c0ot"]
+[ext_resource type="Resource" uid="uid://b0pdhq80ufv8i" path="res://Scripts/Player/unlocks/unlock_list/bodies/default_body_unlock.tres" id="3_o2uff"]
+[ext_resource type="Resource" uid="uid://bs5lbs1b0q6q8" path="res://Scripts/Player/unlocks/unlock_list/turrets/default_turret_unlock.tres" id="5_l6h2i"]
+[ext_resource type="Resource" uid="uid://dan0v3lmo72cf" path="res://Scripts/Player/unlocks/unlock_list/turrets/fire_turret_unlock.tres" id="6_8ces5"]
+[ext_resource type="Resource" uid="uid://6p8u21wdporj" path="res://Scripts/Player/unlocks/unlock_list/turrets/rapid_turret_unlock.tres" id="7_xyvru"]
+[ext_resource type="Resource" uid="uid://b0desrfoo0n8j" path="res://Scripts/Player/unlocks/unlock_list/bodies/fast_body_unlock.tres" id="8_5fjut"]
+[ext_resource type="Resource" uid="uid://d2xegcx3ocppa" path="res://Scripts/Player/unlocks/unlock_list/bodies/defender_mech_body_unlock.tres" id="9_0rhnt"]
+[ext_resource type="Script" uid="uid://ds076fy8y3ldt" path="res://Scripts/Difficulties/ProtoDifficulty.gd" id="9_0u0tn"]
+[ext_resource type="Script" uid="uid://s7ldkrarn5df" path="res://Scripts/UI/doom_melt_rect.gd" id="9_5301j"]
+[ext_resource type="Script" uid="uid://b2px1hseyoypg" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="9_d7qbe"]
+[ext_resource type="Material" uid="uid://bwjm6i53be3w2" path="res://Assets/Materials/doom_melt.tres" id="9_j52au"]
+[ext_resource type="Resource" uid="uid://bfcdt8bqrkfcr" path="res://Scripts/Player/unlocks/unlock_list/turrets/defender_mech_turret_unlock.tres" id="10_ckxat"]
+[ext_resource type="Resource" uid="uid://dahc3rjtj4tww" path="res://Scripts/Difficulties/DifficultyList/Easy.tres" id="10_t5rwt"]
+[ext_resource type="Resource" uid="uid://uiiokmefddcf" path="res://Scripts/Player/unlocks/unlock_list/bodies/heavy_body_unlock.tres" id="11_81b8d"]
+[ext_resource type="Resource" uid="uid://bwpy86g61mfmf" path="res://Scripts/Difficulties/DifficultyList/Normal.tres" id="11_an2my"]
+[ext_resource type="Resource" uid="uid://bxbwsj717i2qy" path="res://Scripts/Difficulties/DifficultyList/Hard.tres" id="12_tlhy3"]
+[ext_resource type="Resource" uid="uid://dnvrtfble8ms8" path="res://Scripts/Player/unlocks/unlock_list/turrets/charge_turret_unlock.tres" id="12_yagjo"]
+[ext_resource type="Resource" uid="uid://deqdfhomxliro" path="res://Scripts/Player/unlocks/unlock_list/turrets/shotgun_turret_unlock.tres" id="13_kbbup"]
+[ext_resource type="Resource" uid="uid://bhjl12efvggye" path="res://Scripts/Difficulties/DifficultyList/Extreme.tres" id="13_kvi5y"]
+[ext_resource type="Resource" uid="uid://t3pmc7vegeeu" path="res://Scripts/Player/unlocks/unlock_list/turrets/stinger_turret_unlock.tres" id="14_dej15"]
+[ext_resource type="Resource" uid="uid://dxvdujpphxyls" path="res://Scripts/Player/unlocks/unlock_list/bodies/stinger_body_unlock.tres" id="15_ksw5y"]
+[ext_resource type="Script" uid="uid://cj3wuyw6hff0a" path="res://addons/label_font_auto_sizer/rich_label_auto_sizer.gd" id="15_we8my"]
+[ext_resource type="Resource" uid="uid://cwnq6nkq20kja" path="res://Scripts/Player/unlocks/unlock_list/copilots/empty_copilot_unlock.tres" id="16_unhnp"]
+[ext_resource type="Resource" uid="uid://mjr0xcurpl4o" path="res://Scripts/Player/unlocks/unlock_list/copilots/warpath_copilot_unlock.tres" id="16_x4nt6"]
+[ext_resource type="Resource" uid="uid://hjqsh3nv643r" path="res://Scripts/Player/unlocks/unlock_list/copilots/rocketman_copilot_unlock.tres" id="18_26xbd"]
+[ext_resource type="Resource" uid="uid://dyw66uvkothew" path="res://Scripts/Player/unlocks/unlock_list/copilots/jackpot_copilot_unlock.tres" id="19_e8eya"]
+[ext_resource type="Resource" uid="uid://boxiyovkxk3py" path="res://Scripts/Player/unlocks/unlock_list/copilots/fubar_copilot_unlock.tres" id="20_8db5m"]
+[ext_resource type="Resource" uid="uid://lfkdkhpat1vb" path="res://Scripts/Player/unlocks/unlock_list/turrets/rocket_mech_turret_unlock.tres" id="21_ul423"]
+[ext_resource type="PackedScene" uid="uid://drkcjjt0crxvv" path="res://Scenes/UI/settings_menu.tscn" id="25_g8n5e"]
+[ext_resource type="PackedScene" uid="uid://eejq2rjbatfu" path="res://Scenes/Components/ui_animation_component.tscn" id="28_c6csd"]
+[ext_resource type="Texture2D" uid="uid://do4u2e4lf4m68" path="res://Assets/Images/SpriteSheets/UI/Spritesheet_UI_Hologram.png" id="29_advjq"]
+
+[sub_resource type="Animation" id="Animation_jiw24"]
+resource_name = "Loading"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/DifficultySelectionContainer/Loading:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/DifficultySelectionContainer/Loading:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Loading
+", "Loading.
+", "Loading..", "Loading..."]
+}
+
+[sub_resource type="Animation" id="Animation_vtcvh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/DifficultySelectionContainer/Loading:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/DifficultySelectionContainer/Loading:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvq6u"]
+_data = {
+&"Loading": SubResource("Animation_jiw24"),
+&"RESET": SubResource("Animation_vtcvh")
+}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qsifl"]
+diffuse_texture = ExtResource("29_advjq")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4byfw"]
+atlas = SubResource("CanvasTexture_qsifl")
+region = Rect2(551, 104, 17, 19)
+
+[node name="PlayerSetupMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_awamk")
+script = ExtResource("1_pljbu")
+unlock_list = Array[ExtResource("2_0c0ot")]([ExtResource("3_o2uff"), ExtResource("5_l6h2i"), ExtResource("7_xyvru"), ExtResource("8_5fjut"), ExtResource("6_8ces5"), ExtResource("9_0rhnt"), ExtResource("10_ckxat"), ExtResource("11_81b8d"), ExtResource("12_yagjo"), ExtResource("13_kbbup"), ExtResource("14_dej15"), ExtResource("15_ksw5y"), ExtResource("16_unhnp"), ExtResource("16_x4nt6"), ExtResource("18_26xbd"), ExtResource("19_e8eya"), ExtResource("20_8db5m"), ExtResource("21_ul423")])
+difficulties = Array[ExtResource("9_0u0tn")]([ExtResource("10_t5rwt"), ExtResource("11_an2my"), ExtResource("12_tlhy3"), ExtResource("13_kvi5y")])
+songs = Array[int]([1, 6, 7, 8, 9])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172549, 0.207843, 0.301961, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -438.0
+offset_top = -382.5
+offset_right = 438.0
+offset_bottom = 382.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="PartSelectionContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="HBoxContainer/PartSelectionContainer"]
+layout_mode = 2
+text = "SELECT PARTS"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+
+[node name="TurretSection" type="HBoxContainer" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="LeftT" type="Button" parent="HBoxContainer/PartSelectionContainer/TurretSection"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../UpperLeftContainer/MainMenuButton")
+focus_neighbor_top = NodePath("../../../../UpperLeftContainer/MainMenuButton")
+focus_neighbor_right = NodePath("../RightT")
+focus_neighbor_bottom = NodePath("../../BodySection/LeftB")
+focus_next = NodePath("../RightT")
+focus_previous = NodePath("../../../DifficultySelectionContainer/DifficultySection/RightD")
+text = "Prev"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/PartSelectionContainer/TurretSection/LeftT" instance=ExtResource("28_c6csd")]
+
+[node name="Label" type="Label" parent="HBoxContainer/PartSelectionContainer/TurretSection"]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Turret"
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("9_d7qbe")
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 24
+_current_font_size = 24
+_last_size_state = 1
+
+[node name="RightT" type="Button" parent="HBoxContainer/PartSelectionContainer/TurretSection"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../LeftT")
+focus_neighbor_top = NodePath("../../CopilotSection/RightC")
+focus_neighbor_right = NodePath("../../../PartPreviewContainer/TurretPreview/TurretUnlock")
+focus_neighbor_bottom = NodePath("../../BodySection/RightB")
+focus_next = NodePath("../../../PartPreviewContainer/TurretPreview/TurretUnlock")
+focus_previous = NodePath("../LeftT")
+text = "Next"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/PartSelectionContainer/TurretSection/RightT" instance=ExtResource("28_c6csd")]
+
+[node name="TurretDescription" type="RichTextLabel" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Turret Description"
+scroll_active = false
+script = ExtResource("15_we8my")
+_max_steps = 20
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 24
+_current_font_size = 24
+_last_size_state = 1
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+
+[node name="BodySection" type="HBoxContainer" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LeftB" type="Button" parent="HBoxContainer/PartSelectionContainer/BodySection"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../DifficultySelectionContainer/Randomize")
+focus_neighbor_top = NodePath("../../TurretSection/LeftT")
+focus_neighbor_right = NodePath("../RightB")
+focus_neighbor_bottom = NodePath("../../CopilotSection/LeftC")
+focus_next = NodePath("../RightB")
+focus_previous = NodePath("../../../DifficultySelectionContainer/Randomize")
+text = "Prev"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/PartSelectionContainer/BodySection/LeftB" instance=ExtResource("28_c6csd")]
+
+[node name="Label" type="Label" parent="HBoxContainer/PartSelectionContainer/BodySection"]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Body"
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("9_d7qbe")
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 24
+_current_font_size = 24
+_last_size_state = 1
+
+[node name="RightB" type="Button" parent="HBoxContainer/PartSelectionContainer/BodySection"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../LeftB")
+focus_neighbor_top = NodePath("../../TurretSection/RightT")
+focus_neighbor_right = NodePath("../../../PartPreviewContainer/ChassisPreview/ChassisUnlock")
+focus_neighbor_bottom = NodePath("../../CopilotSection/RightC")
+focus_next = NodePath("../../../PartPreviewContainer/ChassisPreview/ChassisUnlock")
+focus_previous = NodePath("../LeftB")
+text = "Next"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/PartSelectionContainer/BodySection/RightB" instance=ExtResource("28_c6csd")]
+
+[node name="BodyDescription" type="RichTextLabel" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Body Description"
+scroll_active = false
+script = ExtResource("15_we8my")
+_max_steps = 20
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 24
+_current_font_size = 24
+_last_size_state = 1
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+
+[node name="CopilotSection" type="HBoxContainer" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LeftC" type="Button" parent="HBoxContainer/PartSelectionContainer/CopilotSection"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../LowerRightContainer/SettingsButton")
+focus_neighbor_top = NodePath("../../BodySection/LeftB")
+focus_neighbor_right = NodePath("../RightC")
+focus_neighbor_bottom = NodePath("../../../../UpperLeftContainer/MainMenuButton")
+focus_next = NodePath("../RightC")
+focus_previous = NodePath("../../../../LowerRightContainer/SettingsButton")
+text = "Prev"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/PartSelectionContainer/CopilotSection/LeftC" instance=ExtResource("28_c6csd")]
+
+[node name="Label" type="Label" parent="HBoxContainer/PartSelectionContainer/CopilotSection"]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Co-pilot"
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("9_d7qbe")
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 24
+_current_font_size = 24
+_last_size_state = 1
+
+[node name="RightC" type="Button" parent="HBoxContainer/PartSelectionContainer/CopilotSection"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../LeftC")
+focus_neighbor_top = NodePath("../../BodySection/RightB")
+focus_neighbor_right = NodePath("../../../PartPreviewContainer/CopilotPreview/CopilotUnlock")
+focus_neighbor_bottom = NodePath("../../TurretSection/RightT")
+focus_next = NodePath("../../../PartPreviewContainer/CopilotPreview/CopilotUnlock")
+focus_previous = NodePath("../LeftC")
+text = "Next"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/PartSelectionContainer/CopilotSection/RightC" instance=ExtResource("28_c6csd")]
+
+[node name="CopilotDescription" type="RichTextLabel" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Copilot Description"
+scroll_active = false
+script = ExtResource("15_we8my")
+_max_steps = 20
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 24
+_current_font_size = 24
+_last_size_state = 1
+
+[node name="HSeparator4" type="HSeparator" parent="HBoxContainer/PartSelectionContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+
+[node name="PartPreviewContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Spacer" type="Control" parent="HBoxContainer/PartPreviewContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="ResearchPoints" type="Label" parent="HBoxContainer/PartPreviewContainer/Spacer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -17.0
+offset_right = 49.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "RP: 5000"
+horizontal_alignment = 1
+
+[node name="TurretPreview" type="Control" parent="HBoxContainer/PartPreviewContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="TurretUnlock" type="Button" parent="HBoxContainer/PartPreviewContainer/TurretPreview"]
+z_index = 4
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 55.0
+offset_right = 100.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../../PartSelectionContainer/TurretSection/RightT")
+focus_neighbor_top = NodePath("../../CopilotPreview/CopilotUnlock")
+focus_neighbor_right = NodePath("../../../DifficultySelectionContainer/DifficultySection/LeftD")
+focus_neighbor_bottom = NodePath("../../ChassisPreview/ChassisUnlock")
+focus_next = NodePath("../../../DifficultySelectionContainer/DifficultySection/RightD")
+focus_previous = NodePath("../../../PartSelectionContainer/TurretSection/RightT")
+text = "RP: 5000"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/PartPreviewContainer/TurretPreview/TurretUnlock" instance=ExtResource("28_c6csd")]
+
+[node name="ChassisPreview" type="Control" parent="HBoxContainer/PartPreviewContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="ChassisUnlock" type="Button" parent="HBoxContainer/PartPreviewContainer/ChassisPreview"]
+z_index = 4
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 55.0
+offset_right = 100.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../../PartSelectionContainer/BodySection/RightB")
+focus_neighbor_top = NodePath("../../TurretPreview/TurretUnlock")
+focus_neighbor_right = NodePath("../../../DifficultySelectionContainer/Randomize")
+focus_neighbor_bottom = NodePath("../../CopilotPreview/CopilotUnlock")
+focus_next = NodePath("../../../DifficultySelectionContainer/Randomize")
+focus_previous = NodePath("../../../PartSelectionContainer/BodySection/RightB")
+text = "RP: 5000"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/PartPreviewContainer/ChassisPreview/ChassisUnlock" instance=ExtResource("28_c6csd")]
+
+[node name="CopilotPreview" type="Control" parent="HBoxContainer/PartPreviewContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="CopilotUnlock" type="Button" parent="HBoxContainer/PartPreviewContainer/CopilotPreview"]
+z_index = 4
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 55.0
+offset_right = 100.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../../PartSelectionContainer/CopilotSection/RightC")
+focus_neighbor_top = NodePath("../../ChassisPreview/ChassisUnlock")
+focus_neighbor_right = NodePath("../../../DifficultySelectionContainer/Play")
+focus_neighbor_bottom = NodePath("../../TurretPreview/TurretUnlock")
+focus_next = NodePath("../../../DifficultySelectionContainer/Play")
+focus_previous = NodePath("../../../PartSelectionContainer/CopilotSection/RightC")
+text = "RP: 5000"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/PartPreviewContainer/CopilotPreview/CopilotUnlock" instance=ExtResource("28_c6csd")]
+
+[node name="DifficultySelectionContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="HBoxContainer/DifficultySelectionContainer"]
+layout_mode = 2
+text = "SELECT DIFFICULTY"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/DifficultySelectionContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+
+[node name="DifficultySection" type="HBoxContainer" parent="HBoxContainer/DifficultySelectionContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="LeftD" type="Button" parent="HBoxContainer/DifficultySelectionContainer/DifficultySection"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../PartPreviewContainer/TurretPreview/TurretUnlock")
+focus_neighbor_top = NodePath("../../../../LowerRightContainer/SettingsButton")
+focus_neighbor_right = NodePath("../RightD")
+focus_neighbor_bottom = NodePath("../../Randomize")
+focus_next = NodePath("../RightD")
+focus_previous = NodePath("../../../PartPreviewContainer/TurretPreview/TurretUnlock")
+text = "Prev"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/DifficultySelectionContainer/DifficultySection/LeftD" instance=ExtResource("28_c6csd")]
+
+[node name="Label" type="Label" parent="HBoxContainer/DifficultySelectionContainer/DifficultySection"]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Easy
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("9_d7qbe")
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 24
+_current_font_size = 24
+_last_size_state = 1
+
+[node name="RightD" type="Button" parent="HBoxContainer/DifficultySelectionContainer/DifficultySection"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../LeftD")
+focus_neighbor_top = NodePath("../../../../LowerRightContainer/SettingsButton")
+focus_neighbor_right = NodePath("../../../../UpperLeftContainer/MainMenuButton")
+focus_neighbor_bottom = NodePath("../../Randomize")
+focus_next = NodePath("../../../PartSelectionContainer/TurretSection/LeftT")
+focus_previous = NodePath("../LeftD")
+text = "Next"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/DifficultySelectionContainer/DifficultySection/RightD" instance=ExtResource("28_c6csd")]
+
+[node name="DifficultyDescription" type="RichTextLabel" parent="HBoxContainer/DifficultySelectionContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "This is the description text"
+scroll_active = false
+script = ExtResource("15_we8my")
+_max_steps = 20
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 24
+_current_font_size = 24
+_last_size_state = 1
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/DifficultySelectionContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+
+[node name="Randomize" type="Button" parent="HBoxContainer/DifficultySelectionContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../PartPreviewContainer/ChassisPreview/ChassisUnlock")
+focus_neighbor_top = NodePath("../DifficultySection/LeftD")
+focus_neighbor_right = NodePath("../../PartSelectionContainer/BodySection/LeftB")
+focus_neighbor_bottom = NodePath("../Play")
+focus_next = NodePath("../../PartSelectionContainer/BodySection/LeftB")
+focus_previous = NodePath("../../PartPreviewContainer/ChassisPreview/ChassisUnlock")
+text = "RANDOMIZE"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/DifficultySelectionContainer/Randomize" instance=ExtResource("28_c6csd")]
+
+[node name="Play" type="Button" parent="HBoxContainer/DifficultySelectionContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../PartPreviewContainer/CopilotPreview/CopilotUnlock")
+focus_neighbor_top = NodePath("../Randomize")
+focus_neighbor_right = NodePath("../../../LowerRightContainer/SettingsButton")
+focus_neighbor_bottom = NodePath("../../../LowerRightContainer/SettingsButton")
+focus_next = NodePath("../../../LowerRightContainer/SettingsButton")
+focus_previous = NodePath("../../PartPreviewContainer/CopilotPreview/CopilotUnlock")
+text = "PLAY"
+
+[node name="UiAnimationComponent" parent="HBoxContainer/DifficultySelectionContainer/Play" instance=ExtResource("28_c6csd")]
+
+[node name="Loading" type="Label" parent="HBoxContainer/DifficultySelectionContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cvq6u")
+}
+
+[node name="LowerRightContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SettingsButton" type="Button" parent="LowerRightContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../HBoxContainer/DifficultySelectionContainer/Play")
+focus_neighbor_top = NodePath("../../HBoxContainer/DifficultySelectionContainer/Play")
+focus_neighbor_right = NodePath("../../HBoxContainer/PartSelectionContainer/CopilotSection/LeftC")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/DifficultySelectionContainer/DifficultySection/LeftD")
+focus_next = NodePath("../../HBoxContainer/PartSelectionContainer/CopilotSection/LeftC")
+focus_previous = NodePath("../../HBoxContainer/DifficultySelectionContainer/Play")
+text = "Settings
+"
+
+[node name="UiAnimationComponent" parent="LowerRightContainer/SettingsButton" instance=ExtResource("28_c6csd")]
+
+[node name="UpperLeftContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 150.0
+offset_bottom = 60.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MainMenuButton" type="Button" parent="UpperLeftContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../HBoxContainer/DifficultySelectionContainer/DifficultySection/RightD")
+focus_neighbor_top = NodePath("../../HBoxContainer/PartSelectionContainer/CopilotSection/LeftC")
+focus_neighbor_right = NodePath("../../HBoxContainer/PartSelectionContainer/TurretSection/LeftT")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/PartSelectionContainer/TurretSection/LeftT")
+focus_next = NodePath("../../HBoxContainer/PartSelectionContainer/TurretSection/LeftT")
+focus_previous = NodePath("../../HBoxContainer/DifficultySelectionContainer/DifficultySection/RightD")
+text = "Back"
+icon = SubResource("AtlasTexture_4byfw")
+expand_icon = true
+
+[node name="UiAnimationComponent" parent="UpperLeftContainer/MainMenuButton" instance=ExtResource("28_c6csd")]
+
+[node name="SettingsMenu" parent="." instance=ExtResource("25_g8n5e")]
+visible = false
+layout_mode = 1
+
+[node name="ColorRect" parent="SettingsMenu" index="0"]
+color = Color(0.172549, 0.207843, 0.301961, 1)
+
+[node name="TravelText" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(700, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -175.0
+offset_right = 350.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "TRAVELING TO NEW ZONE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("9_d7qbe")
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 60
+_current_font_size = 60
+_last_size_state = 1
+metadata/_custom_type_script = "uid://b2px1hseyoypg"
+
+[node name="TravelProgressBar" type="ProgressBar" parent="."]
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = 25.0
+offset_right = -150.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+value = 50.0
+
+[node name="DoomMelt" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("9_j52au")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_5301j")
+
+[editable path="SettingsMenu"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/FullscreenSwitch"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/WindowedResolutionOptionList"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/CRTSwitch"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/CRTResolutionContainer/CRTResolutionOptionList"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/ScreenshakeIntensityContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/VibrationIntensityContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/MasterVolumeContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/MusicVolumeContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/GameVolumeContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/UIVolumeContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/MuteSwitch"]

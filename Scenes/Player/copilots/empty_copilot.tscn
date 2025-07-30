@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs0lxcdqyysca"]
+
+[ext_resource type="Script" uid="uid://bcnd0imbxvl67" path="res://Scripts/Player/PlayerCopilot.gd" id="1_teaj8"]
+
+[node name="EmptyCopilot" type="Node"]
+script = ExtResource("1_teaj8")
+selection_asset_path = "res://Scenes/Player/copilots/patches/empty_patch.tscn"

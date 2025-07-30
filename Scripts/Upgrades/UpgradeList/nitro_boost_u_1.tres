@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NitroBoostUpgrade" load_steps=2 format=3 uid="uid://col6v0txmrwmg"]
+
+[ext_resource type="Script" uid="uid://co0afxv4ci5yp" path="res://Scripts/Upgrades/UpgradeScripts/nitro_boost_upgrade.gd" id="1_7ea6x"]
+
+[resource]
+script = ExtResource("1_7ea6x")
+boost_speed_increase = 75.0
+name = "Nitro Boost"
+description = "[color=green]+$[/color] boost speed."
+icon_row_column = Vector2i(6, 3)
+upgrade_tags = Array[int]([11, 13])
+required_tags = Array[int]([])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://co0afxv4ci5yp"

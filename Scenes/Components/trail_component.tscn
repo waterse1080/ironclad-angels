@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://didru1nvdi4jf"]
+
+[ext_resource type="Script" uid="uid://c38mnhu82p6pd" path="res://Scripts/ComponentScripts/trail_component.gd" id="1_wtnol"]
+
+[sub_resource type="Curve" id="Curve_r5ice"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 2.26699, 0, 0, Vector2(1, 2), 2.32887, 0.0, 0, 0]
+point_count = 2
+
+[node name="TrailComponent" type="Line2D"]
+show_behind_parent = true
+top_level = true
+width_curve = SubResource("Curve_r5ice")
+script = ExtResource("1_wtnol")
+max_points = 5

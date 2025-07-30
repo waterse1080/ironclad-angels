@@ -1,0 +1,174 @@
+[gd_scene load_steps=21 format=3 uid="uid://bf2276t61o8ja"]
+
+[ext_resource type="Script" uid="uid://cby4cflb378l" path="res://Scripts/Enemies/Bugs/pill_bug_enemy.gd" id="1_pl8cy"]
+[ext_resource type="Texture2D" uid="uid://c7agxjn1urdym" path="res://Assets/Images/SpriteSheets/Animations/enemies/alien_pill_bug.png" id="2_xtguh"]
+[ext_resource type="Script" uid="uid://d18levtavdqhi" path="res://Scripts/ComponentScripts/HitBox.gd" id="3_l06v1"]
+[ext_resource type="Script" uid="uid://clpxtcfre43xh" path="res://Scripts/ComponentScripts/HurtBox.gd" id="4_s5y42"]
+[ext_resource type="Script" uid="uid://dgplhh06wmsnq" path="res://Scripts/ComponentScripts/HealthComponent.gd" id="5_qp5wi"]
+[ext_resource type="Script" uid="uid://cfdggjkh5asx8" path="res://Scripts/ComponentScripts/terrain_detection_component.gd" id="6_xtguh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41vlb"]
+atlas = ExtResource("2_xtguh")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irukf"]
+atlas = ExtResource("2_xtguh")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo76a"]
+atlas = ExtResource("2_xtguh")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv5ji"]
+atlas = ExtResource("2_xtguh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwq3g"]
+atlas = ExtResource("2_xtguh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ifdl"]
+atlas = ExtResource("2_xtguh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2x7d"]
+atlas = ExtResource("2_xtguh")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdu7u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41vlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irukf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo76a")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv5ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwq3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ifdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2x7d")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kv5dn"]
+radius = 25.0
+height = 90.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_twm13"]
+radius = 25.0
+height = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqaah"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mnajd"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xtguh"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l06v1"]
+radius = 9.0
+
+[node name="PillBugEnemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_pl8cy")
+roll_duration = 2.0
+roll_speed_mult = 4.0
+roll_turn_speed_mult = 0.01
+roll_start_distance = 500.0
+SPEED = 150.0
+DAMAGE = 100.0
+DEATH_SFX = "EnemyDeathSFX"
+ATTACK_HIT_SFX = "EnemyImpactSFX"
+turn_speed_mult = 4.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_hdu7u")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.582032
+
+[node name="HitBox_walk" type="Area2D" parent="."]
+collision_layer = 4
+script = ExtResource("3_l06v1")
+metadata/_custom_type_script = "uid://d18levtavdqhi"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox_walk"]
+shape = SubResource("CapsuleShape2D_kv5dn")
+
+[node name="HurtBox_walk" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_s5y42")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://clpxtcfre43xh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox_walk"]
+shape = SubResource("CapsuleShape2D_twm13")
+
+[node name="HitBox_roll" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+script = ExtResource("3_l06v1")
+metadata/_custom_type_script = "uid://d18levtavdqhi"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox_roll"]
+shape = SubResource("CircleShape2D_dqaah")
+
+[node name="HurtBox_roll" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+visible = false
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_s5y42")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://clpxtcfre43xh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox_roll"]
+shape = SubResource("CircleShape2D_mnajd")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_qp5wi")
+max_health = 150.0
+metadata/_custom_type_script = "uid://dgplhh06wmsnq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xtguh")
+
+[node name="DamageNumbersOrigin" type="Marker2D" parent="."]
+
+[node name="TerrainDetectionComponent" type="Area2D" parent="."]
+collision_mask = 48
+script = ExtResource("6_xtguh")
+terrain_speed_mods = Array[float]([1.0, 1.0, 0.85, 0.5])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetectionComponent"]
+shape = SubResource("CircleShape2D_l06v1")
+
+[connection signal="area_entered" from="HitBox_walk" to="HitBox_walk" method="_on_area_entered"]
+[connection signal="hitbox_triggered" from="HitBox_walk" to="." method="_on_hit_box_hitbox_triggered"]
+[connection signal="area_entered" from="HitBox_roll" to="HitBox_roll" method="_on_area_entered"]
+[connection signal="hitbox_triggered" from="HitBox_roll" to="." method="_on_hit_box_hitbox_triggered"]
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="hurt" from="HealthComponent" to="." method="_on_health_component_hurt"]

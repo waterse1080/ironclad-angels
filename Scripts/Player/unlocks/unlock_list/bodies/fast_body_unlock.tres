@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Unlock" load_steps=2 format=3 uid="uid://b0desrfoo0n8j"]
+
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="1_28p2p"]
+
+[resource]
+script = ExtResource("1_28p2p")
+display_name = "Road Runner"
+description = "More nimble than most. Stick to the roads to keep your speed advantage."
+unlock_type = 1
+unlock_price = 1000.0
+unlock_node_path = "res://Scenes/Player/Bodies/light_body.tscn"

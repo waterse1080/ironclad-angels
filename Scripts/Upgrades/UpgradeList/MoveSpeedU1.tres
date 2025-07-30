@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MoveSpeedUpgrade" load_steps=2 format=3 uid="uid://ckt7yvnvdk5up"]
+
+[ext_resource type="Script" uid="uid://x0x6rbko3ln2" path="res://Scripts/Upgrades/UpgradeScripts/MoveSpeedUpgrade.gd" id="1_4rglt"]
+
+[resource]
+script = ExtResource("1_4rglt")
+SPEED_INCREASE = 50.0
+name = "Engine Tune Up"
+description = "[color=green]+$[/color] chassis move speed."
+icon_row_column = Vector2i(0, 3)
+upgrade_tags = Array[int]([13])
+required_tags = Array[int]([])
+max_upgrade_count = -1

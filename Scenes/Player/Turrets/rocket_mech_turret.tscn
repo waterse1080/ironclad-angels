@@ -1,0 +1,122 @@
+[gd_scene load_steps=13 format=3 uid="uid://lx47eaxyp3n"]
+
+[ext_resource type="Script" uid="uid://dfkg6b3p44eqt" path="res://Scripts/Player/Turrets/rocket_mech_turret.gd" id="1_l18yq"]
+[ext_resource type="Texture2D" uid="uid://ba5ubpjrvgsln" path="res://Assets/Images/sprites/Player/rocket_mech/mech_2_turret.png" id="1_r2e7p"]
+[ext_resource type="Texture2D" uid="uid://x7lw5src1g6d" path="res://Assets/Images/SpriteSheets/UI/Spritesheet_Animation_UI_Hologram_Select_01a_.png" id="2_l18yq"]
+[ext_resource type="PackedScene" uid="uid://dtl5je76e54xq" path="res://Scenes/Components/ammo_tracker_component.tscn" id="3_omjvv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4tx0"]
+atlas = ExtResource("2_l18yq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jggcv"]
+atlas = ExtResource("2_l18yq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bj12"]
+atlas = ExtResource("2_l18yq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndaed"]
+atlas = ExtResource("2_l18yq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ygepj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4tx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jggcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bj12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndaed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndaed")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_aeja3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ho003"]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5w0ie"]
+_data = {
+&"RESET": SubResource("Animation_aeja3"),
+&"reload": SubResource("Animation_ho003")
+}
+
+[node name="RocketMechTurret" type="Node2D" node_paths=PackedStringArray("missile_spawn_points")]
+use_parent_material = true
+script = ExtResource("1_l18yq")
+missile_spawn_points = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
+base_load_time = 0.1
+base_damage = 40.0
+bullet_sfx = "MissileFireSFX"
+missle_scale = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -2.5)
+scale = Vector2(5, 5)
+texture = ExtResource("1_r2e7p")
+hframes = 6
+
+[node name="Aim" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.435294)
+z_index = 999
+position = Vector2(0, -300)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_ygepj")
+animation = &"fire"
+
+[node name="AmmoTrackerComponent" parent="." instance=ExtResource("3_omjvv")]
+starting_max_ammo = 6.0
+reload_start_sfx = "DefaultTurretReloadStartSFX"
+reload_end_sfx = "DefaultTurretReloadEndSFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5w0ie")
+}
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-40, -15.5)
+
+[node name="SpawnPoint2" type="Marker2D" parent="."]
+position = Vector2(40, -15.5)

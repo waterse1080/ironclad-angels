@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://8qluyde76pq8"]
+
+[ext_resource type="Script" uid="uid://chaj4jyjrftdp" path="res://Scripts/Player/Projectiles/missile.gd" id="1_irymc"]
+[ext_resource type="Texture2D" uid="uid://csec4jxl6tvef" path="res://Assets/Images/SpriteSheets/Animations/Rocket-1.png" id="2_qdt8c"]
+[ext_resource type="Script" uid="uid://d18levtavdqhi" path="res://Scripts/ComponentScripts/HitBox.gd" id="3_i7dar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xx3a3"]
+size = Vector2(20, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0ua2"]
+atlas = ExtResource("2_qdt8c")
+region = Rect2(1, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdhyh"]
+atlas = ExtResource("2_qdt8c")
+region = Rect2(17, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6owsq"]
+atlas = ExtResource("2_qdt8c")
+region = Rect2(33, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g41f0"]
+atlas = ExtResource("2_qdt8c")
+region = Rect2(49, 0, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i22po"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0ua2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdhyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6owsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g41f0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[node name="Missile" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_irymc")
+LAUNCH_SFX = "MissileFireSFX"
+SPEED = 500.0
+TURN_SPEED = 5.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_xx3a3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_i22po")
+autoplay = "default"
+frame_progress = 0.954959
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_i7dar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_xx3a3")
+
+[connection signal="area_entered" from="HitBox" to="HitBox" method="_on_area_entered"]
+[connection signal="hitbox_triggered" from="HitBox" to="." method="_on_hit_box_hitbox_triggered"]

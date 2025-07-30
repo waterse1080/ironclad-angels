@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo647llvmmppv"]
+
+[ext_resource type="Script" uid="uid://bdsn1jdnoesgx" path="res://Scripts/GameObjects/tile_object_swapper.gd" id="1_pbyny"]
+
+[node name="TileObjectSwapper" type="Node"]
+script = ExtResource("1_pbyny")

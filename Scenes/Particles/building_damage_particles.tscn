@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3ddgkvvuh2ao"]
+
+[ext_resource type="Script" uid="uid://cq7wx7kobl5xw" path="res://Scripts/Particles/persistent_particle_trail.gd" id="1_64cce"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8v8h7"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_wf1jm"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.0680938), 0.0, 14.2176, 0, 0, Vector2(0.503623, 4.89181), 0.0, 0.0, 0, 0, Vector2(1, 0), -11.9737, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_rouqw"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.12549)
+metadata/_snap_enabled = true
+
+[node name="BuildingDamageParticles" type="CPUParticles2D"]
+z_index = 99
+material = SubResource("CanvasItemMaterial_8v8h7")
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+randomness = 1.0
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+scale_amount_min = 0.75
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_wf1jm")
+color = Color(0.485703, 0.485704, 0.485703, 1)
+color_ramp = SubResource("Gradient_rouqw")
+anim_speed_min = 0.75
+anim_speed_max = 1.25
+script = ExtResource("1_64cce")

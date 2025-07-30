@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SaveData" load_steps=7 format=3 uid="uid://d5tkodkoci13"]
+
+[ext_resource type="Script" uid="uid://b6dlspmyybipd" path="res://Scripts/RunData/run_data.gd" id="1_j4eem"]
+[ext_resource type="Script" uid="uid://106sf2lxmmgq" path="res://Scripts/SaveData/save_data.gd" id="2_nfnqg"]
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="3_7doxq"]
+[ext_resource type="Resource" uid="uid://bs5lbs1b0q6q8" path="res://Scripts/Player/unlocks/unlock_list/turrets/default_turret_unlock.tres" id="4_oauch"]
+[ext_resource type="Resource" uid="uid://b0pdhq80ufv8i" path="res://Scripts/Player/unlocks/unlock_list/bodies/default_body_unlock.tres" id="5_5tc3b"]
+[ext_resource type="Resource" uid="uid://cwnq6nkq20kja" path="res://Scripts/Player/unlocks/unlock_list/copilots/empty_copilot_unlock.tres" id="6_ey5vg"]
+
+[resource]
+script = ExtResource("2_nfnqg")
+unlocked_parts = Array[ExtResource("3_7doxq")]([ExtResource("4_oauch"), ExtResource("5_5tc3b"), ExtResource("6_ey5vg")])
+last_used_parts = Array[ExtResource("3_7doxq")]([])
+research_points = 0
+run_list = Array[ExtResource("1_j4eem")]([])

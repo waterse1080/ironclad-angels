@@ -1,0 +1,496 @@
+[gd_scene load_steps=72 format=3 uid="uid://cuk3qcmcn3tj4"]
+
+[ext_resource type="Script" uid="uid://dbns356gek6a6" path="res://Scripts/sound_manager.gd" id="1_4ub3d"]
+[ext_resource type="AudioStream" uid="uid://bri7qo8r0gvpi" path="res://Assets/Audio/SFX/Pickups/Retro PickUp Coin 11.wav" id="2_b8eh7"]
+[ext_resource type="AudioStream" uid="uid://bjdrx20xnap0d" path="res://Assets/Audio/SFX/environment/Retro Descending Short 18.wav" id="3_0obnn"]
+[ext_resource type="AudioStream" uid="uid://bq2xxtjauem5e" path="res://Assets/Audio/SFX/Player/Retro Vehicle Motor 01.wav" id="3_ee5f5"]
+[ext_resource type="AudioStream" uid="uid://dly1fkms01lp" path="res://Assets/Audio/SFX/Pickups/Retro PickUp 15.wav" id="3_in8gu"]
+[ext_resource type="AudioStream" uid="uid://dublpy3xw3j4r" path="res://Assets/Audio/SFX/Pickups/Retro Passing Airplane 02.wav" id="3_pejof"]
+[ext_resource type="AudioStream" uid="uid://cyi7uoye8ny1u" path="res://Assets/Audio/SFX/Pickups/Retro PickUp Coin 10.wav" id="3_yv8jb"]
+[ext_resource type="AudioStream" uid="uid://c1803b8wk38me" path="res://Assets/Audio/SFX/Pickups/Retro PickUp StereoUP 01.wav" id="4_o4lx3"]
+[ext_resource type="AudioStream" uid="uid://da2eisx3sqku0" path="res://Assets/Audio/SFX/Enemies/Retro Impact 17.wav" id="5_34f60"]
+[ext_resource type="AudioStream" uid="uid://dl1thovu06gab" path="res://Assets/Audio/SFX/Player/Retro Impact 09.wav" id="5_hcmkm"]
+[ext_resource type="AudioStream" uid="uid://cyrdvmi8k1hpq" path="res://Assets/Audio/SFX/Player/Retro Explosion Short 14.wav" id="6_0u58t"]
+[ext_resource type="AudioStream" uid="uid://csdwr34g8vcor" path="res://Assets/Audio/SFX/Player/Retro Impact Metal 18.wav" id="6_cpm71"]
+[ext_resource type="AudioStream" uid="uid://mlcqojmga4ol" path="res://Assets/Audio/SFX/Enemies/Retro Roar 06.wav" id="6_k82wx"]
+[ext_resource type="AudioStream" uid="uid://d3cq1m7guacej" path="res://Assets/Audio/SFX/Player/Retro Impact Metal 34.wav" id="7_6xyx6"]
+[ext_resource type="AudioStream" uid="uid://cevi13wt5qlqp" path="res://Assets/Audio/SFX/Player/Retro Explosion Swoshes 05.wav" id="9_7aa7v"]
+[ext_resource type="AudioStream" uid="uid://b0ukw2prd68mh" path="res://Assets/Audio/SFX/Player/Fire/Retro Explosion Short 03.wav" id="10_3r76m"]
+[ext_resource type="AudioStream" uid="uid://b8qjs1vpqdsx8" path="res://Assets/Audio/SFX/Player/Retro Explosion Short 11.wav" id="10_4ioa3"]
+[ext_resource type="AudioStream" uid="uid://co22oqvatytpa" path="res://Assets/Audio/SFX/Player/Retro Impact Metal 17.wav" id="10_bslgn"]
+[ext_resource type="AudioStream" uid="uid://caipgqf78185w" path="res://Assets/Audio/SFX/Player/Fire/Retro Explosion Short 20.wav" id="11_5o24u"]
+[ext_resource type="AudioStream" uid="uid://14uo664wmha4" path="res://Assets/Audio/SFX/Enemies/Retro Explosion Short 03.wav" id="12_lk2qy"]
+[ext_resource type="AudioStream" uid="uid://cgymmbgwt7cyg" path="res://Assets/Audio/SFX/Player/railgun/Retro Charge 18.wav" id="12_sarlu"]
+[ext_resource type="AudioStream" uid="uid://c847gotitguqi" path="res://Assets/Audio/SFX/Player/sword/Retro Swooosh 15.wav" id="12_uiuru"]
+[ext_resource type="AudioStream" uid="uid://bb8ydnn0vjknc" path="res://Assets/Audio/SFX/Player/sword/Retro Swooosh 06.wav" id="13_egsh4"]
+[ext_resource type="AudioStream" uid="uid://vm22fmitvrp5" path="res://Assets/Audio/SFX/Enemies/Retro Explosion Short 02.wav" id="13_jkcep"]
+[ext_resource type="AudioStream" uid="uid://beobylxurmst7" path="res://Assets/Audio/SFX/Player/railgun/Retro Weapon Laser 11.wav" id="13_sd0ky"]
+[ext_resource type="AudioStream" uid="uid://dmratkb1485f2" path="res://Assets/Audio/SFX/Player/shotgun/Retro Gun SingleShot 22.wav" id="14_06b40"]
+[ext_resource type="AudioStream" uid="uid://cje37714seukp" path="res://Assets/Audio/SFX/Player/Retro Impact LoFi 01.wav" id="14_veqqy"]
+[ext_resource type="AudioStream" uid="uid://ctwndatoburhe" path="res://Assets/Audio/SFX/Player/shotgun/Retro Weapon Reload Best C 01.wav" id="15_b053i"]
+[ext_resource type="AudioStream" uid="uid://yjknwwflruwt" path="res://Assets/Audio/SFX/Player/shotgun/Retro Weapon Reload Best B 01.wav" id="15_eyu82"]
+[ext_resource type="AudioStream" uid="uid://72g7fho8h4ls" path="res://Assets/Audio/SFX/Player/stinger/Retro Weapon Laser 02.wav" id="17_7ahfj"]
+[ext_resource type="AudioStream" uid="uid://dhuom11p53hdi" path="res://Assets/Audio/SFX/Player/stinger/Retro Weapon Reload Pistol 01.wav" id="18_dses1"]
+[ext_resource type="AudioStream" uid="uid://cb7rid5ss6fkg" path="res://Assets/Audio/SFX/Player/stinger/Retro Weapon Laser 01.wav" id="18_ucv4y"]
+[ext_resource type="AudioStream" uid="uid://cil7422cmty3c" path="res://Assets/Audio/SFX/Player/stinger/Retro Weapon Reload Plasma 05.wav" id="19_7rmef"]
+[ext_resource type="AudioStream" uid="uid://j7kkfbqhewui" path="res://Assets/Audio/SFX/Player/Retro Explosion Short 10.wav" id="26_fh0db"]
+[ext_resource type="AudioStream" uid="uid://brq16v55ihjwl" path="res://Assets/Audio/SFX/Player/stinger/Retro Explosion Short 20.wav" id="27_b3n0j"]
+[ext_resource type="AudioStream" uid="uid://dei4buqoqaetu" path="res://Assets/Audio/SFX/Player/Retro Explosion Short 13.wav" id="27_sr221"]
+[ext_resource type="AudioStream" uid="uid://owdrim70krcj" path="res://Assets/Audio/SFX/Player/stinger/Retro Explosion Short 21.wav" id="29_j8hvv"]
+[ext_resource type="AudioStream" uid="uid://jeyajs6jm61w" path="res://Assets/Audio/SFX/Player/default_turret/Retro Weapon Reload Best D 03.wav" id="31_1uqdo"]
+[ext_resource type="AudioStream" uid="uid://4qxmk6g6i2so" path="res://Assets/Audio/SFX/Player/default_turret/Retro Weapon Reload Best E 02.wav" id="32_veoy4"]
+[ext_resource type="AudioStream" uid="uid://d1a7onraxsnvc" path="res://Assets/Audio/SFX/Player/default_turret/Retro Weapon Reload Best C 03.wav" id="33_lynto"]
+[ext_resource type="AudioStream" uid="uid://buke7s6hudkoo" path="res://Assets/Audio/SFX/environment/Retro Explosion Short 01.wav" id="34_iah5k"]
+[ext_resource type="AudioStream" uid="uid://dq7y4h84noh5b" path="res://Assets/Audio/SFX/Enemies/Retro Roar 10.wav" id="34_u367u"]
+[ext_resource type="AudioStream" uid="uid://r7owydtyo6dm" path="res://Assets/Audio/SFX/environment/Retro Explosion Short 05.wav" id="35_s4e5j"]
+[ext_resource type="AudioStream" uid="uid://bnebvna3jvh6o" path="res://Assets/Audio/SFX/Enemies/worm/Retro Roar 04.wav" id="35_wqfjf"]
+[ext_resource type="AudioStream" uid="uid://bwouimwa0rho4" path="res://Assets/Audio/SFX/Enemies/worm/Retro Roar 08.wav" id="36_18sl8"]
+[ext_resource type="AudioStream" uid="uid://fqrf5pxoqxa0" path="res://Assets/Audio/SFX/environment/Retro Explosion Short 07.wav" id="36_58ajq"]
+[ext_resource type="AudioStream" uid="uid://mnnt17eih3r" path="res://Assets/Audio/SFX/Enemies/worm/Retro Roar 07.wav" id="37_37vwh"]
+[ext_resource type="AudioStream" uid="uid://lwc46urbggyg" path="res://Assets/Audio/SFX/ui/Retro Event UI 09.wav" id="40_2bydd"]
+[ext_resource type="AudioStream" uid="uid://6h2i3k6m7hqe" path="res://Assets/Audio/SFX/ui/Retro Event UI 10.wav" id="41_dliyj"]
+[ext_resource type="AudioStream" uid="uid://dtqc37j4tbtsg" path="res://Assets/Audio/SFX/ui/Retro Event UI 07.wav" id="42_1qku5"]
+[ext_resource type="AudioStream" uid="uid://cxg5qeayl6xa0" path="res://Assets/Audio/SFX/Player/Retro Event 17.wav" id="43_g2ui2"]
+[ext_resource type="AudioStream" uid="uid://cmuqjh3u1f120" path="res://Assets/Audio/SFX/Player/lightning/Retro Electric Short 05.wav" id="45_aqs2n"]
+[ext_resource type="AudioStream" uid="uid://cy41idl0lecop" path="res://Assets/Audio/SFX/Player/lightning/Retro Electric Short 07.wav" id="46_tmsks"]
+[ext_resource type="AudioStream" uid="uid://dfuaksbewneya" path="res://Assets/Audio/SFX/Player/lightning/Retro Electric Short 09.wav" id="47_ejcxv"]
+[ext_resource type="AudioStream" uid="uid://ciuvbhme5u0xf" path="res://Assets/Audio/SFX/Player/lightning/Retro Electric Short 11.wav" id="48_a7x5m"]
+[ext_resource type="AudioStream" uid="uid://ba51ru0kkpy6" path="res://Assets/Audio/SFX/Player/lightning/Retro Electric Short 13.wav" id="49_ycln1"]
+[ext_resource type="AudioStream" uid="uid://dr3dyg1kkh0g6" path="res://Assets/Audio/SFX/Player/lightning/Retro Electric Short 16.wav" id="50_ke448"]
+[ext_resource type="AudioStream" uid="uid://6t85lx8pq6fn" path="res://Assets/Audio/voice/eliot/eliot_spawn_1.wav" id="56_pj801"]
+[ext_resource type="AudioStream" uid="uid://bnj0b33b1m00k" path="res://Assets/Audio/voice/eliot/eliot_spawn_2.wav" id="57_e2b16"]
+[ext_resource type="AudioStream" uid="uid://bmyq64emctcar" path="res://Assets/Audio/voice/eliot/eliot_spawn_3.wav" id="58_cuyrm"]
+[ext_resource type="AudioStream" uid="uid://dlcf6dr2fpae" path="res://Assets/Audio/voice/eliot/eliot_grunt_1.wav" id="59_1uuyp"]
+[ext_resource type="AudioStream" uid="uid://b6w6wbg0gyiwc" path="res://Assets/Audio/voice/eliot/eliot_grunt_2.wav" id="60_pyuoq"]
+[ext_resource type="AudioStream" uid="uid://t8qs44w21p5" path="res://Assets/Audio/voice/eliot/eliot_grunt_3.wav" id="61_i1yox"]
+[ext_resource type="AudioStream" uid="uid://byrqermpjql73" path="res://Assets/Audio/voice/Wilhelm Scream Remastered.wav" id="61_pj801"]
+[ext_resource type="AudioStream" uid="uid://bq2mhvxmqyj4w" path="res://Assets/Audio/voice/max/max_spawn_1.wav" id="62_a3tf7"]
+[ext_resource type="AudioStream" uid="uid://cog7xr2dfj12o" path="res://Assets/Audio/voice/max/max_spawn_2.wav" id="63_g2ui2"]
+[ext_resource type="AudioStream" uid="uid://co85d05nahc3m" path="res://Assets/Audio/voice/max/max_spawn_3.wav" id="64_0obnn"]
+[ext_resource type="AudioStream" uid="uid://bhmgq2x0qmyho" path="res://Assets/Audio/voice/max/max_grunt_1.wav" id="65_yv8jb"]
+[ext_resource type="AudioStream" uid="uid://dltt3p4jiyt1s" path="res://Assets/Audio/voice/max/max_grunt_2.wav" id="66_4c6x2"]
+[ext_resource type="AudioStream" uid="uid://86tktb1nca8r" path="res://Assets/Audio/voice/max/max_grunt_3.wav" id="67_xxslv"]
+[ext_resource type="AudioStream" uid="uid://c466grfjmk7cb" path="res://Assets/Audio/voice/max/max_grunt_4.wav" id="68_qum4v"]
+
+[node name="SoundManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_4ub3d")
+
+[node name="XpPickupSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b8eh7")
+volume_db = -12.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="OtherPickupSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yv8jb")
+volume_db = -12.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="BombFallSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0obnn")
+volume_db = -12.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="PlayerBoostSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ee5f5")
+volume_db = -12.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="BomberRunSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pejof")
+volume_db = -15.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="HealthPickupSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_in8gu")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="LevelUpSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o4lx3")
+volume_db = -18.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="BulletImpactSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hcmkm")
+volume_db = -16.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="BulletBounceSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cpm71")
+volume_db = -24.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="EnemyImpactSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_34f60")
+volume_db = -20.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="PlayerDamageSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_6xyx6")
+volume_db = -20.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="BulletFireSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0u58t")
+volume_db = -18.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="FireFireSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_3r76m")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="FireHitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_5o24u")
+volume_db = -20.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="RailgunChargeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_sarlu")
+volume_db = -15.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="RailgunFireSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_sd0ky")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="ShotgunFireSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_06b40")
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="ShotgunUnloadSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_b053i")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="ShotgunLoadSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_eyu82")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="StingerFireSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_7ahfj")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="StingerHitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_ucv4y")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="StingerReloadStartSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_dses1")
+volume_db = -2.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="StingerReloadEndSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_7rmef")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="SwordSwingSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_uiuru")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="SwordHitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_egsh4")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="SawHitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_veqqy")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="ShellEjectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bslgn")
+volume_db = -30.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="MissileFireSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_7aa7v")
+volume_db = -25.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="MissileExplosionSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_fh0db")
+volume_db = -15.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="MissileExplosionSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4ioa3")
+volume_db = -15.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="MissileExplosionSFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_sr221")
+volume_db = -15.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="StingerExplosionSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_b3n0j")
+volume_db = -12.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="StingerExplosionSFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_j8hvv")
+volume_db = -12.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="EnemyDeathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_k82wx")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="FlyingBugDeathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_u367u")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="WormSpawnSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_wqfjf")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="WormSegmentDeathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_18sl8")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="WormHeadDeathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_37vwh")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="EnemyProjectileFireSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_lk2qy")
+volume_db = -20.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="EnemyProjectileHitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_jkcep")
+volume_db = -20.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="DefaultTurretReloadStartSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_1uqdo")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="DefaultTurretReloadEndSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_veoy4")
+volume_db = -14.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="DefaultTurretEjectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_lynto")
+volume_db = -20.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="LandminePlaceSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("43_g2ui2")
+volume_db = -15.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="BuildingDestroySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_iah5k")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="BuildingDestroySFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_s4e5j")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="BuildingDestroySFX3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_58ajq")
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="UiInteractionSFX" type="Node" parent="."]
+
+[node name="UiInteractSFX" type="AudioStreamPlayer" parent="UiInteractionSFX"]
+stream = ExtResource("40_2bydd")
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="UiMouseEnteredSFX" type="AudioStreamPlayer" parent="UiInteractionSFX"]
+stream = ExtResource("41_dliyj")
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="UiFocusEnteredSFX" type="AudioStreamPlayer" parent="UiInteractionSFX"]
+stream = ExtResource("41_dliyj")
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="UiInputAcceptedSFX" type="AudioStreamPlayer" parent="UiInteractionSFX"]
+stream = ExtResource("42_1qku5")
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="LightningSFX" type="Node" parent="."]
+
+[node name="LightningSFX1" type="AudioStreamPlayer" parent="LightningSFX"]
+stream = ExtResource("45_aqs2n")
+volume_db = -20.0
+bus = &"Game SFX"
+
+[node name="LightningSFX2" type="AudioStreamPlayer" parent="LightningSFX"]
+stream = ExtResource("46_tmsks")
+volume_db = -20.0
+bus = &"Game SFX"
+
+[node name="LightningSFX3" type="AudioStreamPlayer" parent="LightningSFX"]
+stream = ExtResource("47_ejcxv")
+volume_db = -20.0
+bus = &"Game SFX"
+
+[node name="LightningSFX4" type="AudioStreamPlayer" parent="LightningSFX"]
+stream = ExtResource("48_a7x5m")
+volume_db = -20.0
+bus = &"Game SFX"
+
+[node name="LightningSFX5" type="AudioStreamPlayer" parent="LightningSFX"]
+stream = ExtResource("49_ycln1")
+volume_db = -20.0
+bus = &"Game SFX"
+
+[node name="LightningSFX6" type="AudioStreamPlayer" parent="LightningSFX"]
+stream = ExtResource("50_ke448")
+volume_db = -20.0
+bus = &"Game SFX"
+
+[node name="Voices" type="Node" parent="."]
+
+[node name="Eliot" type="Node" parent="Voices"]
+
+[node name="EliotSpawnVO1" type="AudioStreamPlayer" parent="Voices/Eliot"]
+stream = ExtResource("56_pj801")
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="EliotSpawnVO2" type="AudioStreamPlayer" parent="Voices/Eliot"]
+stream = ExtResource("57_e2b16")
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="EliotSpawnVO3" type="AudioStreamPlayer" parent="Voices/Eliot"]
+stream = ExtResource("58_cuyrm")
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="EliotGruntVO1" type="AudioStreamPlayer" parent="Voices/Eliot"]
+stream = ExtResource("59_1uuyp")
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="EliotGruntVO2" type="AudioStreamPlayer" parent="Voices/Eliot"]
+stream = ExtResource("60_pyuoq")
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="EliotGruntVO3" type="AudioStreamPlayer" parent="Voices/Eliot"]
+stream = ExtResource("61_i1yox")
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="WilhelmScream" type="AudioStreamPlayer" parent="Voices"]
+stream = ExtResource("61_pj801")
+volume_db = -20.0
+max_polyphony = 2
+bus = &"Game SFX"
+
+[node name="Max" type="Node" parent="Voices"]
+
+[node name="MaxSpawnVO1" type="AudioStreamPlayer" parent="Voices/Max"]
+stream = ExtResource("62_a3tf7")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="MaxSpawnVO2" type="AudioStreamPlayer" parent="Voices/Max"]
+stream = ExtResource("63_g2ui2")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="MaxSpawnVO3" type="AudioStreamPlayer" parent="Voices/Max"]
+stream = ExtResource("64_0obnn")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="MaxGruntVO1" type="AudioStreamPlayer" parent="Voices/Max"]
+stream = ExtResource("65_yv8jb")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="MaxGruntVO2" type="AudioStreamPlayer" parent="Voices/Max"]
+stream = ExtResource("66_4c6x2")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="MaxGruntVO3" type="AudioStreamPlayer" parent="Voices/Max"]
+stream = ExtResource("67_xxslv")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Voice"
+
+[node name="MaxGruntVO4" type="AudioStreamPlayer" parent="Voices/Max"]
+stream = ExtResource("68_qum4v")
+volume_db = -5.0
+max_polyphony = 2
+bus = &"Voice"

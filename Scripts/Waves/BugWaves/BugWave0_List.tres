@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WaveList" load_steps=4 format=3 uid="uid://324ta5tytlt7"]
+
+[ext_resource type="Script" uid="uid://bh0vreivbo2d0" path="res://Scripts/Waves/wave.gd" id="1_77tw6"]
+[ext_resource type="Resource" uid="uid://bqsr7n0jmbw75" path="res://Scripts/Waves/BugWaves/BugWave0_1.tres" id="2_2oo05"]
+[ext_resource type="Script" uid="uid://blf8jda7yhjtg" path="res://Scripts/Waves/wave_list.gd" id="3_v0q1e"]
+
+[resource]
+script = ExtResource("3_v0q1e")
+WAVES = Array[ExtResource("1_77tw6")]([ExtResource("2_2oo05")])
+DANGER_COLOR = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://blf8jda7yhjtg"

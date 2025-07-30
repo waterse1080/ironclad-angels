@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0l4asxafrxag"]
+
+[ext_resource type="Script" uid="uid://dcsecntk2h7kj" path="res://Scripts/ComponentScripts/reactive_armor_component.gd" id="1_3gwbh"]
+
+[node name="ReactiveArmorComponent" type="Node"]
+script = ExtResource("1_3gwbh")
+metadata/_custom_type_script = "uid://dcsecntk2h7kj"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BounceBulletUpgrade" load_steps=2 format=3 uid="uid://c27c8yqpa1q54"]
+
+[ext_resource type="Script" uid="uid://ii7nqn68p3t3" path="res://Scripts/Upgrades/UpgradeScripts/BounceBulletUpgrade.gd" id="1_8m1cc"]
+
+[resource]
+script = ExtResource("1_8m1cc")
+BOUNCE_COUNT = 1
+BOUNCE_DAMAGE_MULT = 0.8
+RICOCHET_SFX = "BulletBounceSFX"
+name = "Ricochet"
+description = "Projectiles bounce to [color=green]+$1[/color] random target per copy. 
+Damage is decreased by [color=red]-$2%[/color] after each bounce."
+icon_row_column = Vector2i(3, 1)
+upgrade_tags = Array[int]([4, 0])
+required_tags = Array[int]([])
+max_upgrade_count = -1

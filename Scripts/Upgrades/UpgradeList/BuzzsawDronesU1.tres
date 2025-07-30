@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuzzSawUpgrade" load_steps=2 format=3 uid="uid://c3iv6ax8qh5nv"]
+
+[ext_resource type="Script" uid="uid://cvwu5sahsyc06" path="res://Scripts/Upgrades/UpgradeScripts/buzzsaw_drone_upgrade.gd" id="1_qqu3a"]
+
+[resource]
+script = ExtResource("1_qqu3a")
+distance = 200.0
+damage = 100.0
+orbit_speed = 1.0
+name = "Buzzsaw Drones"
+description = "Gain an orbiting drone that deals $ damage.
+[color=green]+1[/color] drone per copy."
+icon_row_column = Vector2i(2, 0)
+upgrade_tags = Array[int]([17, 18])
+required_tags = Array[int]([])
+max_upgrade_count = -1

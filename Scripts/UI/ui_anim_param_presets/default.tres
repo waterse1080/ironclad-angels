@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UiAnimationParamResource" load_steps=2 format=3 uid="uid://n6jo0wdpy45r"]
+
+[ext_resource type="Script" uid="uid://pb3hbsxb2mmu" path="res://Scripts/UI/ui_animation_param_resource.gd" id="1_lmlgr"]
+
+[resource]
+script = ExtResource("1_lmlgr")
+from_center = true
+hover_scale = Vector2(1.05, 1.05)
+time = 0.2
+transition_type = 10
+interact = "UiInteractSFX"
+mouse_entered = "UiMouseEnteredSFX"
+focus_entered = "UiFocusEnteredSFX"
+input_accepted = "UiInputAcceptedSFX"

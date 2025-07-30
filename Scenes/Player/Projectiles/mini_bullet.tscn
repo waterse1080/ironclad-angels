@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://5syonc0hfhtt"]
+
+[ext_resource type="Script" uid="uid://w3yxgecbvfvp" path="res://Scripts/Player/Projectiles/proto_bullet.gd" id="1_jurpc"]
+[ext_resource type="Texture2D" uid="uid://b3dub31saem7w" path="res://Assets/Images/sprites/Player/RapidFireTank/Tank-2-shell-anim.png" id="2_llj53"]
+[ext_resource type="PackedScene" uid="uid://daypi6b0l1qgi" path="res://Scenes/Components/hit_box.tscn" id="3_71qkf"]
+[ext_resource type="PackedScene" uid="uid://didru1nvdi4jf" path="res://Scenes/Components/trail_component.tscn" id="4_y6usv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hq7x"]
+size = Vector2(5.03245, 9.93247)
+
+[sub_resource type="Curve" id="Curve_gh256"]
+_data = [Vector2(0, 0.497074), 0.0, 0.0, 0, 0, Vector2(0.998227, 0), -0.812709, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xqprk"]
+offsets = PackedFloat32Array(0.0019084, 1)
+colors = PackedColorArray(1, 0.933333, 0.513726, 1, 1, 0.537255, 0.2, 1)
+
+[node name="MiniBullet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+safe_margin = 9.015
+script = ExtResource("1_jurpc")
+DAMAGE = 4.0
+CRIT_MULT = 1.5
+SPEED = 1500.0
+IMPACT_SFX = "BulletImpactSFX"
+TIME_UNTIL_CLEANUP = 0.5
+KNOCKBACK_POWER = 200.0
+hit_scale_mult = 2.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5.08875)
+scale = Vector2(5, 5)
+texture = ExtResource("2_llj53")
+region_enabled = true
+region_rect = Rect2(1, 0, 1, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_3hq7x")
+
+[node name="HitBox" parent="." instance=ExtResource("3_71qkf")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0.0425377, -5.05486)
+shape = SubResource("RectangleShape2D_3hq7x")
+
+[node name="TrailComponent" parent="." instance=ExtResource("4_y6usv")]
+width_curve = SubResource("Curve_gh256")
+gradient = SubResource("Gradient_xqprk")
+max_points = 3
+
+[connection signal="hitbox_triggered" from="HitBox" to="." method="_on_hit_box_hitbox_triggered"]

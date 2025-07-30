@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ShotSpreadUpgrade" load_steps=2 format=3 uid="uid://ya80k48v5rjh"]
+
+[ext_resource type="Script" uid="uid://baxuxcbu2kjbt" path="res://Scripts/Upgrades/UpgradeScripts/ShotSpreadUpgrade.gd" id="1_oyuos"]
+
+[resource]
+script = ExtResource("1_oyuos")
+SHOT_COUNT = 1
+SHOT_SPREAD = 5.0
+DAMAGE_MULT = 0.85
+name = "Shot Spread"
+description = "[color=green]+$1[/color] projectile shot count.
+[color=red]-$2%[/color] projectile damage.
+"
+icon_row_column = Vector2i(1, 1)
+upgrade_tags = Array[int]([10, 0])
+required_tags = Array[int]([])
+max_upgrade_count = -1

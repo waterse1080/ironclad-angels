@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://docuf4hxku0g4"]
+
+[ext_resource type="Script" uid="uid://buhpe1g0p1g4u" path="res://Scripts/Player/Projectiles/stinger_explosion_tracker.gd" id="1_26jja"]
+
+[node name="StingerExplosionTracker" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_26jja")

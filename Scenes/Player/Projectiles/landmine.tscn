@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2h7gcefpbboi"]
+
+[ext_resource type="Script" uid="uid://dtkq88kx0h3yb" path="res://Scripts/Player/Projectiles/landmine.gd" id="1_ig17l"]
+[ext_resource type="Texture2D" uid="uid://dettp48k8q6r7" path="res://Assets/Images/SpriteSheets/Animations/landmine.png" id="2_whmd4"]
+[ext_resource type="Script" uid="uid://d18levtavdqhi" path="res://Scripts/ComponentScripts/HitBox.gd" id="3_gujy6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywfgk"]
+atlas = ExtResource("2_whmd4")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugs0k"]
+atlas = ExtResource("2_whmd4")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahums"]
+atlas = ExtResource("2_whmd4")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t320"]
+atlas = ExtResource("2_whmd4")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_punbe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywfgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugs0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahums")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t320")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tbqot"]
+radius = 28.0
+
+[node name="Landmine" type="Node2D"]
+script = ExtResource("1_ig17l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_punbe")
+autoplay = "default"
+frame_progress = 0.753938
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_gujy6")
+metadata/_custom_type_script = "uid://d18levtavdqhi"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_tbqot")
+
+[connection signal="area_entered" from="HitBox" to="HitBox" method="_on_area_entered"]

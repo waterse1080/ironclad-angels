@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ExtendedMagUpgrade" load_steps=2 format=3 uid="uid://clpqepwf7xlns"]
+
+[ext_resource type="Script" uid="uid://gyttwsnbl4no" path="res://Scripts/Upgrades/UpgradeScripts/extended_mag_upgrade.gd" id="1_farhf"]
+
+[resource]
+script = ExtResource("1_farhf")
+percent_mag_increase = 0.5
+percent_damage_increase = 0.2
+name = "Extended Magazine"
+description = "[color=green]+$1%[/color] magazine capacity.
+[color=green]+$2%[/color] base damage to turrets that don't use ammo."
+icon_row_column = Vector2i(3, 2)
+upgrade_tags = Array[int]([0, 6])
+required_tags = Array[int]([])
+max_upgrade_count = -1

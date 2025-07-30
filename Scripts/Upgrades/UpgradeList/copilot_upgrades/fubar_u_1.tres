@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FubarUpgrade" load_steps=2 format=3 uid="uid://bou452ysewfng"]
+
+[ext_resource type="Script" uid="uid://j771on7ufij3" path="res://Scripts/Upgrades/UpgradeScripts/copilot_upgrades/fubar_upgrade.gd" id="1_reqjl"]
+
+[resource]
+script = ExtResource("1_reqjl")
+name = ""
+description = "Damage is tripled. 
+Health is set to 1 and connot be changed."
+icon_row_column = Vector2i(-1, -1)

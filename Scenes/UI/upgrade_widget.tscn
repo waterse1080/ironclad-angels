@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcp37qbfnll38"]
+
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_ww5lr"]
+[ext_resource type="Script" uid="uid://qmnq26ns30l3" path="res://Scripts/UI/upgrade_widget.gd" id="2_v32q7"]
+[ext_resource type="Script" uid="uid://b2px1hseyoypg" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="3_ydq80"]
+[ext_resource type="Script" uid="uid://cj3wuyw6hff0a" path="res://addons/label_font_auto_sizer/rich_label_auto_sizer.gd" id="4_4v7ea"]
+[ext_resource type="PackedScene" uid="uid://eejq2rjbatfu" path="res://Scenes/Components/ui_animation_component.tscn" id="5_n7kep"]
+[ext_resource type="Texture2D" uid="uid://62ky71asabvh" path="res://Assets/Images/SpriteSheets/tileset_sheets/upgrade_icons.png" id="5_vbetd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irww3"]
+atlas = ExtResource("5_vbetd")
+region = Rect2(0, 0, 16, 16)
+
+[node name="UpgradeWidget" type="Control"]
+custom_minimum_size = Vector2(330, 400)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 164.0
+offset_bottom = 200.0
+mouse_filter = 2
+theme = ExtResource("1_ww5lr")
+script = ExtResource("2_v32q7")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 33
+text = "UPGRADE
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+uppercase = true
+script = ExtResource("3_ydq80")
+_max_steps = 100
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 33
+_current_font_size = 33
+_last_size_state = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Description" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 280)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "Enemies explode on death. 
+Larger explosions and increased damage per copy."
+scroll_active = false
+script = ExtResource("4_4v7ea")
+_max_steps = 100
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 22
+_current_font_size = 22
+_last_size_state = 1
+
+[node name="SelectButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "EQUIP
+"
+icon = SubResource("AtlasTexture_irww3")
+expand_icon = true
+
+[node name="UiAnimationComponent" parent="Panel/MarginContainer/VBoxContainer/SelectButton" instance=ExtResource("5_n7kep")]
+hover_scale = Vector2(1.2, 1.2)
+time = 0.25
+transition_type = 10
+
+[node name="Control" type="Control" parent="Panel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]

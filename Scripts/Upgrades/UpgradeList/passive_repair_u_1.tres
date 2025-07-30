@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PassiveRepairUpgrade" load_steps=2 format=3 uid="uid://dpb1240y3osti"]
+
+[ext_resource type="Script" uid="uid://lfjv110oa4dj" path="res://Scripts/Upgrades/UpgradeScripts/passive_repair_upgrade.gd" id="1_v3l6j"]
+
+[resource]
+script = ExtResource("1_v3l6j")
+heal_time = 5.0
+heal_amount = 25.0
+name = "Repair Subroutines"
+description = "[color=green]+$1[/color] health recovered every $2 seconds."
+icon_row_column = Vector2i(6, 1)
+upgrade_tags = Array[int]([12])
+required_tags = Array[int]([])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://lfjv110oa4dj"

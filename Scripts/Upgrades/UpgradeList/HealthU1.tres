@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HealthUpgrade" load_steps=2 format=3 uid="uid://d2jtfy24mdw42"]
+
+[ext_resource type="Script" uid="uid://7ubqi6mkf4j2" path="res://Scripts/Upgrades/UpgradeScripts/HealthUpgrade.gd" id="1_df436"]
+
+[resource]
+script = ExtResource("1_df436")
+health_increase = 250.0
+name = "Reinforced Hull"
+description = "[color=green]+$[/color] chassis health."
+icon_row_column = Vector2i(1, 3)
+upgrade_tags = Array[int]([12])
+required_tags = Array[int]([])
+max_upgrade_count = -1

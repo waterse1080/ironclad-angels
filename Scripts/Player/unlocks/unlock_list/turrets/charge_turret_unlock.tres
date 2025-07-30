@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Unlock" load_steps=2 format=3 uid="uid://dnvrtfble8ms8"]
+
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="1_km6kc"]
+
+[resource]
+script = ExtResource("1_km6kc")
+display_name = "Maggie v0.2"
+description = "A prototype rail launcher system. Hold down the fire command to charge up a more powerful shot."
+unlock_type = 0
+unlock_price = 5000.0
+unlock_node_path = "res://Scenes/Player/Turrets/heavy_tank_turret.tscn"

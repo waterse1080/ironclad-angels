@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=3 uid="uid://cf0o6lohnf41m"]
+
+[ext_resource type="Script" uid="uid://ffu286hvw7xe" path="res://Scripts/Player/Projectiles/rocket_projectile.gd" id="1_lhpkt"]
+[ext_resource type="Texture2D" uid="uid://5klghbbhpcao" path="res://Assets/Images/sprites/Player/rocket_mech/mech_2_rocket.png" id="1_ueaen"]
+[ext_resource type="PackedScene" uid="uid://daypi6b0l1qgi" path="res://Scenes/Components/hit_box.tscn" id="2_lhpkt"]
+[ext_resource type="PackedScene" uid="uid://didru1nvdi4jf" path="res://Scenes/Components/trail_component.tscn" id="3_7xbvo"]
+
+[sub_resource type="Animation" id="Animation_pcsog"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_e04ef"]
+resource_name = "flying"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_wmn5j"]
+resource_name = "spawn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_fly_anim"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_faqci"]
+_data = {
+&"RESET": SubResource("Animation_pcsog"),
+&"flying": SubResource("Animation_e04ef"),
+&"spawn": SubResource("Animation_wmn5j")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smyyl"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm8g7"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_mucvc"]
+offsets = PackedFloat32Array(0.0019084, 1)
+colors = PackedColorArray(1, 0.537255, 0.2, 1, 1, 0.933333, 0.513726, 1)
+
+[node name="RocketProjectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_lhpkt")
+SPEED = 750.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(5, 5)
+texture = ExtResource("1_ueaen")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_faqci")
+}
+autoplay = "spawn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_smyyl")
+
+[node name="HitBox" parent="." instance=ExtResource("2_lhpkt")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_rm8g7")
+
+[node name="TrailComponent" parent="." instance=ExtResource("3_7xbvo")]
+visible = false
+gradient = SubResource("Gradient_mucvc")
+
+[connection signal="hitbox_triggered" from="HitBox" to="." method="_on_hit_box_hitbox_triggered"]

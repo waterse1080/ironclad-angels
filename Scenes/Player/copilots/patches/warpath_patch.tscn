@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://xyr4ylo2xben"]
+
+[ext_resource type="Texture2D" uid="uid://err22jmp0co6" path="res://Assets/Images/sprites/Player/patches/warpath_patch.png" id="1_y81tb"]
+
+[node name="WarpathPatch" type="Sprite2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_y81tb")

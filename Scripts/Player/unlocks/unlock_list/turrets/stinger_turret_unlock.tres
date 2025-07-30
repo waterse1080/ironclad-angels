@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Unlock" load_steps=2 format=3 uid="uid://t3pmc7vegeeu"]
+
+[ext_resource type="Script" uid="uid://dnrgjs801d2jt" path="res://Scripts/Player/unlocks/proto_unlock.gd" id="1_x58f8"]
+
+[resource]
+script = ExtResource("1_x58f8")
+display_name = "T-34 Stinger"
+description = "An alien design adapted for compatability. Fires volatile crystal shards that cause targets to detonate. "
+unlock_type = 0
+unlock_price = 10000.0
+unlock_node_path = "res://Scenes/Player/Turrets/stinger_turret.tscn"

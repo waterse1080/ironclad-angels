@@ -1,0 +1,173 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlybdb311ckf0"]
+
+[ext_resource type="Script" uid="uid://by3ti2u0li6am" path="res://Scripts/UI/pause_menu.gd" id="1_5tshx"]
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_lii21"]
+[ext_resource type="PackedScene" uid="uid://drkcjjt0crxvv" path="res://Scenes/UI/settings_menu.tscn" id="3_g73p8"]
+[ext_resource type="PackedScene" uid="uid://eejq2rjbatfu" path="res://Scenes/Components/ui_animation_component.tscn" id="3_vka01"]
+[ext_resource type="PackedScene" uid="uid://bpt1vtxyj34rm" path="res://Scenes/UI/how_to_play_screen.tscn" id="5_dcpph"]
+[ext_resource type="PackedScene" uid="uid://dsbuql2xaqt3k" path="res://Scenes/UI/upgrade_display_list.tscn" id="6_illuq"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_lii21")
+script = ExtResource("1_5tshx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2, 0.2, 0.2, 0.643137)
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 1
+texture_filter = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 239.0
+offset_top = -186.0
+offset_right = 449.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(105, 185)
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 253.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Resume game."
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+text = "RESUME"
+
+[node name="UiAnimationComponent" parent="Panel/MarginContainer/VBoxContainer/ResumeButton" instance=ExtResource("3_vka01")]
+
+[node name="SettingsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Open the settings menu to adjust visuals and audio."
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../TutorialButton")
+text = "SETTINGS"
+
+[node name="UiAnimationComponent" parent="Panel/MarginContainer/VBoxContainer/SettingsButton" instance=ExtResource("3_vka01")]
+
+[node name="TutorialButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Open the settings menu to adjust visuals and audio."
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../RestartButton")
+text = "TUTORIAL"
+
+[node name="UiAnimationComponent" parent="Panel/MarginContainer/VBoxContainer/TutorialButton" instance=ExtResource("3_vka01")]
+
+[node name="RestartButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Return to parts selection."
+focus_neighbor_top = NodePath("../TutorialButton")
+focus_neighbor_bottom = NodePath("../MainMenuButton")
+text = "RESTART
+"
+
+[node name="UiAnimationComponent" parent="Panel/MarginContainer/VBoxContainer/RestartButton" instance=ExtResource("3_vka01")]
+
+[node name="MainMenuButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Return to the main menu."
+focus_neighbor_top = NodePath("../RestartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "MAIN MENU
+"
+
+[node name="UiAnimationComponent" parent="Panel/MarginContainer/VBoxContainer/MainMenuButton" instance=ExtResource("3_vka01")]
+
+[node name="QuitButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Close the game."
+focus_neighbor_top = NodePath("../MainMenuButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+text = "QUIT
+"
+
+[node name="UiAnimationComponent" parent="Panel/MarginContainer/VBoxContainer/QuitButton" instance=ExtResource("3_vka01")]
+
+[node name="UpgradeDisplayList" parent="." instance=ExtResource("6_illuq")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = -750.0
+offset_bottom = -450.0
+
+[node name="SettingsMenu" parent="." instance=ExtResource("3_g73p8")]
+visible = false
+z_index = 2
+layout_mode = 1
+
+[node name="ColorRect" parent="SettingsMenu" index="0"]
+visible = false
+
+[node name="Btn" parent="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/WindowedResolutionOptionList" index="0"]
+popup/item_0/id = 0
+
+[node name="Btn" parent="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/CRTResolutionContainer/CRTResolutionOptionList" index="0"]
+popup/item_0/id = 0
+
+[node name="HowToPlayScreen" parent="." instance=ExtResource("5_dcpph")]
+visible = false
+layout_mode = 1
+
+[editable path="SettingsMenu"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/FullscreenSwitch"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/WindowedResolutionOptionList"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/CRTSwitch"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/CRTResolutionContainer/CRTResolutionOptionList"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/ScreenshakeIntensityContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/VibrationIntensityContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/MasterVolumeContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/MusicVolumeContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/GameVolumeContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/UIVolumeContainer/Slider"]
+[editable path="SettingsMenu/NinePatchRect/MarginContainer/VBoxContainer/MuteSwitch"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="JackpotCopilot" load_steps=2 format=3 uid="uid://cslsk5pg27jvk"]
+
+[ext_resource type="Script" uid="uid://dylajnduqwyqx" path="res://Scripts/Upgrades/UpgradeScripts/copilot_upgrades/jackpot_upgrade.gd" id="1_n44p3"]
+
+[resource]
+script = ExtResource("1_n44p3")
+name = ""
+description = "Projectile damage is randomly multiplied anywhere between x0.5 & x2.0.
+Critical chance is modified anywhere between -100% and 100%"
+icon_row_column = Vector2i(-1, -1)

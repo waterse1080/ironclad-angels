@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BigBulletUpgrade" load_steps=2 format=3 uid="uid://bk3ttp3e0rj12"]
+
+[ext_resource type="Script" uid="uid://b8t0t2w224u0b" path="res://Scripts/Upgrades/UpgradeScripts/BigBulletUpgrade.gd" id="1_lalgp"]
+
+[resource]
+script = ExtResource("1_lalgp")
+SCALE = 0.5
+BASE_DMG_INCREASE = 0.3
+SPEED_MULT = 0.8
+name = "Excessive Payload "
+description = "[color=green]+$1%[/color] projectile size.
+[color=green]+$2%[/color] projectile damage.
+[color=red]-$2%[/color] projectile speed."
+icon_row_column = Vector2i(0, 1)
+upgrade_tags = Array[int]([0, 2, 3])
+required_tags = Array[int]([])
+max_upgrade_count = -1

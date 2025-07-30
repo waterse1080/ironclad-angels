@@ -1,0 +1,634 @@
+[gd_scene load_steps=38 format=3 uid="uid://drqkeu7jv2ulq"]
+
+[ext_resource type="Script" uid="uid://dvhebafaaedty" path="res://Scripts/main_menu.gd" id="1_2y56i"]
+[ext_resource type="Texture2D" uid="uid://civufnvkx2q8g" path="res://Assets/Images/sprites/main_menu/main_menu_1_stars.png" id="2_h0vuj"]
+[ext_resource type="Texture2D" uid="uid://8bdjhh5w63hl" path="res://Assets/Images/sprites/main_menu/main_menu_1_suns.png" id="3_0hvms"]
+[ext_resource type="Texture2D" uid="uid://gvrw44pjng7b" path="res://Assets/Images/sprites/main_menu/main_menu_1_planet.png" id="4_kjv5r"]
+[ext_resource type="Texture2D" uid="uid://majuou4ia0oi" path="res://Assets/Images/sprites/main_menu/main_menu_1_ring_back.png" id="5_nyl3n"]
+[ext_resource type="Material" uid="uid://cac3bjiusvp6d" path="res://Assets/Materials/CRT_MAT_3.tres" id="6_vh6t2"]
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="6_xyvub"]
+[ext_resource type="Script" uid="uid://cd861o812oii3" path="res://Scripts/UI/crt_rect.gd" id="7_7lmgi"]
+[ext_resource type="Texture2D" uid="uid://c0xca6kagxxtm" path="res://Assets/Images/sprites/main_menu/main_menu_1_ships.png" id="7_a85do"]
+[ext_resource type="PackedScene" uid="uid://eejq2rjbatfu" path="res://Scenes/Components/ui_animation_component.tscn" id="7_lrdss"]
+[ext_resource type="Texture2D" uid="uid://cvrjs3xt2wg6p" path="res://Assets/Images/sprites/main_menu/main_menu_1_ship_large.png" id="8_nw0pu"]
+[ext_resource type="PackedScene" uid="uid://drkcjjt0crxvv" path="res://Scenes/UI/settings_menu.tscn" id="8_sin18"]
+[ext_resource type="Texture2D" uid="uid://bx4j1s01x13tj" path="res://Assets/Images/sprites/main_menu/main_menu_1_ring_front.png" id="8_utw2c"]
+[ext_resource type="Texture2D" uid="uid://odqbbtaw8rrc" path="res://Assets/Images/sprites/main_menu/main_menu_1_ship_small.png" id="9_rehic"]
+[ext_resource type="FontFile" uid="uid://by6x6u1th14jo" path="res://Assets/Fonts/EveryPixelFonts/Vermin Vibes 1989.ttf" id="12_4nkqq"]
+[ext_resource type="PackedScene" uid="uid://bpt1vtxyj34rm" path="res://Scenes/UI/how_to_play_screen.tscn" id="13_ufkc6"]
+[ext_resource type="Script" uid="uid://b2px1hseyoypg" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="14_3avhc"]
+[ext_resource type="Texture2D" uid="uid://biaa0ug6dvt72" path="res://Assets/Images/SpriteSheets/UI/Pix!Socials Square.png" id="15_4qleu"]
+[ext_resource type="Texture2D" uid="uid://d0hmikcdu0bm7" path="res://Assets/Images/SpriteSheets/UI/indicator.png" id="16_ujyyl"]
+[ext_resource type="Script" uid="uid://cj3wuyw6hff0a" path="res://addons/label_font_auto_sizer/rich_label_auto_sizer.gd" id="19_mkpwh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkkd1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk3fx"]
+atlas = ExtResource("15_4qleu")
+region = Rect2(16, 496, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx8pm"]
+atlas = ExtResource("15_4qleu")
+region = Rect2(816, 1456, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkpwh"]
+atlas = ExtResource("16_ujyyl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nkqq"]
+atlas = ExtResource("16_ujyyl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehtkc"]
+atlas = ExtResource("16_ujyyl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dk6o"]
+atlas = ExtResource("16_ujyyl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr6u5"]
+atlas = ExtResource("16_ujyyl")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m47u"]
+atlas = ExtResource("16_ujyyl")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84iac"]
+atlas = ExtResource("16_ujyyl")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5n0dv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkpwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nkqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehtkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dk6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr6u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m47u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84iac")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_4nkqq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 175)]
+}
+
+[sub_resource type="Animation" id="Animation_mkpwh"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1.5, 0.5),
+"update": 0,
+"values": [Vector2(24, 140), Vector2(24, 170)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehtkc"]
+_data = {
+&"RESET": SubResource("Animation_4nkqq"),
+&"idle": SubResource("Animation_mkpwh")
+}
+
+[sub_resource type="Animation" id="Animation_e3pgm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:pivot_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Panel:pivot_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(112, 20)]
+}
+
+[sub_resource type="Animation" id="Animation_s542v"]
+resource_name = "tween_in"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:pivot_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.266667, 0.666667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 800), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Panel:pivot_offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.266667, 0.666667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(112, -800), Vector2(112, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqtgc"]
+_data = {
+&"RESET": SubResource("Animation_e3pgm"),
+&"tween_in": SubResource("Animation_s542v")
+}
+
+[node name="MainMenu" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_2y56i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0941176, 0.180392, 1)
+
+[node name="ParallaxControl" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxBG" type="Node2D" parent="CanvasLayer/ParallaxControl"]
+
+[node name="Stars" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.01, 0.01)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Stars" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Stars"]
+scale = Vector2(5, 5)
+texture = ExtResource("2_h0vuj")
+
+[node name="Suns" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.025, 0.025)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Suns" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Suns"]
+scale = Vector2(5, 5)
+texture = ExtResource("3_0hvms")
+
+[node name="RingBack" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.075, 0.075)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="RingBack" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/RingBack"]
+scale = Vector2(5, 5)
+texture = ExtResource("5_nyl3n")
+
+[node name="Planet" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.1, 0.1)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Planet" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Planet"]
+scale = Vector2(5, 5)
+texture = ExtResource("4_kjv5r")
+
+[node name="RingFront" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.075, 0.075)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="RingFront" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/RingFront"]
+scale = Vector2(5, 5)
+texture = ExtResource("8_utw2c")
+
+[node name="Ship" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+visible = false
+scroll_scale = Vector2(0.25, 0.25)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Ships" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ship"]
+scale = Vector2(5, 5)
+texture = ExtResource("7_a85do")
+offset = Vector2(-15, 20)
+
+[node name="Ships" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.2, 0.2)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Ships" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships"]
+position = Vector2(378, -145)
+scale = Vector2(5, 5)
+texture = ExtResource("8_nw0pu")
+
+[node name="Ships2" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.21, 0.21)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Ships" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships2"]
+position = Vector2(512, -77)
+scale = Vector2(5, 5)
+texture = ExtResource("9_rehic")
+
+[node name="Ships2" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships2"]
+position = Vector2(572.5, -102.5)
+scale = Vector2(5, 5)
+texture = ExtResource("9_rehic")
+
+[node name="Ships3" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships2"]
+position = Vector2(607.5, -52.5)
+scale = Vector2(5, 5)
+texture = ExtResource("9_rehic")
+
+[node name="Ships3" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.22, 0.22)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Ships" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships3"]
+position = Vector2(457, 15)
+scale = Vector2(5, 5)
+texture = ExtResource("8_nw0pu")
+
+[node name="Ships4" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.23, 0.23)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Ships" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships4"]
+position = Vector2(432, 98)
+scale = Vector2(5, 5)
+texture = ExtResource("9_rehic")
+
+[node name="Ships2" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships4"]
+position = Vector2(483, 82)
+scale = Vector2(5, 5)
+texture = ExtResource("9_rehic")
+
+[node name="Ships3" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships4"]
+position = Vector2(467, 132)
+scale = Vector2(5, 5)
+texture = ExtResource("9_rehic")
+
+[node name="Ships5" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.24, 0.24)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Ships" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships5"]
+position = Vector2(203, -17)
+scale = Vector2(5, 5)
+texture = ExtResource("9_rehic")
+
+[node name="Ships2" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships5"]
+position = Vector2(218, 27)
+scale = Vector2(5, 5)
+texture = ExtResource("9_rehic")
+
+[node name="Ships3" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships5"]
+position = Vector2(158, 53)
+scale = Vector2(5, 5)
+texture = ExtResource("9_rehic")
+
+[node name="Ships6" type="Parallax2D" parent="CanvasLayer/ParallaxControl/ParallaxBG"]
+scroll_scale = Vector2(0.25, 0.25)
+limit_begin = Vector2(-16, -16)
+limit_end = Vector2(16, 16)
+follow_viewport = false
+
+[node name="Ships" type="Sprite2D" parent="CanvasLayer/ParallaxControl/ParallaxBG/Ships6"]
+position = Vector2(198, 160)
+scale = Vector2(5, 5)
+texture = ExtResource("8_nw0pu")
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+z_index = 1
+texture_filter = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 124.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(112, 20)
+theme = ExtResource("6_xyvub")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 270.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Start a mission."
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../HowToPlayButton")
+text = "PLAY"
+
+[node name="UiAnimationComponent" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/PlayButton" instance=ExtResource("7_lrdss")]
+
+[node name="HowToPlayButton" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "How to play."
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../ScoreboardButton")
+text = "TUTORIAL"
+
+[node name="UiAnimationComponent" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/HowToPlayButton" instance=ExtResource("7_lrdss")]
+
+[node name="ScoreboardButton" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "See run history. (COMING SOON)"
+focus_neighbor_top = NodePath("../HowToPlayButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+disabled = true
+text = "SCOREBOARD"
+
+[node name="UiAnimationComponent" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/ScoreboardButton" instance=ExtResource("7_lrdss")]
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Open the settings menu to adjust audio and visuals."
+focus_neighbor_top = NodePath("../ScoreboardButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+text = "SETTINGS"
+
+[node name="UiAnimationComponent" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/SettingsButton" instance=ExtResource("7_lrdss")]
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Quit to desktop."
+focus_neighbor_left = NodePath("../../../../Socials/Bluesky")
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_right = NodePath("../../../../Socials/Itch")
+focus_neighbor_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../../../../Socials/Itch")
+focus_previous = NodePath("../../../../Socials/Bluesky")
+text = "QUIT
+"
+
+[node name="UiAnimationComponent" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/QuitButton" instance=ExtResource("7_lrdss")]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -450.0
+offset_bottom = -285.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme = ExtResource("6_xyvub")
+theme_override_fonts/font = ExtResource("12_4nkqq")
+theme_override_font_sizes/font_size = 80
+text = "IRONCLAD ANGELS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("8_sin18")]
+visible = false
+z_index = 2
+
+[node name="HowToPlayScreen" parent="CanvasLayer" instance=ExtResource("13_ufkc6")]
+visible = false
+
+[node name="VersionLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -391.0
+offset_top = -47.0
+offset_right = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("6_xyvub")
+theme_override_font_sizes/font_size = 34
+text = "0.0.0"
+horizontal_alignment = 2
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("14_3avhc")
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 34
+_current_font_size = 34
+_last_size_state = 1
+
+[node name="Socials" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -84.0
+offset_right = 281.0
+offset_bottom = 52.0
+grow_vertical = 0
+scale = Vector2(0.6, 0.6)
+theme_override_constants/separation = 8
+
+[node name="Itch" type="Button" parent="CanvasLayer/Socials"]
+layout_mode = 2
+tooltip_text = "Rate the game on Itch!"
+focus_neighbor_left = NodePath("../../Panel/MarginContainer/VBoxContainer/QuitButton")
+focus_neighbor_right = NodePath("../Bluesky")
+focus_next = NodePath("../Bluesky")
+focus_previous = NodePath("../../Panel/MarginContainer/VBoxContainer/QuitButton")
+theme = ExtResource("6_xyvub")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkkd1")
+icon = SubResource("AtlasTexture_bk3fx")
+icon_alignment = 1
+
+[node name="UiAnimationComponent" parent="CanvasLayer/Socials/Itch" instance=ExtResource("7_lrdss")]
+
+[node name="Bluesky" type="Button" parent="CanvasLayer/Socials"]
+layout_mode = 2
+tooltip_text = "Follow the development on Bluesky!"
+focus_neighbor_left = NodePath("../Itch")
+focus_neighbor_right = NodePath("../../Panel/MarginContainer/VBoxContainer/QuitButton")
+focus_next = NodePath("../../Panel/MarginContainer/VBoxContainer/QuitButton")
+focus_previous = NodePath("../Itch")
+theme = ExtResource("6_xyvub")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_fkkd1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fkkd1")
+icon = SubResource("AtlasTexture_bx8pm")
+icon_alignment = 1
+
+[node name="UiAnimationComponent" parent="CanvasLayer/Socials/Bluesky" instance=ExtResource("7_lrdss")]
+
+[node name="CRT3" type="ColorRect" parent="CanvasLayer"]
+z_index = 5
+material = ExtResource("6_vh6t2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_7lmgi")
+
+[node name="UpdateText" type="RichTextLabel" parent="CanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(550, 100)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -281.0
+offset_right = 568.0
+offset_bottom = -166.0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("6_xyvub")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[wave amp=60 freq=8][rainbow  amp=0.2 sat=0.85 freq=0.5]New update available![/rainbow][/wave]
+
+[p][color=92e8c0]Download version $ here![/color][/p]"
+scroll_active = false
+script = ExtResource("19_mkpwh")
+_max_steps = 20
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 36
+_current_font_size = 36
+_last_size_state = 1
+metadata/_custom_type_script = "uid://cj3wuyw6hff0a"
+
+[node name="UpdateIndicator" type="AnimatedSprite2D" parent="CanvasLayer/UpdateText"]
+position = Vector2(24, 175)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_5n0dv")
+autoplay = "default"
+frame_progress = 0.830941
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UpdateText/UpdateIndicator"]
+libraries = {
+&"": SubResource("AnimationLibrary_ehtkc")
+}
+autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oqtgc")
+}
+autoplay = "tween_in"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]

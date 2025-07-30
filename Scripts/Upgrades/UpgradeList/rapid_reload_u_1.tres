@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RapidReloadUpgrade" load_steps=2 format=3 uid="uid://3ktqef62lhci"]
+
+[ext_resource type="Script" uid="uid://d2qqv1d8d70a6" path="res://Scripts/Upgrades/UpgradeScripts/rapid_reload_upgrade.gd" id="1_8nodq"]
+
+[resource]
+script = ExtResource("1_8nodq")
+reload_speed_multiplier = 0.75
+fire_rate_multiplier = 0.75
+name = "Loading Drills"
+description = "[color=green]+$1%[/color] reload/recharge speed.
+[color=green]+$2%[/color] projectile rate of fire for turrets that lack ammo."
+icon_row_column = Vector2i(2, 2)
+upgrade_tags = Array[int]([8, 9])
+required_tags = Array[int]([])
+max_upgrade_count = -1

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2qevow07nbvl"]
+
+[ext_resource type="Texture2D" uid="uid://25i4hk0syja2" path="res://Assets/Images/sprites/Player/patches/rocketman_patch.png" id="1_jj680"]
+
+[node name="RocketmanPatch" type="Sprite2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_jj680")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="NaniteSwarmUpgrade" load_steps=2 format=3 uid="uid://dmodpb1a7c7il"]
+
+[ext_resource type="Script" uid="uid://cvqsq2y5d3gp8" path="res://Scripts/Upgrades/UpgradeScripts/nanite_swarm_upgrade.gd" id="1_3hmy0"]
+
+[resource]
+script = ExtResource("1_3hmy0")
+damage = 10.0
+scale_per_upgrade = 0.5
+time_between_damage = 0.25
+name = "Nanite Swarm"
+description = "Deal [color=green]$1[/color] damage in an area around the player every $2 seconds.
+Extra copies increase damage and area size."
+icon_row_column = Vector2i(5, 3)
+upgrade_tags = Array[int]([17, 18])
+required_tags = Array[int]([])
+max_upgrade_count = -1
+metadata/_custom_type_script = "uid://cvqsq2y5d3gp8"

@@ -1,0 +1,313 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddoucnk43qbhy"]
+
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_vnbni"]
+[ext_resource type="Script" uid="uid://b2px1hseyoypg" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="2_35r5d"]
+[ext_resource type="Script" uid="uid://dmjxq2nxt1s0e" path="res://Scripts/UI/game_over_menu.gd" id="2_pyogc"]
+[ext_resource type="PackedScene" uid="uid://eejq2rjbatfu" path="res://Scenes/Components/ui_animation_component.tscn" id="3_bh2on"]
+[ext_resource type="PackedScene" uid="uid://dsbuql2xaqt3k" path="res://Scenes/UI/upgrade_display_list.tscn" id="5_t36yv"]
+
+[sub_resource type="Animation" id="Animation_4bnhq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(450, 375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ButtonContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(678, 760)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PointsEarned:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(450, 527)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UpgradeDisplayList:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xqors"]
+resource_name = "tween_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainText:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.217638, 1),
+"update": 0,
+"values": [Vector2(800, -1000), Vector2(800, 220)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.366, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ButtonContainer:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(0.365, 1),
+"update": 0,
+"values": [Vector2(1050, 1560), Vector2(1050, 650)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.466667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"enable_buttons"
+}, {
+"args": [],
+"method": &"gain_focus"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PointsEarned:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.217638, 1),
+"update": 0,
+"values": [Vector2(800, -700), Vector2(800, 400)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UpgradeDisplayList:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.241484, 1),
+"update": 0,
+"values": [Vector2(-1000, 0), Vector2(50, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_egpoa"]
+_data = {
+&"RESET": SubResource("Animation_4bnhq"),
+&"tween_in": SubResource("Animation_xqors")
+}
+
+[node name="GameOverMenu" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vnbni")
+script = ExtResource("2_pyogc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2, 0.2, 0.2, 0.643137)
+
+[node name="MainText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -75.0
+offset_right = 350.0
+offset_bottom = 75.0004
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vnbni")
+theme_override_font_sizes/font_size = 60
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("2_35r5d")
+_max_steps = 30
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 60
+_current_font_size = 60
+_last_size_state = 1
+
+[node name="PointsEarned" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 77.0
+offset_right = 350.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vnbni")
+theme_override_font_sizes/font_size = 36
+text = "Research Points: 99999"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("2_35r5d")
+_max_steps = 30
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 36
+_current_font_size = 36
+_last_size_state = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = 310.0
+offset_right = 183.0
+offset_bottom = 414.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(200, 20)
+mouse_filter = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+tooltip_text = "Restart from part selection."
+disabled = true
+text = "BACK TO GARAGE"
+
+[node name="UiAnimationComponent" parent="ButtonContainer/RetryButton" instance=ExtResource("3_bh2on")]
+
+[node name="QuitButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+tooltip_text = "Close the game."
+disabled = true
+text = "QUIT TO DESKTOP"
+
+[node name="UiAnimationComponent" parent="ButtonContainer/QuitButton" instance=ExtResource("3_bh2on")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_egpoa")
+}
+
+[node name="UpgradeDisplayList" parent="." instance=ExtResource("5_t36yv")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -450.0
+offset_right = -750.0
+offset_bottom = -450.0

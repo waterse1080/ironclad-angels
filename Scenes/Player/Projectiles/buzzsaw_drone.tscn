@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://brchcv5lb2llc"]
+
+[ext_resource type="Texture2D" uid="uid://c0ly24db0iysp" path="res://Assets/Images/SpriteSheets/Animations/upgrades/sawblade.png" id="1_be7b8"]
+[ext_resource type="Script" uid="uid://ctu1pqw5fymqd" path="res://Scripts/Player/Projectiles/buzzsaw_drone.gd" id="1_e6akk"]
+[ext_resource type="Script" uid="uid://d18levtavdqhi" path="res://Scripts/ComponentScripts/HitBox.gd" id="2_ep6i2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thho3"]
+atlas = ExtResource("1_be7b8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isqkb"]
+atlas = ExtResource("1_be7b8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tg73c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thho3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isqkb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lif7"]
+radius = 42.0119
+
+[node name="BuzzsawDrone" type="Node2D"]
+script = ExtResource("1_e6akk")
+impact_sfx = "SawHitSFX"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_tg73c")
+autoplay = "default"
+frame_progress = 0.985767
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_ep6i2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_2lif7")

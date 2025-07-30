@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8wjet887c4i3"]
+
+[ext_resource type="Texture2D" uid="uid://ccin76pf74xwg" path="res://Assets/Images/sprites/Player/patches/jackpot_patch.png" id="1_untqt"]
+
+[node name="JAckpotPatch" type="Sprite2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_untqt")

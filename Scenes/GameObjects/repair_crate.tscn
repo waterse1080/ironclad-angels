@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://du7mwysskt8yy"]
+
+[ext_resource type="Script" uid="uid://6r4urkspyt28" path="res://Scripts/GameObjects/repair_crate.gd" id="1_ak2v0"]
+[ext_resource type="Texture2D" uid="uid://bo6kbhxsqy6jb" path="res://Assets/Images/SpriteSheets/tileset_sheets/roads_tilemap_1.png" id="2_nt5bh"]
+[ext_resource type="Script" uid="uid://clpxtcfre43xh" path="res://Scripts/ComponentScripts/HurtBox.gd" id="3_ag64e"]
+[ext_resource type="Script" uid="uid://dgplhh06wmsnq" path="res://Scripts/ComponentScripts/HealthComponent.gd" id="4_wsw50"]
+[ext_resource type="Script" uid="uid://bjk6rk274y4bl" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="5_qw3ir"]
+[ext_resource type="Script" uid="uid://ue7rugrgtpet" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="6_pdwah"]
+[ext_resource type="Script" uid="uid://f2edih5u3f56" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="7_evmow"]
+[ext_resource type="Script" uid="uid://caq6fktiijklv" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="8_7gxk8"]
+[ext_resource type="Script" uid="uid://dxpebj5hr171l" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="9_h2wlm"]
+
+[sub_resource type="Resource" id="Resource_qs2xn"]
+script = ExtResource("7_evmow")
+seed = 0
+amplitude = Vector2(1, 1)
+offset = Vector2(0, 0)
+BlendingMode = 0
+fade_in = 0.0
+fade_out = 0.0
+start_percent = 0.0
+end_percent = 1.0
+_temp_graph = false
+bake_internal = 64
+
+[sub_resource type="Resource" id="Resource_sjlp0"]
+script = ExtResource("9_h2wlm")
+PositionShake = Array[ExtResource("6_pdwah")]([SubResource("Resource_qs2xn")])
+RotationShake = Array[ExtResource("8_7gxk8")]([])
+ScaleShake = Array[ExtResource("6_pdwah")]([])
+bake_internal = 64
+__follow_timeline = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbvi6"]
+size = Vector2(14, 14)
+
+[node name="RepairCrate" type="Node2D"]
+script = ExtResource("1_ak2v0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nt5bh")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="ShakerComponent2D" type="Node2D" parent="Sprite2D"]
+script = ExtResource("5_qw3ir")
+duration = 0.5
+fade_in = 0.0717938
+fade_out = 0.965936
+shakerPreset = SubResource("Resource_sjlp0")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 20
+collision_mask = 3
+script = ExtResource("3_ag64e")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_nbvi6")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_wsw50")
+max_health = 40.0
+
+[node name="DamageNumbersOrigin" type="Marker2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(6, 6, 6, -6, -6, -6, -6, 6)

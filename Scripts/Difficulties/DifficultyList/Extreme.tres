@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Difficulty" load_steps=2 format=3 uid="uid://bhjl12efvggye"]
+
+[ext_resource type="Script" uid="uid://ds076fy8y3ldt" path="res://Scripts/Difficulties/ProtoDifficulty.gd" id="1_yrgx8"]
+
+[resource]
+script = ExtResource("1_yrgx8")
+NAME = "Extreme"
+DESCRIPTION = "Unforgiving, meant to test even the most experienced of players.
+x1.5 RP earned."
+HP_MOD = 1.0
+WAVE_TIME = 45
+rp_mult = 1.5

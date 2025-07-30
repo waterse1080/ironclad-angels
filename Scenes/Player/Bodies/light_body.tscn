@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://tpouhl03p17i"]
+
+[ext_resource type="Script" uid="uid://dueekw3nwxc5p" path="res://Scripts/Player/Bodies/light_tank_body.gd" id="1_fl2b7"]
+[ext_resource type="PackedScene" uid="uid://dhltcbi32x2dk" path="res://Scenes/Particles/tread_marks.tscn" id="2_4fcdc"]
+[ext_resource type="Texture2D" uid="uid://xmddta7kqcil" path="res://Assets/Images/sprites/Player/RapidFireTank/Tank-2-lower.png" id="2_72u17"]
+[ext_resource type="PackedScene" uid="uid://ddp37pxyayuyc" path="res://Scenes/Components/hurt_box.tscn" id="3_ot2s3"]
+[ext_resource type="PackedScene" uid="uid://bsi1gw5kk2uiy" path="res://Scenes/Components/health_component.tscn" id="4_jlp4o"]
+[ext_resource type="Script" uid="uid://doa2bqqqcj8ba" path="res://Scripts/ComponentScripts/pickup_box_component.gd" id="5_a1bnm"]
+[ext_resource type="Script" uid="uid://cfdggjkh5asx8" path="res://Scripts/ComponentScripts/terrain_detection_component.gd" id="6_7v77o"]
+[ext_resource type="PackedScene" uid="uid://dbvl81lhl26j6" path="res://Scenes/Particles/smoke_particles.tscn" id="8_dtdw2"]
+[ext_resource type="PackedScene" uid="uid://rdbqt3rbbq7e" path="res://Scenes/Particles/burn_particles.tscn" id="9_4lfcs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8d7y"]
+size = Vector2(80.7578, 109.123)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hplq"]
+radius = 69.7826
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e34aq"]
+
+[node name="LightBody" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_fl2b7")
+acceleration = 15.0
+decceleration = 15.0
+move_speed = 350.0
+can_destroy_terrain = false
+
+[node name="TreadMarks" parent="." instance=ExtResource("2_4fcdc")]
+position = Vector2(-29.9805, 52.785)
+amount = 50
+lifetime = 0.5
+scale_amount_min = 2.8
+scale_amount_max = 2.8
+
+[node name="TreadMarks2" parent="." instance=ExtResource("2_4fcdc")]
+position = Vector2(30.0761, 52.785)
+amount = 50
+lifetime = 0.5
+scale_amount_min = 2.8
+scale_amount_max = 2.8
+
+[node name="TreadMarks3" parent="." instance=ExtResource("2_4fcdc")]
+position = Vector2(-29.9805, -36.9843)
+amount = 50
+lifetime = 0.5
+scale_amount_min = 2.8
+scale_amount_max = 2.8
+
+[node name="TreadMarks4" parent="." instance=ExtResource("2_4fcdc")]
+position = Vector2(30.0325, -36.984)
+amount = 50
+lifetime = 0.5
+scale_amount_min = 2.8
+scale_amount_max = 2.8
+
+[node name="TankLower" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(5, 5)
+texture = ExtResource("2_72u17")
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ot2s3")]
+collision_mask = 20
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0.360939, 0.347389)
+shape = SubResource("RectangleShape2D_k8d7y")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_jlp4o")]
+max_health = 500.0
+
+[node name="DamageNumbersOrigin" type="Marker2D" parent="."]
+
+[node name="PickupBox" type="Area2D" parent="."]
+script = ExtResource("5_a1bnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBox"]
+shape = SubResource("CircleShape2D_4hplq")
+
+[node name="TerrainDetectionComponent" type="Area2D" parent="."]
+collision_mask = 32
+script = ExtResource("6_7v77o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetectionComponent"]
+shape = SubResource("CircleShape2D_e34aq")
+
+[node name="BoostCooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="BoostSmokeParticles" parent="." instance=ExtResource("8_dtdw2")]
+modulate = Color(0.412152, 0.412152, 0.412152, 1)
+position = Vector2(7.76003, 37.8007)
+emitting = false
+amount = 24
+
+[node name="BoostSmokeParticles2" parent="." instance=ExtResource("8_dtdw2")]
+modulate = Color(0.412152, 0.412152, 0.412152, 1)
+position = Vector2(-7.76, 37.801)
+emitting = false
+amount = 24
+
+[node name="DamageSmokeParticles" parent="." instance=ExtResource("8_dtdw2")]
+modulate = Color(0.270222, 0.270222, 0.270222, 1)
+emitting = false
+amount = 6
+emission_shape = 3
+emission_rect_extents = Vector2(30, 50)
+
+[node name="DamageBurnParticles" parent="." instance=ExtResource("9_4lfcs")]
+emitting = false
+amount = 12
+emission_shape = 3
+emission_rect_extents = Vector2(30, 50)

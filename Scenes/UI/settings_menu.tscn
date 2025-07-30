@@ -1,0 +1,558 @@
+[gd_scene load_steps=24 format=3 uid="uid://drkcjjt0crxvv"]
+
+[ext_resource type="Theme" uid="uid://buiv8bi3ttoxa" path="res://Assets/Styles/holo-theme-1.tres" id="1_l6x1s"]
+[ext_resource type="Script" uid="uid://njkm08vl08yk" path="res://Scripts/UI/settings_menu.gd" id="2_mud78"]
+[ext_resource type="Texture2D" uid="uid://do4u2e4lf4m68" path="res://Assets/Images/SpriteSheets/UI/Spritesheet_UI_Hologram.png" id="2_tq3ib"]
+[ext_resource type="PackedScene" uid="uid://cha8xesfthpfk" path="res://addons/ggs/components/switch/component_switch.tscn" id="2_xryld"]
+[ext_resource type="Script" uid="uid://b2px1hseyoypg" path="res://addons/label_font_auto_sizer/label_auto_sizer.gd" id="3_4dcpj"]
+[ext_resource type="Resource" uid="uid://dcoe2ue6ytam5" path="res://game_settings/setting_toggle_fullscreen.tres" id="3_4sy1b"]
+[ext_resource type="PackedScene" uid="uid://ds06mwhee8ygm" path="res://addons/ggs/components/slider/component_slider.tscn" id="6_5nlc6"]
+[ext_resource type="Resource" uid="uid://cfuiv7tsjc4u6" path="res://game_settings/setting_toggle_crt.tres" id="6_eujiv"]
+[ext_resource type="Resource" uid="uid://otr73q51u5ti" path="res://game_settings/setting_volume_master.tres" id="7_6y151"]
+[ext_resource type="PackedScene" uid="uid://b7m6l0lvojrsj" path="res://addons/ggs/components/option_list/component_option_list.tscn" id="7_j5i71"]
+[ext_resource type="Resource" uid="uid://c4vknbchsxhc0" path="res://game_settings/setting_volume_music.tres" id="8_febst"]
+[ext_resource type="Resource" uid="uid://dht6g40bdvmr" path="res://game_settings/setting_select_display_size.tres" id="8_qlle6"]
+[ext_resource type="Resource" uid="uid://dnosnusw52olv" path="res://game_settings/setting_volume_game.tres" id="9_0xtvn"]
+[ext_resource type="Resource" uid="uid://c2uxdlwsebf6o" path="res://game_settings/setting_volume_ui.tres" id="10_jqenc"]
+[ext_resource type="Resource" uid="uid://d4eef3fahus3a" path="res://game_settings/setting_toggle_mute.tres" id="11_78y1r"]
+[ext_resource type="Resource" uid="uid://c862puug5amtq" path="res://game_settings/setting_vibration_intensity.tres" id="12_0ba06"]
+[ext_resource type="Resource" uid="uid://bkan2q6ofxt3g" path="res://game_settings/setting_select_crt_multiplier.tres" id="12_jfhum"]
+[ext_resource type="Resource" uid="uid://cuobf0iw001m6" path="res://game_settings/setting_screenshake_intensity.tres" id="12_ryjhp"]
+[ext_resource type="PackedScene" uid="uid://eejq2rjbatfu" path="res://Scenes/Components/ui_animation_component.tscn" id="19_es5ig"]
+[ext_resource type="Script" uid="uid://i2ufgynjjwkd" path="res://Scripts/ComponentScripts/ui_animation_component.gd" id="19_wcduq"]
+[ext_resource type="Resource" uid="uid://bhlmj5nfvg1bw" path="res://Scripts/UI/ui_anim_param_presets/settings_options.tres" id="20_nntgf"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qsifl"]
+diffuse_texture = ExtResource("2_tq3ib")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu1fv"]
+atlas = SubResource("CanvasTexture_qsifl")
+region = Rect2(551, 104, 17, 19)
+
+[node name="SettingsMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_l6x1s")
+script = ExtResource("2_mud78")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 0.643137)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(520, 850)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -300.0
+offset_right = 150.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tq3ib")
+region_rect = Rect2(224, 32, 96, 96)
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -1.0
+offset_right = -10.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="DisplayLabel2" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 22
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 40
+_current_font_size = 40
+_last_size_state = 1
+
+[node name="HSeparator1" type="HSeparator" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+
+[node name="DisplayLabel" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "DISPLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 22
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 28
+_current_font_size = 28
+_last_size_state = 1
+
+[node name="FullscreenSwitch" parent="NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("2_xryld")]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+tooltip_text = "Toggle fullscreen."
+focus_neighbor_top = NodePath("../QuitButton")
+setting = ExtResource("3_4sy1b")
+apply_on_changed = true
+
+[node name="Btn" parent="NinePatchRect/MarginContainer/VBoxContainer/FullscreenSwitch" index="0"]
+focus_neighbor_top = NodePath("../../QuitButton")
+text = "Fullscreen"
+
+[node name="UIAnimationComponent" type="Node" parent="NinePatchRect/MarginContainer/VBoxContainer/FullscreenSwitch/Btn" index="0"]
+script = ExtResource("19_wcduq")
+anim_param = ExtResource("20_nntgf")
+interact = ""
+mouse_entered = ""
+focus_entered = ""
+input_accepted = ""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Windowed Resolution"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 40
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 22
+_current_font_size = 22
+_last_size_state = 1
+
+[node name="WindowedResolutionOptionList" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("7_j5i71")]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust window resolution."
+focus_neighbor_top = NodePath("../../FullscreenSwitch/Btn")
+focus_neighbor_bottom = NodePath("../../CRTSwitch")
+_use_ids = true
+setting = ExtResource("8_qlle6")
+apply_on_changed = true
+
+[node name="Btn" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/WindowedResolutionOptionList" index="0"]
+alignment = 1
+selected = 1
+item_count = 6
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1366x760"
+popup/item_2/id = 2
+popup/item_3/text = "1280×1024"
+popup/item_3/id = 3
+popup/item_4/text = "1024×768"
+popup/item_4/id = 4
+popup/item_5/text = "800x450"
+popup/item_5/id = 5
+
+[node name="UIAnimationComponent" type="Node" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/WindowedResolutionOptionList/Btn" index="1"]
+script = ExtResource("19_wcduq")
+anim_param = ExtResource("20_nntgf")
+interact = ""
+mouse_entered = ""
+focus_entered = ""
+input_accepted = ""
+
+[node name="CRTSwitch" parent="NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("2_xryld")]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+tooltip_text = "Toggle CRT screen filter."
+focus_neighbor_top = NodePath("../HBoxContainer/WindowedResolutionOptionList")
+focus_neighbor_bottom = NodePath("../CRTResolutionContainer/CRTResolutionOptionList")
+setting = ExtResource("6_eujiv")
+apply_on_changed = true
+
+[node name="Btn" parent="NinePatchRect/MarginContainer/VBoxContainer/CRTSwitch" index="0"]
+text = "CRT Filter"
+
+[node name="UIAnimationComponent" type="Node" parent="NinePatchRect/MarginContainer/VBoxContainer/CRTSwitch/Btn" index="0"]
+script = ExtResource("19_wcduq")
+anim_param = ExtResource("20_nntgf")
+interact = ""
+mouse_entered = ""
+focus_entered = ""
+input_accepted = ""
+
+[node name="CRTResolutionContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/CRTResolutionContainer"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "CRT Filter Intensity"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 40
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 22
+_current_font_size = 22
+_last_size_state = 1
+
+[node name="CRTResolutionOptionList" parent="NinePatchRect/MarginContainer/VBoxContainer/CRTResolutionContainer" instance=ExtResource("7_j5i71")]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust CRT filter resolution."
+focus_neighbor_top = NodePath("../../CRTSwitch")
+focus_neighbor_bottom = NodePath("../../MasterVolumeContainer/Slider")
+_use_ids = true
+setting = ExtResource("12_jfhum")
+apply_on_changed = true
+
+[node name="Btn" parent="NinePatchRect/MarginContainer/VBoxContainer/CRTResolutionContainer/CRTResolutionOptionList" index="0"]
+tooltip_text = "Intensity multiplier, divides effective pixel count"
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "x1"
+popup/item_0/id = 0
+popup/item_1/text = "x2"
+popup/item_1/id = 1
+popup/item_2/text = "x4"
+popup/item_2/id = 2
+popup/item_3/text = "x8"
+popup/item_3/id = 3
+
+[node name="UIAnimationComponent" type="Node" parent="NinePatchRect/MarginContainer/VBoxContainer/CRTResolutionContainer/CRTResolutionOptionList/Btn" index="1"]
+script = ExtResource("19_wcduq")
+anim_param = ExtResource("20_nntgf")
+interact = ""
+mouse_entered = ""
+focus_entered = ""
+input_accepted = ""
+
+[node name="ScreenshakeIntensityContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/ScreenshakeIntensityContainer"]
+custom_minimum_size = Vector2(170, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Screen Shake"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 40
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 22
+_current_font_size = 22
+_last_size_state = 1
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/ScreenshakeIntensityContainer" instance=ExtResource("6_5nlc6")]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust screen shake intensity."
+focus_neighbor_top = NodePath("../../CRTResolutionContainer/CRTResolutionOptionList")
+focus_neighbor_bottom = NodePath("../../VibrationIntensityContainer/Slider")
+setting = ExtResource("12_ryjhp")
+apply_on_changed = true
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/ScreenshakeIntensityContainer/Slider" index="0"]
+size_flags_horizontal = 1
+value = 50.0
+
+[node name="VibrationIntensityContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/VibrationIntensityContainer"]
+custom_minimum_size = Vector2(170, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Haptic Feedback"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 40
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 18
+_current_font_size = 18
+_last_size_state = 1
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/VibrationIntensityContainer" instance=ExtResource("6_5nlc6")]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust vibration intensity."
+focus_neighbor_top = NodePath("../../ScreenshakeIntensityContainer/Slider")
+focus_neighbor_bottom = NodePath("../../MasterVolumeContainer/Slider")
+setting = ExtResource("12_0ba06")
+apply_on_changed = true
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/VibrationIntensityContainer/Slider" index="0"]
+size_flags_horizontal = 1
+value = 50.0
+
+[node name="HSeparator2" type="HSeparator" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+
+[node name="AudioLabel" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "AUDIO"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 40
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 28
+_current_font_size = 28
+_last_size_state = 1
+
+[node name="MasterVolumeContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/MasterVolumeContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 40
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 22
+_current_font_size = 22
+_last_size_state = 1
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/MasterVolumeContainer" instance=ExtResource("6_5nlc6")]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust master volume."
+focus_neighbor_top = NodePath("../../ScreenshakeIntensityContainer/Slider")
+focus_neighbor_bottom = NodePath("../../MusicVolumeContainer/Slider")
+setting = ExtResource("7_6y151")
+apply_on_changed = true
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/MasterVolumeContainer/Slider" index="0"]
+size_flags_horizontal = 1
+value = 50.0
+
+[node name="MusicVolumeContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/MusicVolumeContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 40
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 22
+_current_font_size = 22
+_last_size_state = 1
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/MusicVolumeContainer" instance=ExtResource("6_5nlc6")]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust music volume."
+focus_neighbor_top = NodePath("../../MasterVolumeContainer/Slider")
+focus_neighbor_bottom = NodePath("../../GameVolumeContainer/Slider")
+setting = ExtResource("8_febst")
+apply_on_changed = true
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/MusicVolumeContainer/Slider" index="0"]
+size_flags_horizontal = 1
+value = 50.0
+
+[node name="GameVolumeContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/GameVolumeContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Game SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 40
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 20
+_current_font_size = 20
+_last_size_state = 1
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/GameVolumeContainer" instance=ExtResource("6_5nlc6")]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust game volume."
+focus_neighbor_top = NodePath("../../MusicVolumeContainer/Slider")
+focus_neighbor_bottom = NodePath("../../UIVolumeContainer/Slider")
+setting = ExtResource("9_0xtvn")
+apply_on_changed = true
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/GameVolumeContainer/Slider" index="0"]
+size_flags_horizontal = 1
+value = 50.0
+
+[node name="UIVolumeContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/UIVolumeContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "UI SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("3_4dcpj")
+_max_steps = 40
+_size_per_step = 1
+_size_just_modified_by_autosizer = false
+_set_defaults = true
+_base_font_size = 22
+_current_font_size = 22
+_last_size_state = 1
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/UIVolumeContainer" instance=ExtResource("6_5nlc6")]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Adjust UI volume."
+focus_neighbor_top = NodePath("../../GameVolumeContainer/Slider")
+focus_neighbor_bottom = NodePath("../../MuteSwitch")
+setting = ExtResource("10_jqenc")
+apply_on_changed = true
+
+[node name="Slider" parent="NinePatchRect/MarginContainer/VBoxContainer/UIVolumeContainer/Slider" index="0"]
+size_flags_horizontal = 1
+value = 50.0
+
+[node name="MuteSwitch" parent="NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("2_xryld")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+tooltip_text = "Toggle audio mute."
+focus_neighbor_top = NodePath("../UIVolumeContainer/Slider")
+focus_neighbor_bottom = NodePath("../QuitButton")
+setting = ExtResource("11_78y1r")
+apply_on_changed = true
+
+[node name="Btn" parent="NinePatchRect/MarginContainer/VBoxContainer/MuteSwitch" index="0"]
+text = "Mute Audio"
+
+[node name="UIAnimationComponent" type="Node" parent="NinePatchRect/MarginContainer/VBoxContainer/MuteSwitch/Btn" index="0"]
+script = ExtResource("19_wcduq")
+anim_param = ExtResource("20_nntgf")
+interact = ""
+mouse_entered = ""
+focus_entered = ""
+input_accepted = ""
+
+[node name="HSeparator3" type="HSeparator" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="QuitButton" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Close settings menu."
+focus_neighbor_top = NodePath("../MuteSwitch/Btn")
+focus_neighbor_bottom = NodePath("../FullscreenSwitch/Btn")
+text = "Return"
+icon = SubResource("AtlasTexture_eu1fv")
+expand_icon = true
+
+[node name="UiAnimationComponent" parent="NinePatchRect/MarginContainer/VBoxContainer/QuitButton" instance=ExtResource("19_es5ig")]
+
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/FullscreenSwitch"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/WindowedResolutionOptionList"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/CRTSwitch"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/CRTResolutionContainer/CRTResolutionOptionList"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/ScreenshakeIntensityContainer/Slider"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/VibrationIntensityContainer/Slider"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/MasterVolumeContainer/Slider"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/MusicVolumeContainer/Slider"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/GameVolumeContainer/Slider"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/UIVolumeContainer/Slider"]
+[editable path="NinePatchRect/MarginContainer/VBoxContainer/MuteSwitch"]
